@@ -1,0 +1,18 @@
+{
+  "syntax_checked_files": [
+    "tests/native_test.py",
+    "tests/static_check.py",
+    "tests/launch_native.py",
+    "tests/GUI_SmokeTest.FCMacro",
+    "model/allshield_build.py",
+    "model/Allshield_Herstel_Weergave_02.FCMacro",
+    "model/Allshield_Build.FCMacro"
+  ],
+  "independent_bounds_unit_tests_pass": true,
+  "original_package_02_files_byte_unchanged": true,
+  "native_FreeCAD_tested": false,
+  "GUI_tested": false,
+  "reason": "No FreeCADCmd executable, FreeCAD Python module or GUI installed in preparation runtime.",
+  "no_FCStd_included": true,
+  "no_public_upload_performed": true
+}

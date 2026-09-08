@@ -1,0 +1,116 @@
+# -*- coding: utf-8 -*-
+"""Fresh-document GUI test. Does not edit or save an existing user document.
+Run with the full FreeCAD GUI, NOT FreeCADCmd. Produces real screenshots.
+Native execution not performed in the handoff preparation environment.
+"""
+from pathlib import Path
+from datetime import datetime
+import hashlib
+import importlib.util
+import json
+import traceback
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part
+
+ROOT_OVERRIDE = ''  # Optional folder containing 00_START_HIER.md and model/.
+
+
+def main():
+    if not getattr(App, 'GuiUp', False):
+        raise RuntimeError('Full FreeCAD GUI is required')
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    if not (root / 'model' / 'allshield_build.py').is_file():
+        raise FileNotFoundError('Set ROOT_OVERRIDE to the unzipped handoff folder')
+    out = root / 'outputs' / ('gui_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    report = {'status': 'RUNNING', 'freecad_version': list(App.Version()),
+              'manual_visual_review': 'REQUIRED', 'as_built_verified': False}
+    try:
+        spec = importlib.util.spec_from_file_location('allshield_test_support', str(root / 'tests' / 'native_test.py'))
+        helper = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(helper)
+        build = helper.read_generator()
+        data_path = root / 'model' / 'allshield_building_02.json'
+        data = json.loads(data_path.read_text(encoding='utf-8'))
+        settings = dict(data['settings'])
+        settings.update(detail_mode='WORK', autosave=False, validate_shapes=True,
+                        show_roof=False, show_ceiling=False)
+        nodes = build.active_nodes(data, settings)
+        doc = build.build_from_json(str(data_path), settings)
+        report['test_document'] = doc.Name
+        report['json_sha256'] = hashlib.sha256(data_path.read_bytes()).hexdigest()
+        audit = helper.audit_document(doc, nodes, Part)
+        if not audit['pass']:
+            raise AssertionError('; '.join(audit['failures'][:8]))
+        library = doc.getObject('Component_Library')
+        prototypes = list(library.Group)
+        def library_state():
+            return {'group_visible': bool(library.ViewObject.Visibility),
+                    'visible_prototypes': [p.Name for p in prototypes if p.ViewObject.Visibility]}
+        def snapshot(name, view='iso'):
+            Gui.Selection.clearSelection()
+            av = Gui.activeDocument().activeView()
+            if view == 'top': av.viewTop()
+            else: av.viewAxonometric()
+            av.fitAll()
+            Gui.updateGui()
+            av.saveImage(str(out / (name + '.png')), 1800, 1200, 'Current')
+        report['library_at_start'] = library_state()
+        if report['library_at_start']['group_visible'] or report['library_at_start']['visible_prototypes']:
+            raise AssertionError('Prototype library is visible at startup')
+        snapshot('01_WORK_iso')
+        snapshot('02_WORK_top', 'top')
+        building = doc.getObject('Building')
+        building.ViewObject.Visibility = False
+        building.ViewObject.Visibility = True
+        Gui.updateGui()
+        report['library_after_building_toggle'] = library_state()
+        report['instance_visibility_after_toggle'] = {
+            c['id']: bool(doc.getObject(c['id']).ViewObject.Visibility)
+            for c in nodes if 'geometry' in c}
+        snapshot('03_after_Building_toggle')
+        if report['library_after_building_toggle']['group_visible'] or report['library_after_building_toggle']['visible_prototypes']:
+            raise AssertionError('Building toggle revealed the prototype library')
+        # Restore intended WORK visibility after recording the uncorrected state.
+        for c in nodes:
+            if 'geometry' in c:
+                doc.getObject(c['id']).ViewObject.Visibility = build._visible(c, settings)
+        for c in nodes:
+            if 'geometry' in c and c.get('category') in ('roof', 'ceiling'):
+                doc.getObject(c['id']).ViewObject.Visibility = True
+        snapshot('04_roof_and_ceiling_on')
+        for c in nodes:
+            if 'geometry' in c:
+                doc.getObject(c['id']).ViewObject.Visibility = build._visible(c, settings)
+        doc.recompute()
+        target = out / 'GUI_WORK.FCStd'
+        doc.saveAs(str(target))
+        App.closeDocument(doc.Name)  # Only this newly created test document.
+        doc = App.openDocument(str(target))
+        doc.recompute()
+        audit = helper.audit_document(doc, nodes, Part)
+        report['after_reopen_geometry_pass'] = audit['pass']
+        if not audit['pass']:
+            raise AssertionError('; '.join(audit['failures'][:8]))
+        library = doc.getObject('Component_Library')
+        prototypes = list(library.Group)
+        report['library_after_reopen'] = library_state()
+        snapshot('05_after_reopen')
+        if report['library_after_reopen']['group_visible'] or report['library_after_reopen']['visible_prototypes']:
+            raise AssertionError('Prototype library visible after save/reopen')
+        report['fcstd'] = str(target)
+        report['status'] = 'AUTOMATED_CHECKS_PASS_VISUAL_REVIEW_REQUIRED'
+        # Leave the NEW test document open for manual review. Do not close other documents.
+    except Exception:
+        report['status'] = 'FAIL'
+        report['traceback'] = traceback.format_exc()
+        App.Console.PrintError(report['traceback'] + '\n')
+    finally:
+        (out / 'gui_summary.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+        App.Console.PrintMessage('Allshield GUI report: ' + str(out) + '\n')
+    if report['status'] == 'FAIL':
+        raise RuntimeError('GUI test failed; inspect gui_summary.json')
+
+
+main()

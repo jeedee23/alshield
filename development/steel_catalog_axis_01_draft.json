@@ -1,0 +1,205 @@
+{
+  "schema": "allshield.steel-member-catalog.draft.v1",
+  "revision": "2026-09-08-axis01-main-profiles-approved",
+  "scope": "Approved coordination-model inventory for only A11/as-1 members 324, 323, 341, 339, 337, 338, 340, 302 and 303. This is not a fabrication or as-built model.",
+  "change_visualisation": {
+    "change_set": "2026-09-08_axis01_main_profiles",
+    "rgb": [0.94, 0.25, 0.55],
+    "meaning": "Display-only identification of this development change set. It does not describe steel paint, coating, material, construction status or source confidence."
+  },
+  "coordinate_system": {
+    "units": "mm",
+    "station_axis": "1",
+    "client_x_mm": 65160.0,
+    "section_span": "A-E",
+    "reference_component_id": "Section_A11_Axis_1"
+  },
+  "source": {
+    "file": "sources/pdf/a11_ovz-b.pdf",
+    "sheet": "A11",
+    "page": 1,
+    "view": "AANZICHT as-1",
+    "drawing_status": "TER CONTROLE",
+    "evidence_type": "LITERAL_SOURCE_LABELS_AND_VISUAL_ASSOCIATION",
+    "source_projection": {
+      "component_id": "Section_A11_Axis_1",
+      "status": "SOURCE_PROJECTION_NOT_SOLID",
+      "path_indices": [161, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 210, 211, 212, 213]
+    }
+  },
+  "approved_members": [
+    {
+      "id": "A11_01_324",
+      "source_mark": "324",
+      "profile_label": "HEA200",
+      "role": "outer_column_A",
+      "location": "A-side outer column",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_323",
+      "source_mark": "323",
+      "profile_label": "HEA200",
+      "role": "outer_column_E",
+      "location": "E-side outer column",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_341",
+      "source_mark": "341",
+      "profile_label": "IPE300",
+      "role": "internal_vertical_member",
+      "location": "Vector-derived internal station at Y=4400 mm",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_339",
+      "source_mark": "339",
+      "profile_label": "IPE300",
+      "role": "internal_vertical_member",
+      "location": "Vector-derived internal station at Y=8800 mm",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_337",
+      "source_mark": "337",
+      "profile_label": "IPE300",
+      "role": "internal_vertical_member",
+      "location": "Vector-derived internal station at Y=13150 mm",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_338",
+      "source_mark": "338",
+      "profile_label": "IPE300",
+      "role": "internal_vertical_member",
+      "location": "Vector-derived internal station at Y=18260 mm",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_340",
+      "source_mark": "340",
+      "profile_label": "IPE300",
+      "role": "internal_vertical_member",
+      "location": "Vector-derived internal station at Y=22980 mm",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_302",
+      "source_mark": "302",
+      "profile_label": "HEA180",
+      "role": "roof_rafter_A_to_ridge",
+      "location": "A-side sloped roof member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_01_303",
+      "source_mark": "303",
+      "profile_label": "HEA180",
+      "role": "roof_rafter_ridge_to_E",
+      "location": "E-side sloped roof member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    }
+  ],
+  "nominal_profile_status": {
+    "HEA200": {
+      "source": "NEN-EN 10365:2017",
+      "approval": "Approved by user on 2026-09-08 for A11/as-1 members 324 and 323.",
+      "dimensions_mm": {
+        "height_h": 190.0,
+        "flange_width_b": 200.0,
+        "web_thickness_tw": 6.5,
+        "flange_thickness_tf": 10.0,
+        "root_radius_r": 18.0
+      },
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_height_mm": 190.0,
+      "representation": "Nominal rolled HEA profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    },
+    "IPE300": {
+      "source": "NEN-EN 10365:2017",
+      "approval": "Approved by user on 2026-09-08 for A11/as-1 members 341, 339, 337, 338 and 340.",
+      "dimensions_mm": {
+        "height_h": 300.0,
+        "flange_width_b": 150.0,
+        "web_thickness_tw": 7.1,
+        "flange_thickness_tf": 10.7,
+        "root_radius_r": 15.0
+      },
+      "section_orientation": "FLANGE_WIDTH_B_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_width_mm": 150.0,
+      "representation": "Nominal rolled IPE profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    },
+    "HEA180": {
+      "source": "NEN-EN 10365:2017",
+      "approval": "Approved by user on 2026-09-08 for A11/as-1 members 302 and 303.",
+      "dimensions_mm": {
+        "height_h": 171.0,
+        "flange_width_b": 180.0,
+        "web_thickness_tw": 6.0,
+        "flange_thickness_tf": 9.5,
+        "root_radius_r": 15.0
+      },
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_height_mm": 171.245311,
+      "representation": "Nominal rolled HEA profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    }
+  },
+  "centreline_definitions_mm": {
+    "method": "Derived from the midpoints of visually associated A11/as-1 outer-member traces in the calibrated Section_A11_Axis_1 projection. The drawing traces determine member axis length; text location is not used as geometry.",
+    "evidence_status": "VECTOR_MEASUREMENT",
+    "section_orientation": "A11/as-1 is a YZ elevation at X=65160 mm. The HEA200 column and HEA180 rafter section height h is in the elevation plane. The five IPE300 column source contour pairs show flange width b=150 mm in the elevation plane, so section height h=300 mm is placed out of plane along X.",
+    "A11_01_324": {
+      "start": [65160.0, 94.999973, -177.991153],
+      "end": [65160.0, 94.999973, 9162.0797485],
+      "derivation": "Midpoints of the A-side outer vertical contour at Y=0.000121/189.999825 mm; base Z=-177.991153 mm and top Z=9156.993702/9167.165795 mm. Literal label 324 HEA200 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_323": {
+      "start": [65160.0, 27734.9978525, -177.991153],
+      "end": [65160.0, 27734.9978525, 9162.0819025],
+      "derivation": "Midpoints of the E-side outer vertical contour at Y=27639.998001/27829.997704 mm; base Z=-177.991153 mm and top Z=9167.165795/9156.998010 mm. Literal label 323 HEA200 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_341": {
+      "start": [65160.0, 4399.9990325, -177.991153],
+      "end": [65160.0, 4399.9990325, 9217.317531],
+      "derivation": "Midpoints of vertical IPE300 contour paths at Y=4325.000850/4474.997215 mm; base Z=-177.991153 mm and top Z=9213.304272/9221.330790 mm. Literal label 341 IPE300 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_339": {
+      "start": [65160.0, 8800.000098, -177.991153],
+      "end": [65160.0, 8800.000098, 9452.8913125],
+      "derivation": "Midpoints of vertical IPE300 contour paths at Y=8725.001916/8874.998280 mm; base Z=-177.991153 mm and top Z=9448.873745/9456.908880 mm. Literal label 339 IPE300 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_337": {
+      "start": [65160.0, 13150.000221, -177.991153],
+      "end": [65160.0, 13150.000221, 9685.787434],
+      "derivation": "Midpoints of vertical IPE300 contour paths at Y=13074.999885/13225.000557 mm; base Z=-177.991153 mm and top Z=9681.772021/9689.802847 mm. Literal label 337 IPE300 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_338": {
+      "start": [65160.0, 18259.999157, -177.991153],
+      "end": [65160.0, 18259.999157, 9494.116078],
+      "derivation": "Midpoints of vertical IPE300 contour paths at Y=18185.000975/18334.997339 mm; base Z=-177.991153 mm and top Z=9498.131491/9490.100665 mm. Literal label 338 IPE300 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_340": {
+      "start": [65160.0, 22980.0000065, -177.991153],
+      "end": [65160.0, 22980.0000065, 9241.4121645],
+      "derivation": "Midpoints of vertical IPE300 contour paths at Y=22905.000747/23054.999266 mm; base Z=-177.991153 mm and top Z=9245.427578/9237.396751 mm. Literal label 340 IPE300 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_302": {
+      "start": [65160.0, 202.998217, 9090.2546905],
+      "end": [65160.0, 13902.997911, 9823.7440215],
+      "derivation": "Midpoints of paired A-side sloped roof contour edges from Y=202.998217/Z=9004.632035 and 9175.877346 to Y=13902.997911/Z=9738.121366 and 9909.366677. Literal label 302 HEA180 is visually adjacent in AANZICHT as-1."
+    },
+    "A11_01_303": {
+      "start": [65160.0, 13926.999915, 9823.7440215],
+      "end": [65160.0, 27626.999609, 9090.2546905],
+      "derivation": "Midpoints of paired E-side sloped roof contour edges from Y=13926.999915/Z=9738.121366 and 9909.366677 to Y=27626.999609/Z=9004.632035 and 9175.877346. The source-projected ridge-end gap is preserved. Literal label 303 HEA180 is visually adjacent in AANZICHT as-1."
+    }
+  },
+  "explicitly_not_inferred": [
+    "No connection, base plate, haunch, stiffener or other local detail is included.",
+    "No member outside this source view is copied, mirrored or repeated.",
+    "No IPE member beyond the explicitly approved source marks 341, 339, 337, 338 and 340, no HEA member beyond 324, 323, 302 and 303, and no other steel member is promoted to a solid.",
+    "No K, CN, WVB or other secondary-steel source label is promoted to a solid.",
+    "No fabrication definition or as-built claim is made."
+  ]
+}

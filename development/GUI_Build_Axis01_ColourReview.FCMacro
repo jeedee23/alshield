@@ -1,0 +1,121 @@
+# -*- coding: utf-8 -*-
+"""Create a fresh GUI-rendered review document for approved A11/as-1 members."""
+from pathlib import Path
+from datetime import datetime
+import importlib.util
+import json
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+
+ROOT_OVERRIDE = ''  # Optional workspace root when this macro is copied elsewhere.
+
+
+def _load_axis01(root):
+    module_path = root / 'development' / 'allshield_axis_01.py'
+    spec = importlib.util.spec_from_file_location('allshield_axis01_gui_review', str(module_path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _set_coloured_flat_lines(link, colour):
+    prototype = link.LinkedObject
+    prototype_view = getattr(prototype, 'ViewObject', None) if prototype is not None else None
+    link_view = getattr(link, 'ViewObject', None)
+    if prototype_view is None or link_view is None:
+        raise AssertionError('Missing linked prototype view provider for ' + link.Name)
+    for key, value in (
+        ('ShapeColor', colour), ('LineColor', colour), ('Transparency', 0),
+    ):
+        if key in prototype_view.PropertiesList:
+            setattr(prototype_view, key, value)
+    for view in (prototype_view, link_view):
+        if 'Flat Lines' in view.listDisplayModes():
+            view.DisplayMode = 'Flat Lines'
+    prototype_view.Visibility = False
+    link_view.Visibility = True
+    return prototype_view
+
+
+def _colour_matches(actual, expected):
+    return len(actual) >= 3 and all(
+        abs(float(actual[index]) - expected[index]) <= (1.0 / 255.0)
+        for index in range(3)
+    )
+
+
+def main():
+    if not getattr(App, 'GuiUp', False):
+        raise RuntimeError('Run this macro with the full FreeCAD GUI, not FreeCADCmd.')
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    if not (root / 'development' / 'allshield_axis_01.py').is_file():
+        raise FileNotFoundError('Set ROOT_OVERRIDE to the Allshield workspace root.')
+    out = root / 'outputs' / ('gui_axis01_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    axis01 = _load_axis01(root)
+    catalog = axis01._load_catalog()
+    doc = axis01.build_axis_01(out)
+    members = {member['id']: member for member in catalog['approved_members']}
+    required_ids = (
+        'A11_01_324', 'A11_01_323',
+        'A11_01_341', 'A11_01_339', 'A11_01_337', 'A11_01_338', 'A11_01_340',
+        'A11_01_302', 'A11_01_303',
+    )
+    colour = tuple(float(value) for value in catalog['change_visualisation']['rgb'])
+    colour_property_checks = {}
+    for object_id in required_ids:
+        obj = doc.getObject(object_id)
+        if obj is None or getattr(obj, 'ViewObject', None) is None:
+            raise AssertionError('Missing GUI view provider for ' + object_id)
+        prototype_view = _set_coloured_flat_lines(obj, colour)
+        actual_colour = tuple(float(value) for value in prototype_view.ShapeColor)
+        colour_property_checks[object_id] = {
+            'requested_rgb': list(colour),
+            'prototype_rgb_after_apply': list(actual_colour[:3]),
+            'property_roundtrip_matches': _colour_matches(actual_colour, colour),
+        }
+        if not obj.ViewObject.Visibility:
+            raise AssertionError('Visible review link was hidden for ' + object_id)
+    if not all(check['property_roundtrip_matches'] for check in colour_property_checks.values()):
+        App.Console.PrintWarning(
+            'Axis-1 GUI colour review: ViewProviderLink colour properties did not round-trip; '
+            'inspect the saved screenshot visually.\n'
+        )
+    library = doc.getObject('Component_Library')
+    if library is None:
+        raise AssertionError('Missing Component_Library.')
+    library.ViewObject.Visibility = False
+    for prototype in library.Group:
+        prototype.ViewObject.Visibility = False
+    doc.recompute()
+    active_view = Gui.activeDocument().activeView()
+    active_view.viewAxonometric()
+    active_view.fitAll()
+    Gui.updateGui()
+    screenshot = out / 'Axis01_GUI_colour_review.png'
+    active_view.saveImage(str(screenshot), 1800, 1200, 'Current')
+    target = out / 'Axis01_GUI_colour_review.FCStd'
+    doc.saveAs(str(target))
+    report = {
+        'status': 'GUI_COLOUR_REVIEW_READY',
+        'fcstd': str(target),
+        'screenshot': str(screenshot),
+        'change_set': catalog['change_visualisation']['change_set'],
+        'visible_members': list(required_ids),
+        'draw_style': 'Flat Lines',
+        'colour_property_checks': colour_property_checks,
+        'colour_property_roundtrip_all_match': all(
+            check['property_roundtrip_matches'] for check in colour_property_checks.values()
+        ),
+        'manual_visual_review_required': True,
+        'as_built_verified': False,
+        'fabrication_model': False,
+    }
+    (out / 'gui_axis01_colour_review.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    App.Console.PrintMessage('Axis-1 GUI colour review: ' + str(out) + '\n')
+    return report
+
+
+main()

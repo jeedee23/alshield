@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+"""Repair source-library visibility in the existing Allshield document.
+
+Does NOT change any geometry, placements, dimensions, or user-added equipment.
+Does NOT close or save a document. Requires the original generator's metadata.
+The only hierarchy change is to detach Component_Library from Building.
+"""
+import json
+import math
+
+
+def repair_allshield_display():
+    import FreeCAD as App
+    import FreeCADGui as Gui
+
+    doc = App.ActiveDocument
+    if doc is None:
+        raise RuntimeError("Open eerst het gegenereerde Allshield-document.")
+    root = doc.getObject("Building")
+    library = doc.getObject("Component_Library")
+    if root is None or library is None or "EmbeddedSourceJSON" not in root.PropertiesList:
+        raise RuntimeError("Dit is niet het verwachte Allshield-document. Er is niets gewijzigd.")
+    data = json.loads(root.EmbeddedSourceJSON)
+    if data.get("schema") != "allshield.freecad.build.v1":
+        raise RuntimeError("Onbekend bronschema. Er is niets gewijzigd.")
+    components = {c["id"]: c for c in data["components"]}
+    prototypes = list(library.Group)
+    if any(p.TypeId != "Part::Feature" or not p.Name.startswith("Prototype_") for p in prototypes):
+        raise RuntimeError("De bronbibliotheek bevat gewijzigde of onbekende onderdelen; niets gewijzigd.")
+
+    def placement_tuple(obj):
+        if not hasattr(obj, "Placement"):
+            return None
+        pl = obj.Placement
+        return [pl.Base.x, pl.Base.y, pl.Base.z] + list(pl.Rotation.Q)
+
+    before_positions = {o.Name: placement_tuple(o) for o in doc.Objects}
+    before_names = {o.Name for o in doc.Objects}
+    report = {
+        "repair": "Allshield display 02",
+        "document": doc.Name,
+        "library_was_child_of_building": library in root.Group,
+        "library_visibility_before": bool(library.ViewObject.Visibility),
+        "visible_prototypes_before": [p.Name for p in prototypes if p.ViewObject.Visibility],
+        "prototype_count": len(prototypes),
+        "geometry_changed": False,
+        "coordinates_changed": False,
+        "user_equipment_changed": False,
+        "saved_automatically": False,
+    }
+    doc.openTransaction("Allshield: bronbibliotheek verbergen")
+    try:
+        # A normal group carries no transform. Detaching this library therefore
+        # does not move its members or the App::Link instances in the building.
+        if library in root.Group:
+            root.removeObject(library)
+        library.Label = "Component_Library - NIET TONEN (bronvormen)"
+        for p in prototypes:
+            p.ViewObject.Visibility = False
+            if "Selectable" in p.ViewObject.PropertiesList:
+                p.ViewObject.Selectable = False
+        library.ViewObject.Visibility = False
+        Gui.Selection.clearSelection()
+        doc.recompute()
+
+        moved = []
+        for o in doc.Objects:
+            old = before_positions.get(o.Name)
+            new = placement_tuple(o)
+            if old != new:
+                moved.append(o.Name)
+        if moved or before_names != {o.Name for o in doc.Objects}:
+            raise RuntimeError("Onverwachte documentwijziging: " + ", ".join(moved))
+        report["all_placements_unchanged"] = True
+        report["objects_added_or_deleted"] = 0
+        report["visible_prototypes_after"] = [p.Name for p in prototypes if p.ViewObject.Visibility]
+        report["library_visibility_after"] = bool(library.ViewObject.Visibility)
+        report["library_is_child_of_building_after"] = library in root.Group
+        if "DisplayRepairReportJSON" not in root.PropertiesList:
+            root.addProperty("App::PropertyString", "DisplayRepairReportJSON", "Build")
+        root.DisplayRepairReportJSON = json.dumps(report, ensure_ascii=False)
+        doc.commitTransaction()
+        Gui.activeDocument().activeView().fitAll()
+        Gui.updateGui()
+        App.Console.PrintMessage("\nAllshield: bronbibliotheek verborgen en losgemaakt van Building.\n")
+        App.Console.PrintMessage("%d bronvormen verborgen; alle plaatsingen ongewijzigd.\n" % len(prototypes))
+        App.Console.PrintMessage("Eigen componenten zijn niet gewijzigd. Sla het document zelf op.\n")
+        App.Console.PrintWarning("Staaldoorsneden blijven referentielijnen, geen volledige 3D-staalprofielen.\n")
+        return report
+    except Exception:
+        doc.abortTransaction()
+        raise
+
+
+if __name__ == "__main__":
+    repair_allshield_display()

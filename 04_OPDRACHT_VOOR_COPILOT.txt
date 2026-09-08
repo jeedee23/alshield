@@ -1,0 +1,11 @@
+Lees eerst 00_START_HIER.md, 01_OVERDRACHT_COPILOT.md, 02_TESTPLAN.md en 03_BRONNENREGISTER.md in deze workspace.
+
+Dit is het Allshield Ter Aar gebouw van Johan Degraeve. Start met de ONGEWIJZIGDE generator 02 in model/. Voer hem daadwerkelijk uit met de lokale FreeCADCmd en test daarna ook in de echte FreeCAD-GUI. Zoek de aanwezige installatie en noteer de exacte versies. Gebruik tests/static_check.py, tests/launch_native.py met tests/native_test.py en tests/GUI_SmokeTest.FCMacro als startpunt. Bewaar commando's, tracebacks, auditresultaten en echte screenshots.
+
+Eerste taak: reproduceer en onderzoek het probleem in sources/images/USER_FAILURE_SCREENSHOT.png. De vermoedelijke bronbibliotheek-/LinkPlacement-fout is in pakket 02 aangepast maar nog niet native bewezen. Controleer effective world geometry, Component_Library buiten Building, prototype visibility, opslaan/heropenen en dubbele transformaties. Verschuif geen onderdelen handmatig om het beeld passend te maken. Vraag alleen het problematische FCStd als het niet in user_inputs/ staat; het is niet nodig om de baseline alvast te testen.
+
+Daarna: werk de ontbrekende echte staal-solids, gordingen, verbanden en overige noodzakelijke gebouwdetails uit vanuit de meegeleverde oorspronkelijke tekeningen. Onbekende geometrie niet verzinnen; broncontouren zijn geen collision solids. Elke gewijzigde coordinaat krijgt bronverantwoording. V3 nooit als geometrische of codebron gebruiken. De magnetron NIET tekenen, geen footprint of placeholder; Johan importeert die zelf.
+
+Behoud de client-oorsprong 21/A, de onregelmatige lokale assen, JSON als geometrische invoer, logische parent/child-namen en een lichte WORK-stand. Bewaar sources/ en reference/ ongewijzigd; ontwikkel op een kopie/nieuwe revisie. Geen publieke upload of git push zonder expliciete toestemming.
+
+Lever een reproduceerbaar lokaal getest resultaat met nieuw FCStd, code en JSON, logs, screenshots, prestatienotities en een eerlijk overzicht van resterende bronvragen. Een statische PASS, mock-test of alleen een groene bounding-boxcontrole is geen bewijs van een volledig correct gebouwmodel.

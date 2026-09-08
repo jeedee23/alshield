@@ -1,0 +1,262 @@
+[
+  {
+    "path": ".github/copilot-instructions.md",
+    "bytes": 1895,
+    "sha256": "48f4c6f8a90b01ee0cbb3b6744ce458217fcc44440086d6c87de2ecbec9f382b"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 271,
+    "sha256": "4ca2e75ea9524b491020be3fa9f8d296fa5f5f476ae32df3db760d1595c20d5d"
+  },
+  {
+    "path": "00_START_HIER.md",
+    "bytes": 3341,
+    "sha256": "6770ac874a68e429c5bee78858305c31403ba9ccb1d4049be5bd28ff6c7597b3"
+  },
+  {
+    "path": "01_OVERDRACHT_COPILOT.md",
+    "bytes": 13534,
+    "sha256": "5dd73c45a91b4cb899641214f318667869755023e9dd6df24cdcbaff4ee044d1"
+  },
+  {
+    "path": "02_TESTPLAN.md",
+    "bytes": 9160,
+    "sha256": "e4c75b854b9df62d8204e65f1e80fb7484bf4fdebcd0befc3778664fedf12b3d"
+  },
+  {
+    "path": "03_BRONNENREGISTER.md",
+    "bytes": 4533,
+    "sha256": "cef8cc9dd65976618eed2adde2139ef31138ae3362bd176bdd288947d82deae5"
+  },
+  {
+    "path": "04_OPDRACHT_VOOR_COPILOT.txt",
+    "bytes": 2130,
+    "sha256": "0df2cec77fdc4d02b13f500e6c37b0a23d6a0bce723a37f81256e19c98752462"
+  },
+  {
+    "path": "model/Allshield_Build.FCMacro",
+    "bytes": 23821,
+    "sha256": "d09953da5f01a2c613cab92668485e9e148284c37925efec7b766c3fc20750ff"
+  },
+  {
+    "path": "model/Allshield_Herstel_Weergave_02.FCMacro",
+    "bytes": 4462,
+    "sha256": "ab2aca7241d65d2b40e67ebf891f670c19089c50d0037a465c3dfea10a1c9c53"
+  },
+  {
+    "path": "model/LEESMIJ_02.txt",
+    "bytes": 3625,
+    "sha256": "4726eaf2b0998ea57cc326559d0d17ce6c84f7b4886e3e8d93f484b957fae7a4"
+  },
+  {
+    "path": "model/VALIDATIE_02.json",
+    "bytes": 2479,
+    "sha256": "3cf30d5eb8effdf13635d0e800a5ec8193ee6d3baf06cce63d674c3f9c34e99c"
+  },
+  {
+    "path": "model/allshield_build.py",
+    "bytes": 23821,
+    "sha256": "d09953da5f01a2c613cab92668485e9e148284c37925efec7b766c3fc20750ff"
+  },
+  {
+    "path": "model/allshield_building_02.json",
+    "bytes": 7066534,
+    "sha256": "7bda242a27ede07407efe873d35efd8be2a385d23002d690ead2caf21b857656"
+  },
+  {
+    "path": "reference/Allshield_FreeCAD_Rebuild_01.zip",
+    "bytes": 381463,
+    "sha256": "bfbac9071e3e58385931f05063a77b1ebd4dae4598482bba2f719b82cbfe7d30"
+  },
+  {
+    "path": "reference/allshield_base_topview_v0_2.dxf",
+    "bytes": 34197,
+    "sha256": "e090db3d2d736f697a845c777b4de63e3d9b377571ae7716503ef941416c418d"
+  },
+  {
+    "path": "reference/allshield_base_topview_v0_2_preview.png",
+    "bytes": 15868,
+    "sha256": "0eb2a89692ba253bedaa8e6952740b39e8b02164c7aa6f53aa0c01426dc18d3f"
+  },
+  {
+    "path": "reference/allshield_building_reference_v0_2.json",
+    "bytes": 126505,
+    "sha256": "8216ede415de97a98e1f2c6e011b4166da10a9ff58719e183304871b9b7774c0"
+  },
+  {
+    "path": "reference/allshield_reference_v0_2_validation.txt",
+    "bytes": 1104,
+    "sha256": "676be1d3437c8875134f05816bcc833b607627818d1c6e445c77f8a2d7d79319"
+  },
+  {
+    "path": "reference/allshield_roof_window_source_evidence_v0_3.json",
+    "bytes": 15593,
+    "sha256": "76be63c579632e8fe2719be80be7b27fb44f3a772f7a275e6d009c2ec5276715"
+  },
+  {
+    "path": "sources/images/IMG-20260905-WA0015.jpg",
+    "bytes": 170464,
+    "sha256": "7d8b6ab276bd04fc43c9c7b229ce97b5ab3116215b0a6353a7e18204669c075f"
+  },
+  {
+    "path": "sources/images/USER_FAILURE_SCREENSHOT.png",
+    "bytes": 127382,
+    "sha256": "824476de35a7813e289d4e0dc6fa737e6504316eebf7a184987852ac215a7cd3"
+  },
+  {
+    "path": "sources/images/c04_roof_profile_source.png",
+    "bytes": 7092,
+    "sha256": "18e10bb3bd70a7a0f4c852f4c89e1cd185620bd67e21292efe1b30e4848079a9"
+  },
+  {
+    "path": "sources/images/kozijn_980x4000_label.png",
+    "bytes": 9078,
+    "sha256": "6f4d1d50a571e8b2b5186d2be5690aeaf7499298bcf67846b61ca666ca9a3b62"
+  },
+  {
+    "path": "sources/images/plan_5200_PS_marked.png",
+    "bytes": 60021,
+    "sha256": "4d5b6902311244e57dc70f2e90bcdf00c83eb4ce40fe7dd5a51766abd7355aa9"
+  },
+  {
+    "path": "sources/images/plan_beams_1_2_3.png",
+    "bytes": 87396,
+    "sha256": "740c9b20e7cbc0237d53b92baf2db6609f2f320829d7c80db13f970eef10ec2a"
+  },
+  {
+    "path": "sources/pdf/20260522 ter Aar Indeling totaal (002).pdf",
+    "bytes": 1049257,
+    "sha256": "192409574ae602b08c7c6dc52b0cb9d19b4e191267e6a1aa6ec45a66e830042e"
+  },
+  {
+    "path": "sources/pdf/20260730_maatvoering.pdf",
+    "bytes": 898480,
+    "sha256": "d090a8ad582971c636dd13e2be9a6c2ee91df5e0d3a0795851868e9992ebf8e5"
+  },
+  {
+    "path": "sources/pdf/44449_Logivast_07maart2025(1).pdf",
+    "bytes": 2853727,
+    "sha256": "77e7f34408ff5531fcd2684b5f489eb10ab9e2deb506fbc30a0778c72bf1fe46"
+  },
+  {
+    "path": "sources/pdf/Hardeman_tekeningenset.pdf",
+    "bytes": 3046734,
+    "sha256": "646c1933cc2456ac5946ad70098a8f3fb810763aff634e40b15c2848f12a2e08"
+  },
+  {
+    "path": "sources/pdf/a03_ovz-a.pdf",
+    "bytes": 740419,
+    "sha256": "681c8bab8c01b9c3fe7700ea46bb3bad8e700fe34144cc7a215d37436ae38d7f"
+  },
+  {
+    "path": "sources/pdf/a11_ovz-b.pdf",
+    "bytes": 861410,
+    "sha256": "377a91cdfd02d63ae0a422e9eabf5369dcaca4e61a740a9b6050c1e3497303b4"
+  },
+  {
+    "path": "sources/pdf/c04a_gevels.pdf",
+    "bytes": 311169,
+    "sha256": "1f4af215ff58087125339029a950113a4cda1819f6a5c2bebd53a6422df37fa0"
+  },
+  {
+    "path": "sources/pdf/c05a_binnen.pdf",
+    "bytes": 366636,
+    "sha256": "25544279bca1bc2c9195b7cbf2bdd604957dfed026256f53d633ac0de080706b"
+  },
+  {
+    "path": "sources/pdf/photos allshield inside 2026_09_05_@_12-37-16.pdf",
+    "bytes": 4892317,
+    "sha256": "b0b8e459f1bae4cb0ba22a93809de717cec662b61843c4c2d80d066206335d1d"
+  },
+  {
+    "path": "sources/text/20260522 ter Aar Indeling totaal (002).txt",
+    "bytes": 2070,
+    "sha256": "35881ab6d6005a4a328ff00cec463ed46d6e3b858953730a7f8a51f208cd3c3a"
+  },
+  {
+    "path": "sources/text/20260730_maatvoering.txt",
+    "bytes": 1455,
+    "sha256": "15f21b8c28a8a88491cf4e91a1243602e43505257acdc3c259291ef79cdc3fb3"
+  },
+  {
+    "path": "sources/text/44449_Logivast_07maart2025(1).txt",
+    "bytes": 76777,
+    "sha256": "0576bfc3c229d89f7b7204d0d09f4ec0ee73552a4921df6b24ccd15ae970eb8f"
+  },
+  {
+    "path": "sources/text/Hardeman_tekeningenset.txt",
+    "bytes": 6810,
+    "sha256": "f4f3c7ecc45c559ff6dbab2693f884eb2f376572dabea89b18e50c02e82dc561"
+  },
+  {
+    "path": "sources/text/a03_ovz-a.txt",
+    "bytes": 4435,
+    "sha256": "c4154076b2b30a70b2d828e0bf9cde50ec9d5d69579eecd4c808e5c0902d7af5"
+  },
+  {
+    "path": "sources/text/a11_ovz-b.txt",
+    "bytes": 5213,
+    "sha256": "60b3b31eae7fe18a19779ac50543539d566ef1bad2b8c06a246e909dd15211ce"
+  },
+  {
+    "path": "sources/text/c04a_gevels.txt",
+    "bytes": 1245,
+    "sha256": "08217a2ea27f6f23a071446dc34a9eb6a0f00926f6b835bc26ec9f3f97ce56a1"
+  },
+  {
+    "path": "sources/text/c05a_binnen.txt",
+    "bytes": 1179,
+    "sha256": "5dbcbd0101b2ec268f2019237f3c0b92ffe0b95d8c297d5a5ee602d915e0e3e5"
+  },
+  {
+    "path": "sources/text/photos allshield inside 2026_09_05_@_12-37-16.txt",
+    "bytes": 318,
+    "sha256": "99b3a37fd7ba0a569300a6c17c8b3d3ff228023b3f8343fa3120e5c8c5db76c6"
+  },
+  {
+    "path": "sources/video/Untitled Project.mp4",
+    "bytes": 9306876,
+    "sha256": "9023289cd76c99730c8b920cdc87858f6078574ab1150a40d919e4a7edaed492"
+  },
+  {
+    "path": "tests/GUI_SmokeTest.FCMacro",
+    "bytes": 5822,
+    "sha256": "e15379e7d389affe8cd5f480372a3a0740acf9023ab7981933a1ac341cebdff9"
+  },
+  {
+    "path": "tests/launch_native.py",
+    "bytes": 2314,
+    "sha256": "fb0e05c8f51f08ffda58fec297448f81a8bf1b644373fde2ec48f98fa13af6c2"
+  },
+  {
+    "path": "tests/native_test.py",
+    "bytes": 10303,
+    "sha256": "f73757ccfa9bef74328f2e577692a20b71647df12b2466969a0cdee35b4bff13"
+  },
+  {
+    "path": "tests/static_check.py",
+    "bytes": 2996,
+    "sha256": "2e49b98cf99d5b457b47d004f299ccc558e57724f83d3f76180f58621dce729d"
+  },
+  {
+    "path": "user_inputs/LEESMIJ.txt",
+    "bytes": 474,
+    "sha256": "2b10af22e42ea63222d33147381d77f88829d5c9d112a7c93a3342df523dfa35"
+  },
+  {
+    "path": "verification/handoff_preparation.json",
+    "bytes": 602,
+    "sha256": "1383d6915075f7b3a76febba85c175d01469b2b8d246b7e63ea76a73dc386dfb"
+  },
+  {
+    "path": "verification/source_registry.json",
+    "bytes": 4362,
+    "sha256": "f8752fefa35b4f574129f8d48bfabd0f52111ad92f3a39050f04d1f55906c40b"
+  },
+  {
+    "path": "verification/static_check.json",
+    "bytes": 722,
+    "sha256": "40abf661473714b96e10176474e363436683d647ecafae99200f7e7383698db8"
+  }
+]

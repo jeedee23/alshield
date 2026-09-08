@@ -1,0 +1,10 @@
+Deze map is aanvankelijk leeg, behalve dit instructiebestand.
+
+Voor exacte foutreproductie kan Johan hier een kopie van het problematische
+FreeCAD-document (.FCStd) plaatsen. Voeg daarbij de exacte FreeCAD-versie,
+welke macro gebruikt is en of de herstelmacro al uitgevoerd werd.
+
+Bewaar het originele bestand elders. De meegeleverde starttests maken eigen
+documenten en openen niet automatisch jouw bestaande document.
+
+Geen magnetronbestand nodig voor de gebouwgenerator.

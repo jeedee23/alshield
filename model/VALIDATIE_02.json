@@ -1,0 +1,104 @@
+{
+  "test_environment": "CadQuery/OpenCASCADE geometry; no native FreeCAD installed",
+  "native_FreeCAD_tested": false,
+  "input_JSON_byte_identical": true,
+  "tests": {
+    "WORK": {
+      "geometry_instances": 141,
+      "geometry_by_category": {
+        "floor": 1,
+        "reference": 1,
+        "datum": 1,
+        "ceiling": 4,
+        "roof": 4,
+        "facade": 104,
+        "equipment": 12,
+        "steel_source": 14
+      },
+      "distinct_geometries": 109,
+      "all_OCC_shapes_valid": true,
+      "world_bbox_max_error_mm": 7.275957614183426e-12,
+      "source_anchors_at_real_occurrences": true,
+      "test_seconds": 0.76,
+      "note": "Not a FreeCAD performance benchmark."
+    },
+    "PANELS": {
+      "geometry_instances": 358,
+      "geometry_by_category": {
+        "floor": 1,
+        "reference": 1,
+        "datum": 1,
+        "ceiling": 4,
+        "roof": 4,
+        "facade": 321,
+        "equipment": 12,
+        "steel_source": 14
+      },
+      "distinct_geometries": 304,
+      "all_OCC_shapes_valid": true,
+      "world_bbox_max_error_mm": 7.275957614183426e-12,
+      "source_anchors_at_real_occurrences": true,
+      "test_seconds": 0.91,
+      "note": "Not a FreeCAD performance benchmark."
+    },
+    "runtime_guard_injected_2000_mm_shift": "rejected",
+    "display_repair_logic": {
+      "test_environment": "minimal API test double, NOT native FreeCAD",
+      "only_library_detached": true,
+      "all_placements_unchanged": true,
+      "user_object_unchanged": true,
+      "safe_second_run": true,
+      "no_active_document_rejected": true
+    }
+  },
+  "prototype_visibility_diagnosis": [
+    {
+      "component": "Facade_1_Concrete_Plinth",
+      "local_origin_in_model_mm": [
+        65410.0,
+        54410.0,
+        1000.0
+      ],
+      "local_source_bounds_mm": [
+        -250.0,
+        -54660.0,
+        -1000.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "placed_bounds_mm": [
+        65160.0,
+        -250.0,
+        0.0,
+        65410.0,
+        54410.0,
+        1000.0
+      ]
+    },
+    {
+      "component": "Facade_M_Wall_WORK",
+      "local_origin_in_model_mm": [
+        -100.0,
+        54260.0,
+        9379.999072
+      ],
+      "local_source_bounds_mm": [
+        0.0,
+        -100.0,
+        -8379.999072,
+        65360.0,
+        0.0,
+        0.0
+      ],
+      "placed_bounds_mm": [
+        -100.0,
+        54160.0,
+        1000.0,
+        65260.0,
+        54260.0,
+        9379.999072
+      ]
+    }
+  ]
+}

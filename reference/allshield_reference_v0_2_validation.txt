@@ -1,0 +1,24 @@
+ALLSHIELD TER AAR - REFERENCE V0.2 VALIDATION
+================================================
+
+PDF vector fitted isotropic scale: 71.537710643 mm/pt
+Fit controls:
+  X axis 1->3: residual +0.675 mm
+  X axis 1->7: residual +1.452 mm
+  Y dimension 1: residual -4.723 mm
+  Y dimension 2: residual +3.861 mm
+  Y dimension 3: residual -4.723 mm
+Independent checks:
+  A->M candidate structural line: residual -0.230 mm
+  axis1->axis21 candidate structural line: residual -3.453 mm
+
+Exact facade A station X (client mm):
+  21=0, 20=5150, 18=10250, 16=15350, 14=20450, 12=25550, 11=30650, 10=35750, 9=40850, 8=45950, 7=51100, 5=53750, 3=59100, 2=61050, 1=65160
+Exact facade M station X (client mm):
+  21=0, 20=5150, 18=10250, 16=15350, 14=20450, 12=25550, 11=30650, 10=35750, 9=40850, 8=45950, 7=51100, 6=52250, 5=53750, 4=58940, 3=59100, 1=65160
+
+Key rule: local axes are NOT mirrored. A has local axis 2; M has local axes 4 and 6.
+Roof hierarchy: Roof > Ceiling > Sandwich Ceiling.
+Roof cladding hierarchy: Roof > Roof Cladding > Steel Deck Roof (profile pending).
+
+No geometry in v0.2 uses an ASSUMED status.

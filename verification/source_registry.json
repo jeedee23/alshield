@@ -1,0 +1,101 @@
+[
+  {
+    "path": "sources/pdf/20260522 ter Aar Indeling totaal (002).pdf",
+    "original_display_name": "20260522 ter Aar Indeling totaal (002).pdf",
+    "role": "Volledige layout en kalibratiematen 6060/2800/5200; overige apparatuur en openingen.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 1049257,
+    "sha256": "192409574ae602b08c7c6dc52b0cb9d19b4e191267e6a1aa6ec45a66e830042e",
+    "native_text_chars": 1865,
+    "text_path": "sources/text/20260522 ter Aar Indeling totaal (002).txt"
+  },
+  {
+    "path": "sources/pdf/20260730_maatvoering.pdf",
+    "original_display_name": "20260730 maatvoering indeling fabriek totaal ter Aar nav gesprek Rody(1).pdf",
+    "role": "Aanvullende layout/maatvoering na gesprek Rody; bronverschillen expliciet vergelijken.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 898480,
+    "sha256": "d090a8ad582971c636dd13e2be9a6c2ee91df5e0d3a0795851868e9992ebf8e5",
+    "native_text_chars": 1272,
+    "text_path": "sources/text/20260730_maatvoering.txt"
+  },
+  {
+    "path": "sources/pdf/44449_Logivast_07maart2025(1).pdf",
+    "original_display_name": "44449_Logivast_07maart2025(1).pdf",
+    "role": "Architectuur: materiaal-/laagopbouw en details. Oudere situatie niet blind boven actuele inrichting laten gelden.",
+    "priority_pages": "6-8; detailblad 8",
+    "page_count": 8,
+    "bytes": 2853727,
+    "sha256": "77e7f34408ff5531fcd2684b5f489eb10ab9e2deb506fbc30a0778c72bf1fe46",
+    "native_text_chars": 76032,
+    "text_path": "sources/text/44449_Logivast_07maart2025(1).txt"
+  },
+  {
+    "path": "sources/pdf/Hardeman_tekeningenset.pdf",
+    "original_display_name": "Tekeningenset plantekenaar_Hardeman.pdf",
+    "role": "Aanvullende plantekenaarset; de paginabeelden bekijken waar de native tekstextractie onvoldoende is.",
+    "priority_pages": "zie PDF",
+    "page_count": 11,
+    "bytes": 3046734,
+    "sha256": "646c1933cc2456ac5946ad70098a8f3fb810763aff634e40b15c2848f12a2e08",
+    "native_text_chars": 6317,
+    "text_path": "sources/text/Hardeman_tekeningenset.txt"
+  },
+  {
+    "path": "sources/pdf/a03_ovz-a.pdf",
+    "original_display_name": "a03_ovz-a(1).pdf",
+    "role": "Staal fase A: bronmarkeringen, profielen, partiele as 6 en andere doorsneden.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 740419,
+    "sha256": "681c8bab8c01b9c3fe7700ea46bb3bad8e700fe34144cc7a215d37436ae38d7f",
+    "native_text_chars": 4267,
+    "text_path": "sources/text/a03_ovz-a.txt"
+  },
+  {
+    "path": "sources/pdf/a11_ovz-b.pdf",
+    "original_display_name": "a11_ovz-b_gezien_geen_opm(1).pdf",
+    "role": "Staal fase B: profielen, specifieke portalen, wandregels en verbanden.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 861410,
+    "sha256": "377a91cdfd02d63ae0a422e9eabf5369dcaca4e61a740a9b6050c1e3497303b4",
+    "native_text_chars": 5045,
+    "text_path": "sources/text/a11_ovz-b.txt"
+  },
+  {
+    "path": "sources/pdf/c04a_gevels.pdf",
+    "original_display_name": "c04a_gevels_opmTS(1).pdf",
+    "role": "Gevelaanzichten, maatkettingen, zichtbare dak-/gevelgeometrie; revisie 24-07-2025.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 311169,
+    "sha256": "1f4af215ff58087125339029a950113a4cda1819f6a5c2bebd53a6422df37fa0",
+    "native_text_chars": 1076,
+    "text_path": "sources/text/c04a_gevels.txt"
+  },
+  {
+    "path": "sources/pdf/c05a_binnen.pdf",
+    "original_display_name": "c05a_binnen(1).pdf",
+    "role": "Binnenaanzichten en exacte maatkettingen; niet automatisch bewijs van huidige volledige scheidingswanden.",
+    "priority_pages": "1",
+    "page_count": 1,
+    "bytes": 366636,
+    "sha256": "25544279bca1bc2c9195b7cbf2bdd604957dfed026256f53d633ac0de080706b",
+    "native_text_chars": 1010,
+    "text_path": "sources/text/c05a_binnen.txt"
+  },
+  {
+    "path": "sources/pdf/photos allshield inside 2026_09_05_@_12-37-16.pdf",
+    "original_display_name": "photos allshield inside 2026_09_05_@_12-37-16.pdf",
+    "role": "Fotobatch binnen/buiten: plafond, gevelpanelen, plint, raam-/deurdetails en staal. Geen zelfstandige metrische opname.",
+    "priority_pages": "1-5",
+    "page_count": 5,
+    "bytes": 4892317,
+    "sha256": "b0b8e459f1bae4cb0ba22a93809de717cec662b61843c4c2d80d066206335d1d",
+    "native_text_chars": 0,
+    "text_path": "sources/text/photos allshield inside 2026_09_05_@_12-37-16.txt"
+  }
+]

@@ -1,0 +1,10 @@
+# Local test output and private user documents: keep off remotes by default.
+outputs/
+user_inputs/*
+!user_inputs/LEESMIJ.txt
+__pycache__/
+*.pyc
+*.FCStd1
+*.FCStd2
+model/*_last_build.json
+# The included sources are internal project material. Review before ANY commit/push.

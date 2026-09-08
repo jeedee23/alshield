@@ -1,0 +1,70 @@
+ALLSHIELD - WEERGAVEHERSTEL / GENERATOR 02
+=======================================
+
+VOOR HET BESTAANDE DOCUMENT
+--------------------------
+1. Laat het bestaande gegenereerde Allshield-document actief in FreeCAD.
+2. Voer Allshield_Herstel_Weergave_02.FCMacro uit.
+3. De Component_Library wordt verborgen en buiten Building gezet.
+   Bewaar het document daarna zelf.
+
+Deze herstelmacro wijzigt geen vormen, coordinaten of placements. Eigen
+geimporteerde machines blijven ongemoeid. Er worden geen objecten verwijderd,
+geen documenten gesloten en geen bestanden automatisch opgeslagen.
+De macro controleert dat alle placements en objectnamen gelijk zijn gebleven.
+Het rapport staat onder Building > Build > DisplayRepairReportJSON.
+
+ACHTERGROND
+-----------
+In generator 01 stond Component_Library onder Building. Die bibliotheek bevat
+lokale bronvormen voor App::Link. Een zichtbaarheidsschakeling van Building
+kan ook deze bronvormen tonen. Lokale bronvormen horen niet als extra gebouw-
+onderdelen op de globale oorsprong te verschijnen.
+
+De lange plintbron in deze dataset heeft lokaal Y=-54660..0 mm. Een wandbron
+heeft lokaal Z=-8379.999072..0 mm. Dat past bij de lange losse plint en de
+naar beneden uitstekende wand in het screenshot. De geplaatste exemplaren
+hebben andere, expliciet in de JSON vastgelegde wereldcoordinaten.
+Zonder het FCStd-bestand is de actuele Visibility-instelling van de gebruiker
+niet rechtstreeks gemeten; dit is de op code en geometrie gebaseerde diagnose.
+
+NIEUW OPBOUWEN MET GENERATOR 02
+------------------------------
+Pak de hele map uit en voer Allshield_Build.FCMacro uit. Deze leest
+allshield_building_02.json in dezelfde map, of vraagt dit bestand te selecteren.
+Er ontstaat een nieuw document; eerdere documenten worden niet gewijzigd.
+
+Wijzigingen ten opzichte van 01:
+- Component_Library staat niet langer onder Building.
+- De verborgen prototypes staan op hun eerste echte exemplaarpositie, niet
+  los in lokale coordinaten. Ook bij Show All ontstaan zo geen losse
+  bibliotheekvormen ver buiten het gebouw.
+- Iedere Link heeft LinkTransform=False en een expliciete LinkPlacement.
+- Na recompute wordt de effectieve wereldgeometrie van elke Link met
+  Part.getShape tegen de verwachte JSON-begrenzing gecontroleerd.
+- Een afwijking groter dan de COMPUTATIONELE tolerantie van 0.01 mm geeft
+  een fout en voorkomt automatisch opslaan. Dit is GEEN as-built tolerantie.
+
+Het JSON-bestand is byte-voor-byte gelijk aan de bron van pakket 01; alleen de
+bestandsnaam is 02. Er zijn geen gebouwmaten gecorrigeerd of opnieuw geschat.
+De magnetron is nog steeds volledig uitgesloten.
+
+GRENZEN VAN DEZE CORRECTIE
+-------------------------
+Deze wijziging herstelt de bronbibliotheek/weergave-opbouw. Zij voegt GEEN
+nieuwe staal-solids toe. De staaldoorsneden zijn nog referentielijnen en de
+openstaande punten van generator 01 blijven open. Dit is geen afgerond
+botsingsmodel of fabricagemodel.
+
+De syntax en geometrie zijn getest met Python en OpenCASCADE. WORK: 141
+geometrie-instanties, PANELS: 358. De herstelroute is logisch getest met een
+API-testdouble. Native FreeCAD en zijn GUI konden hier niet worden gestart.
+De nieuwe native plaatsingscontrole wordt uitgevoerd wanneer jij de nieuwe
+generator in FreeCAD start. Zie VALIDATIE_02.json.
+
+HANDMATIGE SNELLE CONTROLE
+-------------------------
+Zet uitsluitend Component_Library en zijn prototypes onzichtbaar in de boom.
+Verschuif de losse vormen NIET handmatig: het zijn geen nieuwe meetpunten.
+De herstelmacro voert die zichtbaarheidscorrectie uit en zet de bibliotheek
+buiten de Building-groep om herhaling via die groep te voorkomen.

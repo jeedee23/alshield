@@ -1,0 +1,5831 @@
+{
+  "schema": "allshield_building_reference_v0.2",
+  "revision": "2026-09-05",
+  "purpose": "Single source of truth for a dimensionally grounded Allshield Ter Aar FreeCAD/DXF rebuild. Unsupported geometric assumptions are prohibited.",
+  "evidence_policy": {
+    "rule": "No geometry may be promoted to model geometry without a named source and evidence status. No regular-grid rounding, mirroring or repetition unless directly supported.",
+    "statuses": {
+      "EXACT_DIMENSION": "Direct dimension chain / axis coordinate from source drawing.",
+      "EXACT_SOURCE": "Direct source elevation/dimension/label.",
+      "VERIFIED_MULTI_SOURCE": "Same interpretation supported by multiple independent supplied sources.",
+      "DEDUCED_FROM_EXACT_DIMENSIONS": "Mathematical consequence of exact source dimensions; formula/basis must be stored.",
+      "VECTOR_SOURCE_GEOMETRY": "Exact geometry in the supplied vector PDF after calibrated scale transform; accuracy relative to reality is the accuracy of that source plan.",
+      "VISUAL_CONFIRMED": "Existence/topology confirmed by photos; dimensions not inferred from appearance.",
+      "PENDING": "Not yet sufficiently supported."
+    },
+    "forbidden": [
+      "ASSUMED regular pitch",
+      "blind mirrored beam positions",
+      "photo-perspective dimension guessing",
+      "using drawing text position as machine center",
+      "reusing V2/V3 interpreted opening centres as exact"
+    ]
+  },
+  "sources": [
+    {
+      "id": "current_layout_20260522",
+      "name": "20260522 ter Aar Indeling totaal (002).pdf",
+      "role": "current layout / equipment / local dimension calibration",
+      "type": "vector_pdf"
+    },
+    {
+      "id": "c05a",
+      "name": "c05a_binnen(1).pdf",
+      "role": "exact longitudinal dimension chains / internal elevations"
+    },
+    {
+      "id": "c04a",
+      "name": "c04a_gevels_opmTS(1).pdf",
+      "role": "facade axes, roof/cladding elevations, opening source"
+    },
+    {
+      "id": "a03",
+      "name": "a03_ovz-a(1).pdf",
+      "role": "phase-A steel elevations and profiles"
+    },
+    {
+      "id": "a11",
+      "name": "a11_ovz-b_gezien_geen_opm(1).pdf",
+      "role": "phase-B steel elevations and profiles"
+    },
+    {
+      "id": "hardeman_set",
+      "name": "Tekeningenset plantekenaar_Hardeman.pdf",
+      "role": "cross-check / architectural set"
+    },
+    {
+      "id": "photos_20260905",
+      "name": "photos allshield inside 2026_09_05_@_12-37-16.pdf",
+      "role": "visual confirmation of steel, sandwich ceiling/walls, bracing and plinth"
+    },
+    {
+      "id": "client_datum",
+      "name": "client/user datum clarification",
+      "role": "final coordinate datum and axis directions"
+    }
+  ],
+  "coordinate_system": {
+    "units": "mm",
+    "origin": {
+      "client_xyz_mm": [
+        0,
+        0,
+        0
+      ],
+      "source_grid": "21/A",
+      "status": "USER_CONFIRMED_AND_PREVIOUSLY_CROSSCHECKED"
+    },
+    "directions": {
+      "+X": "from grid 21 toward grid 1",
+      "+Y": "from grid A toward grid M",
+      "+Z": "upward"
+    },
+    "z0": "finished floor level",
+    "source_to_client_formula": {
+      "x_client_mm": "65160 - x_source_mm",
+      "y_client_mm": "y_source_mm",
+      "z_client_mm": "z_source_mm"
+    },
+    "current_layout_pdf_vector_transform": {
+      "status": "VECTOR_CALIBRATED",
+      "isotropic_mm_per_pdf_pt": 71.537710643,
+      "pdf_axis1_x_pt": 141.48,
+      "pdf_axis_A_y_pt": 39.48,
+      "formula": {
+        "x_source_mm": "(pdf_x_pt - 141.48) * 71.537710643",
+        "y_source_mm": "(pdf_y_pt - 39.48) * 71.537710643"
+      },
+      "fit_controls": [
+        {
+          "control": "X axis 1->3",
+          "pdf_span_pt": 84.72,
+          "true_mm": 6060.0,
+          "calculated_mm": 6060.675,
+          "residual_mm": 0.675
+        },
+        {
+          "control": "X axis 1->7",
+          "pdf_span_pt": 196.56,
+          "true_mm": 14060.0,
+          "calculated_mm": 14061.452,
+          "residual_mm": 1.452
+        },
+        {
+          "control": "Y dimension 1",
+          "pdf_span_pt": 61.44,
+          "true_mm": 4400.0,
+          "calculated_mm": 4395.277,
+          "residual_mm": -4.723
+        },
+        {
+          "control": "Y dimension 2",
+          "pdf_span_pt": 61.56,
+          "true_mm": 4400.0,
+          "calculated_mm": 4403.861,
+          "residual_mm": 3.861
+        },
+        {
+          "control": "Y dimension 3",
+          "pdf_span_pt": 61.44,
+          "true_mm": 4400.0,
+          "calculated_mm": 4395.277,
+          "residual_mm": -4.723
+        }
+      ],
+      "independent_validations": [
+        {
+          "check": "A->M candidate structural line",
+          "pdf_span_pt": 757.08,
+          "expected_mm": 54160.0,
+          "calculated_mm": 54159.77,
+          "residual_mm": -0.23,
+          "used_in_fit": false
+        },
+        {
+          "check": "axis1->axis21 candidate structural line",
+          "pdf_span_pt": 910.8,
+          "expected_mm": 65160.0,
+          "calculated_mm": 65156.547,
+          "residual_mm": -3.453,
+          "used_in_fit": false
+        }
+      ],
+      "meaning": "Use this transform for exact vector-plan anchors and paths. Do not upgrade a label anchor to an equipment center without a footprint boundary."
+    }
+  },
+  "reference_grids": {
+    "longitudinal_station_catalog": [
+      {
+        "axis": "21",
+        "source_x_mm": 65160.0,
+        "client_x_mm": 0.0,
+        "scope": [
+          "gable_end",
+          "facade_A",
+          "facade_M"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "End/grid station; exact coordinate, member-by-member steel extent handled separately."
+      },
+      {
+        "axis": "20",
+        "source_x_mm": 60010.0,
+        "client_x_mm": 5150.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "18",
+        "source_x_mm": 54910.0,
+        "client_x_mm": 10250.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "16",
+        "source_x_mm": 49810.0,
+        "client_x_mm": 15350.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "14",
+        "source_x_mm": 44710.0,
+        "client_x_mm": 20450.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "12",
+        "source_x_mm": 39610.0,
+        "client_x_mm": 25550.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "11",
+        "source_x_mm": 34510.0,
+        "client_x_mm": 30650.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "10",
+        "source_x_mm": 29410.0,
+        "client_x_mm": 35750.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "9",
+        "source_x_mm": 24310.0,
+        "client_x_mm": 40850.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "8",
+        "source_x_mm": 19210.0,
+        "client_x_mm": 45950.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "7",
+        "source_x_mm": 14060.0,
+        "client_x_mm": 51100.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "full_width_reference"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common longitudinal station on both long facades."
+      },
+      {
+        "axis": "6",
+        "source_x_mm": 12910.0,
+        "client_x_mm": 52250.0,
+        "scope": [
+          "facade_M",
+          "local_structure_F-L"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Local/partial structure in A3; not a full main roof portal."
+      },
+      {
+        "axis": "5",
+        "source_x_mm": 11410.0,
+        "client_x_mm": 53750.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "roof_span_A-E",
+          "roof_span_F-M"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common station; main roof spans on both gables."
+      },
+      {
+        "axis": "4",
+        "source_x_mm": 6220.0,
+        "client_x_mm": 58940.0,
+        "scope": [
+          "facade_M",
+          "roof_span_F-M"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Local phase-A axis; do not project blindly to facade A."
+      },
+      {
+        "axis": "3",
+        "source_x_mm": 6060.0,
+        "client_x_mm": 59100.0,
+        "scope": [
+          "facade_A",
+          "facade_M",
+          "roof_span_A-E"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "Common station; main roof portal applies to A-E span, not duplicated F-M."
+      },
+      {
+        "axis": "2",
+        "source_x_mm": 4110.0,
+        "client_x_mm": 61050.0,
+        "scope": [
+          "facade_A",
+          "interior_build_first_end"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a view B/C dimension chain",
+        "note": "Exact local A-side/interior-build station; absent from facade M chain."
+      },
+      {
+        "axis": "1",
+        "source_x_mm": 0.0,
+        "client_x_mm": 65160.0,
+        "scope": [
+          "gable_end",
+          "facade_A",
+          "facade_M"
+        ],
+        "status": "EXACT_DIMENSION",
+        "source": "C5a/C4a dimension chain",
+        "note": "End/grid station; exact coordinate, member-by-member steel extent handled separately."
+      }
+    ],
+    "facade_A_station_sequence": [
+      {
+        "axis": "21",
+        "client_x_mm": 0.0
+      },
+      {
+        "axis": "20",
+        "client_x_mm": 5150.0
+      },
+      {
+        "axis": "18",
+        "client_x_mm": 10250.0
+      },
+      {
+        "axis": "16",
+        "client_x_mm": 15350.0
+      },
+      {
+        "axis": "14",
+        "client_x_mm": 20450.0
+      },
+      {
+        "axis": "12",
+        "client_x_mm": 25550.0
+      },
+      {
+        "axis": "11",
+        "client_x_mm": 30650.0
+      },
+      {
+        "axis": "10",
+        "client_x_mm": 35750.0
+      },
+      {
+        "axis": "9",
+        "client_x_mm": 40850.0
+      },
+      {
+        "axis": "8",
+        "client_x_mm": 45950.0
+      },
+      {
+        "axis": "7",
+        "client_x_mm": 51100.0
+      },
+      {
+        "axis": "5",
+        "client_x_mm": 53750.0
+      },
+      {
+        "axis": "3",
+        "client_x_mm": 59100.0
+      },
+      {
+        "axis": "2",
+        "client_x_mm": 61050.0
+      },
+      {
+        "axis": "1",
+        "client_x_mm": 65160.0
+      }
+    ],
+    "facade_M_station_sequence": [
+      {
+        "axis": "21",
+        "client_x_mm": 0.0
+      },
+      {
+        "axis": "20",
+        "client_x_mm": 5150.0
+      },
+      {
+        "axis": "18",
+        "client_x_mm": 10250.0
+      },
+      {
+        "axis": "16",
+        "client_x_mm": 15350.0
+      },
+      {
+        "axis": "14",
+        "client_x_mm": 20450.0
+      },
+      {
+        "axis": "12",
+        "client_x_mm": 25550.0
+      },
+      {
+        "axis": "11",
+        "client_x_mm": 30650.0
+      },
+      {
+        "axis": "10",
+        "client_x_mm": 35750.0
+      },
+      {
+        "axis": "9",
+        "client_x_mm": 40850.0
+      },
+      {
+        "axis": "8",
+        "client_x_mm": 45950.0
+      },
+      {
+        "axis": "7",
+        "client_x_mm": 51100.0
+      },
+      {
+        "axis": "6",
+        "client_x_mm": 52250.0
+      },
+      {
+        "axis": "5",
+        "client_x_mm": 53750.0
+      },
+      {
+        "axis": "4",
+        "client_x_mm": 58940.0
+      },
+      {
+        "axis": "3",
+        "client_x_mm": 59100.0
+      },
+      {
+        "axis": "1",
+        "client_x_mm": 65160.0
+      }
+    ],
+    "transverse_axis_catalog": [
+      {
+        "axis": "A",
+        "source_y_mm": 0.0,
+        "client_y_mm": 0.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "B",
+        "source_y_mm": 13250.0,
+        "client_y_mm": 13250.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "C",
+        "source_y_mm": 18130.0,
+        "client_y_mm": 18130.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "D",
+        "source_y_mm": 22980.0,
+        "client_y_mm": 22980.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "E",
+        "source_y_mm": 27830.0,
+        "client_y_mm": 27830.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "F",
+        "source_y_mm": 27990.0,
+        "client_y_mm": 27990.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "G",
+        "source_y_mm": 29290.0,
+        "client_y_mm": 29290.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "H",
+        "source_y_mm": 33290.0,
+        "client_y_mm": 33290.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "J",
+        "source_y_mm": 37240.0,
+        "client_y_mm": 37240.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "K",
+        "source_y_mm": 38590.0,
+        "client_y_mm": 38590.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "L",
+        "source_y_mm": 38750.0,
+        "client_y_mm": 38750.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      },
+      {
+        "axis": "M",
+        "source_y_mm": 54160.0,
+        "client_y_mm": 54160.0,
+        "status": "EXACT_DIMENSION",
+        "source": "C4a facade dimension chain"
+      }
+    ],
+    "important_rule": "Facade A and facade M are intentionally separate station sequences. The common positions remain common, but local axes 2 versus 4/6 are not mirrored or forced into one pattern."
+  },
+  "roof_reference_geometry": {
+    "eave_cladding_z_mm": {
+      "value": 9550.0,
+      "status": "EXACT_SOURCE",
+      "source": "C4a facade elevation"
+    },
+    "ridge_cladding_z_mm": {
+      "value": 10300.0,
+      "status": "EXACT_SOURCE",
+      "source": "C4a facade elevation"
+    },
+    "steel_eave_z_mm": {
+      "value": 9165.0,
+      "status": "EXACT_SOURCE",
+      "source": "A3/A11 steel elevations"
+    },
+    "steel_ridge_z_mm": {
+      "value": 9910.0,
+      "status": "EXACT_SOURCE",
+      "source": "A3/A11 steel elevations"
+    },
+    "ridge_1_y_mm": {
+      "value": 13915.0,
+      "status": "DEDUCED_FROM_EXACT_DIMENSIONS",
+      "basis": "midpoint of A-E = 27830"
+    },
+    "valley_E_F_y_mm": {
+      "value": [
+        27830.0,
+        27990.0
+      ],
+      "status": "EXACT_DIMENSION",
+      "basis": "E-F = 160"
+    },
+    "ridge_2_y_mm": {
+      "value": 41075.0,
+      "status": "DEDUCED_FROM_EXACT_DIMENSIONS",
+      "basis": "midpoint of F-M = 26170"
+    }
+  },
+  "opening_type_catalog": [
+    {
+      "id": "opening_wall_2135x2400",
+      "kind": "wall_opening",
+      "width_mm": 2135,
+      "height_mm": 2400,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "overhead_4160x5000",
+      "kind": "overhead_door",
+      "width_mm": 4160,
+      "height_mm": 5000,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "overhead_3100x4200",
+      "kind": "overhead_door",
+      "width_mm": 3100,
+      "height_mm": 4200,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "overhead_3100x3000",
+      "kind": "overhead_door",
+      "width_mm": 3100,
+      "height_mm": 3000,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "loopdeur_1075x2400",
+      "kind": "personnel_door",
+      "width_mm": 1075,
+      "height_mm": 2400,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "kozijn_980x4000",
+      "kind": "window_frame_opening",
+      "width_mm": 980,
+      "height_mm": 4000,
+      "status": "EXACT_SOURCE_LABEL",
+      "frame_profile_status": "PENDING_USER_INPUT"
+    },
+    {
+      "id": "pui_3100x2400",
+      "kind": "glazed_facade",
+      "width_mm": 3100,
+      "height_mm": 2400,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "pui_3120x2400",
+      "kind": "glazed_facade",
+      "width_mm": 3120,
+      "height_mm": 2400,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "trafodeur_1990x2535",
+      "kind": "transformer_door",
+      "width_mm": 1990,
+      "height_mm": 2535,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "brandwerend_roldoek_4000x5000",
+      "kind": "fire_screen",
+      "width_mm": 4000,
+      "height_mm": 5000,
+      "status": "EXACT_SOURCE_LABEL"
+    },
+    {
+      "id": "snelroldeur_4000x5000",
+      "kind": "rapid_roll_door",
+      "width_mm": 4000,
+      "height_mm": 5000,
+      "status": "EXACT_SOURCE_LABEL"
+    }
+  ],
+  "component_tree_root": "building_allshield_ter_aar",
+  "components": [
+    {
+      "id": "building_allshield_ter_aar",
+      "name": "Allshield Ter Aar Building",
+      "type": "building",
+      "parent_id": null,
+      "status": "VERIFIED_MULTI_SOURCE",
+      "evidence": [
+        "C4a",
+        "C5a",
+        "A3",
+        "A11",
+        "May-2026 current layout",
+        "client datum confirmation"
+      ],
+      "children": [
+        "reference_system",
+        "structure",
+        "envelope",
+        "internal_buildings",
+        "current_equipment",
+        "utilities",
+        "safety_equipment"
+      ]
+    },
+    {
+      "id": "reference_system",
+      "name": "Reference System",
+      "type": "reference_system",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "EXACT",
+      "children": []
+    },
+    {
+      "id": "structure",
+      "name": "Structure",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "children": [
+        "main_steel",
+        "secondary_steel"
+      ]
+    },
+    {
+      "id": "envelope",
+      "name": "Envelope",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "children": [
+        "roof",
+        "walls",
+        "floor"
+      ]
+    },
+    {
+      "id": "internal_buildings",
+      "name": "Internal Buildings / Rooms",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": [
+        "space_quality_control_sample_hok"
+      ]
+    },
+    {
+      "id": "current_equipment",
+      "name": "Current Equipment",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "CURRENT_LAYOUT_SOURCE",
+      "children": [
+        "equipment_warmtepomp_workx",
+        "equipment_luchtcompressor_63a",
+        "equipment_magnetron_main_body",
+        "equipment_side_shifter",
+        "equipment_breektank_vat",
+        "equipment_flipatex",
+        "equipment_unifilo_01",
+        "equipment_unifilo_02",
+        "equipment_r090u",
+        "equipment_storten",
+        "equipment_messen_zone",
+        "equipment_afval_afvoeren",
+        "equipment_uitbreiding_schakelkast",
+        "equipment_besturingskast",
+        "equipment_schakelkast_productieband",
+        "equipment_coating_productie",
+        "process_wastroch_productie",
+        "equipment_data_modem"
+      ]
+    },
+    {
+      "id": "utilities",
+      "name": "Utilities",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "CURRENT_LAYOUT_SOURCE",
+      "children": [
+        "utility_luchtleiding_top",
+        "utility_waterleiding"
+      ]
+    },
+    {
+      "id": "safety_equipment",
+      "name": "Safety Equipment",
+      "type": "assembly",
+      "parent_id": "building_allshield_ter_aar",
+      "status": "CURRENT_LAYOUT_SOURCE",
+      "children": [
+        "safety_nooddouche"
+      ]
+    },
+    {
+      "id": "main_steel",
+      "name": "Main Steel",
+      "type": "assembly",
+      "parent_id": "structure",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "children": [
+        "portal_frames",
+        "columns",
+        "local_steel_axis_6"
+      ]
+    },
+    {
+      "id": "portal_frames",
+      "name": "Portal Frames",
+      "type": "assembly",
+      "parent_id": "main_steel",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "children": [
+        "frame_axis_3_AE",
+        "frame_axis_4_FM",
+        "frame_axis_5_AE",
+        "frame_axis_5_FM",
+        "frame_station_7",
+        "frame_station_8",
+        "frame_station_9",
+        "frame_station_10",
+        "frame_station_11",
+        "frame_station_12",
+        "frame_station_14",
+        "frame_station_16",
+        "frame_station_18",
+        "frame_station_20"
+      ]
+    },
+    {
+      "id": "columns",
+      "name": "Columns",
+      "type": "assembly",
+      "parent_id": "main_steel",
+      "status": "REFERENCE_POINTS_EXACT",
+      "children": [
+        "column_ref_A_21",
+        "column_ref_A_20",
+        "column_ref_A_18",
+        "column_ref_A_16",
+        "column_ref_A_14",
+        "column_ref_A_12",
+        "column_ref_A_11",
+        "column_ref_A_10",
+        "column_ref_A_9",
+        "column_ref_A_8",
+        "column_ref_A_7",
+        "column_ref_A_5",
+        "column_ref_A_3",
+        "column_ref_A_2",
+        "column_ref_A_1",
+        "column_ref_M_21",
+        "column_ref_M_20",
+        "column_ref_M_18",
+        "column_ref_M_16",
+        "column_ref_M_14",
+        "column_ref_M_12",
+        "column_ref_M_11",
+        "column_ref_M_10",
+        "column_ref_M_9",
+        "column_ref_M_8",
+        "column_ref_M_7",
+        "column_ref_M_6",
+        "column_ref_M_5",
+        "column_ref_M_4",
+        "column_ref_M_3",
+        "column_ref_M_1"
+      ]
+    },
+    {
+      "id": "secondary_steel",
+      "name": "Secondary Steel",
+      "type": "assembly",
+      "parent_id": "structure",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": [
+        "purlins",
+        "wall_rails",
+        "bracing"
+      ]
+    },
+    {
+      "id": "purlins",
+      "name": "Purlins",
+      "type": "assembly",
+      "parent_id": "secondary_steel",
+      "status": "SOURCE_PRESENT_MEMBER_CATALOG_PENDING",
+      "children": []
+    },
+    {
+      "id": "wall_rails",
+      "name": "Wall Rails",
+      "type": "assembly",
+      "parent_id": "secondary_steel",
+      "status": "SOURCE_PRESENT_MEMBER_CATALOG_PENDING",
+      "children": []
+    },
+    {
+      "id": "bracing",
+      "name": "Bracing",
+      "type": "assembly",
+      "parent_id": "secondary_steel",
+      "status": "SOURCE_PRESENT_MEMBER_CATALOG_PENDING",
+      "children": []
+    },
+    {
+      "id": "roof",
+      "name": "Roof",
+      "type": "assembly",
+      "parent_id": "envelope",
+      "status": "GEOMETRY_RESOLVED",
+      "children": [
+        "roof_cladding",
+        "ceiling"
+      ],
+      "geometry": {
+        "eave_cladding_z_mm": {
+          "value": 9550.0,
+          "status": "EXACT_SOURCE",
+          "source": "C4a facade elevation"
+        },
+        "ridge_cladding_z_mm": {
+          "value": 10300.0,
+          "status": "EXACT_SOURCE",
+          "source": "C4a facade elevation"
+        },
+        "steel_eave_z_mm": {
+          "value": 9165.0,
+          "status": "EXACT_SOURCE",
+          "source": "A3/A11 steel elevations"
+        },
+        "steel_ridge_z_mm": {
+          "value": 9910.0,
+          "status": "EXACT_SOURCE",
+          "source": "A3/A11 steel elevations"
+        },
+        "ridge_1_y_mm": {
+          "value": 13915.0,
+          "status": "DEDUCED_FROM_EXACT_DIMENSIONS",
+          "basis": "midpoint of A-E = 27830"
+        },
+        "valley_E_F_y_mm": {
+          "value": [
+            27830.0,
+            27990.0
+          ],
+          "status": "EXACT_DIMENSION",
+          "basis": "E-F = 160"
+        },
+        "ridge_2_y_mm": {
+          "value": 41075.0,
+          "status": "DEDUCED_FROM_EXACT_DIMENSIONS",
+          "basis": "midpoint of F-M = 26170"
+        }
+      }
+    },
+    {
+      "id": "roof_cladding",
+      "name": "Roof Cladding",
+      "type": "assembly",
+      "parent_id": "roof",
+      "status": "PARTIALLY_RESOLVED",
+      "children": [
+        "steeldeck_roof"
+      ]
+    },
+    {
+      "id": "steeldeck_roof",
+      "name": "Steel Deck Roof",
+      "type": "cladding",
+      "parent_id": "roof_cladding",
+      "status": "PENDING_PROFILE",
+      "notes": [
+        "Steel deck existence is confirmed by user; exact deck profile/corrugation is pending user source."
+      ],
+      "children": []
+    },
+    {
+      "id": "ceiling",
+      "name": "Ceiling",
+      "type": "assembly",
+      "parent_id": "roof",
+      "status": "VISUAL_CONFIRMED",
+      "children": [
+        "sandwich_ceiling"
+      ]
+    },
+    {
+      "id": "sandwich_ceiling",
+      "name": "Sandwich Ceiling",
+      "type": "sandwich_panels",
+      "parent_id": "ceiling",
+      "status": "VISUAL_CONFIRMED",
+      "notes": [
+        "Sandwich panels are visible in interior photo batch. Exact panel working width, thickness and seam coordinate catalog are not yet asserted."
+      ],
+      "children": []
+    },
+    {
+      "id": "walls",
+      "name": "Walls",
+      "type": "assembly",
+      "parent_id": "envelope",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "children": [
+        "wall_A",
+        "wall_M",
+        "wall_1",
+        "wall_21"
+      ]
+    },
+    {
+      "id": "wall_A",
+      "name": "Wall A",
+      "type": "wall",
+      "parent_id": "walls",
+      "status": "REFERENCE_GEOMETRY",
+      "children": [
+        "sandwich_wall_A",
+        "plinth_A",
+        "openings_A"
+      ]
+    },
+    {
+      "id": "sandwich_wall_A",
+      "name": "Sandwich Wall Panels A",
+      "type": "sandwich_panels",
+      "parent_id": "wall_A",
+      "status": "VISUAL_CONFIRMED",
+      "children": []
+    },
+    {
+      "id": "plinth_A",
+      "name": "Exterior Plinth A",
+      "type": "plinth",
+      "parent_id": "wall_A",
+      "status": "VISUAL_CONFIRMED",
+      "children": []
+    },
+    {
+      "id": "openings_A",
+      "name": "Openings A",
+      "type": "opening_group",
+      "parent_id": "wall_A",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": []
+    },
+    {
+      "id": "wall_M",
+      "name": "Wall M",
+      "type": "wall",
+      "parent_id": "walls",
+      "status": "REFERENCE_GEOMETRY",
+      "children": [
+        "sandwich_wall_M",
+        "plinth_M",
+        "openings_M"
+      ]
+    },
+    {
+      "id": "sandwich_wall_M",
+      "name": "Sandwich Wall Panels M",
+      "type": "sandwich_panels",
+      "parent_id": "wall_M",
+      "status": "VISUAL_CONFIRMED",
+      "children": []
+    },
+    {
+      "id": "plinth_M",
+      "name": "Exterior Plinth M",
+      "type": "plinth",
+      "parent_id": "wall_M",
+      "status": "VISUAL_CONFIRMED",
+      "children": []
+    },
+    {
+      "id": "openings_M",
+      "name": "Openings M",
+      "type": "opening_group",
+      "parent_id": "wall_M",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": []
+    },
+    {
+      "id": "wall_1",
+      "name": "Wall 1",
+      "type": "wall",
+      "parent_id": "walls",
+      "status": "REFERENCE_GEOMETRY",
+      "children": [
+        "sandwich_wall_1",
+        "plinth_1",
+        "openings_1"
+      ]
+    },
+    {
+      "id": "sandwich_wall_1",
+      "name": "Sandwich Wall Panels 1",
+      "type": "sandwich_panels",
+      "parent_id": "wall_1",
+      "status": "SOURCE_PRESENT",
+      "children": []
+    },
+    {
+      "id": "plinth_1",
+      "name": "Exterior Plinth 1",
+      "type": "plinth",
+      "parent_id": "wall_1",
+      "status": "SOURCE_PRESENT",
+      "children": []
+    },
+    {
+      "id": "openings_1",
+      "name": "Openings 1",
+      "type": "opening_group",
+      "parent_id": "wall_1",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": []
+    },
+    {
+      "id": "wall_21",
+      "name": "Wall 21",
+      "type": "wall",
+      "parent_id": "walls",
+      "status": "REFERENCE_GEOMETRY",
+      "children": [
+        "sandwich_wall_21",
+        "plinth_21",
+        "openings_21"
+      ]
+    },
+    {
+      "id": "sandwich_wall_21",
+      "name": "Sandwich Wall Panels 21",
+      "type": "sandwich_panels",
+      "parent_id": "wall_21",
+      "status": "SOURCE_PRESENT",
+      "children": []
+    },
+    {
+      "id": "plinth_21",
+      "name": "Exterior Plinth 21",
+      "type": "plinth",
+      "parent_id": "wall_21",
+      "status": "SOURCE_PRESENT",
+      "children": []
+    },
+    {
+      "id": "openings_21",
+      "name": "Openings 21",
+      "type": "opening_group",
+      "parent_id": "wall_21",
+      "status": "PARTIALLY_EXTRACTED",
+      "children": []
+    },
+    {
+      "id": "floor",
+      "name": "Floor / Slab",
+      "type": "slab",
+      "parent_id": "envelope",
+      "status": "SOURCE_PRESENT",
+      "children": []
+    },
+    {
+      "id": "frame_axis_3_AE",
+      "name": "Portal Frame Axis 3 - A-E",
+      "type": "portal_frame",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 59100.0,
+        "client_y_span_mm": [
+          0.0,
+          27830.0
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "A11 steel elevation + C4a/C5a"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_axis_4_FM",
+      "name": "Portal Frame Axis 4 - F-M",
+      "type": "portal_frame",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 58940.0,
+        "client_y_span_mm": [
+          27990.0,
+          54160.0
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "A3 steel elevation + C4a/C5a"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_axis_5_AE",
+      "name": "Portal Frame Axis 5 - A-E",
+      "type": "portal_frame",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 53750.0,
+        "client_y_span_mm": [
+          0.0,
+          27830.0
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "A11 steel elevation"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_axis_5_FM",
+      "name": "Portal Frame Axis 5 - F-M",
+      "type": "portal_frame",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 53750.0,
+        "client_y_span_mm": [
+          27990.0,
+          54160.0
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "A3 steel elevation"
+      ],
+      "children": []
+    },
+    {
+      "id": "local_steel_axis_6",
+      "name": "Local / Partial Steel Axis 6",
+      "type": "local_steel",
+      "parent_id": "main_steel",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 52250.0,
+        "client_y_known_span_mm": [
+          27990.0,
+          38750.0
+        ]
+      },
+      "evidence": [
+        "A3 view axis 6: F-G-H-J-K-L, HEA200 members; no full main roof portal"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_7",
+      "name": "Main Frame Station 7",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 51100.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_8",
+      "name": "Main Frame Station 8",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 45950.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_9",
+      "name": "Main Frame Station 9",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 40850.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_10",
+      "name": "Main Frame Station 10",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 35750.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_11",
+      "name": "Main Frame Station 11",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 30650.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_12",
+      "name": "Main Frame Station 12",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 25550.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_14",
+      "name": "Main Frame Station 14",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 20450.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_16",
+      "name": "Main Frame Station 16",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 15350.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_18",
+      "name": "Main Frame Station 18",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 10250.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "frame_station_20",
+      "name": "Main Frame Station 20",
+      "type": "frame_station",
+      "parent_id": "portal_frames",
+      "status": "VERIFIED_MULTI_SOURCE",
+      "geometry": {
+        "client_x_mm": 5150.0,
+        "roof_spans": [
+          "A-E",
+          "F-M"
+        ],
+        "steel_eave_z_mm": 9165.0,
+        "steel_ridge_z_mm": 9910.0
+      },
+      "evidence": [
+        "C5a/C4a exact X station",
+        "A3/A11 steel elevations"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_21",
+      "name": "Column Reference A/21",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_20",
+      "name": "Column Reference A/20",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          5150.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_18",
+      "name": "Column Reference A/18",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          10250.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_16",
+      "name": "Column Reference A/16",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          15350.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_14",
+      "name": "Column Reference A/14",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          20450.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_12",
+      "name": "Column Reference A/12",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          25550.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_11",
+      "name": "Column Reference A/11",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          30650.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_10",
+      "name": "Column Reference A/10",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          35750.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_9",
+      "name": "Column Reference A/9",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          40850.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_8",
+      "name": "Column Reference A/8",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          45950.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_7",
+      "name": "Column Reference A/7",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          51100.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_5",
+      "name": "Column Reference A/5",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          53750.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_3",
+      "name": "Column Reference A/3",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          59100.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_2",
+      "name": "Column Reference A/2",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          61050.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_A_1",
+      "name": "Column Reference A/1",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          65160.0,
+          0.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_21",
+      "name": "Column Reference M/21",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          0.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_20",
+      "name": "Column Reference M/20",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          5150.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_18",
+      "name": "Column Reference M/18",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          10250.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_16",
+      "name": "Column Reference M/16",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          15350.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_14",
+      "name": "Column Reference M/14",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          20450.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_12",
+      "name": "Column Reference M/12",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          25550.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_11",
+      "name": "Column Reference M/11",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          30650.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_10",
+      "name": "Column Reference M/10",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          35750.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_9",
+      "name": "Column Reference M/9",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          40850.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_8",
+      "name": "Column Reference M/8",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          45950.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_7",
+      "name": "Column Reference M/7",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          51100.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_6",
+      "name": "Column Reference M/6",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          52250.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_5",
+      "name": "Column Reference M/5",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          53750.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_4",
+      "name": "Column Reference M/4",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          58940.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_3",
+      "name": "Column Reference M/3",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          59100.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "column_ref_M_1",
+      "name": "Column Reference M/1",
+      "type": "reference_point",
+      "parent_id": "columns",
+      "status": "EXACT_DIMENSION",
+      "geometry": {
+        "client_xyz_mm": [
+          65160.0,
+          54160.0,
+          0.0
+        ]
+      },
+      "evidence": [
+        "C4a/C5a dimension chain"
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_warmtepomp_workx",
+      "name": "Warmtepomp WORKX",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "warmtepomp",
+          "pdf_bbox_pt": [
+            365.043,
+            53.899,
+            385.941,
+            57.958
+          ],
+          "pdf_center_pt": [
+            375.492,
+            55.928
+          ],
+          "client_label_anchor_mm": [
+            48419.323,
+            1176.673
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            364.08,
+            52.68,
+            393.96,
+            68.04
+          ],
+          "client_bbox_xy_mm": [
+            47098.159,
+            944.298,
+            49235.706,
+            2043.117
+          ],
+          "dimensions_xy_mm": [
+            2137.547,
+            1098.819
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_luchtcompressor_63a",
+      "name": "Luchtcompressor 63A",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "luchtcompressor",
+          "pdf_bbox_pt": [
+            482.522,
+            53.899,
+            509.149,
+            57.958
+          ],
+          "pdf_center_pt": [
+            495.836,
+            55.928
+          ],
+          "client_label_anchor_mm": [
+            39810.203,
+            1176.673
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            481.56,
+            52.68,
+            511.56,
+            68.04
+          ],
+          "client_bbox_xy_mm": [
+            38685.324,
+            944.298,
+            40831.455,
+            2043.117
+          ],
+          "dimensions_xy_mm": [
+            2146.131,
+            1098.819
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_magnetron_main_body",
+      "name": "Magnetron - main body",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "magnetron",
+          "pdf_bbox_pt": [
+            692.042,
+            193.454,
+            731.791,
+            201.603
+          ],
+          "pdf_center_pt": [
+            711.917,
+            197.529
+          ],
+          "client_label_anchor_mm": [
+            24352.265,
+            11306.437
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            651.6,
+            179.88,
+            931.32,
+            214.8
+          ],
+          "client_bbox_xy_mm": [
+            8656.655,
+            10043.895,
+            28667.183,
+            12541.991
+          ],
+          "dimensions_xy_mm": [
+            20010.528,
+            2498.096
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_side_shifter",
+      "name": "Side Shifter",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "side",
+          "pdf_bbox_pt": [
+            977.669,
+            200.131,
+            984.45,
+            210.723
+          ],
+          "pdf_center_pt": [
+            981.06,
+            205.427
+          ],
+          "client_label_anchor_mm": [
+            5098.397,
+            11871.438
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            973.8,
+            148.68,
+            996.24,
+            213.72
+          ],
+          "client_bbox_xy_mm": [
+            4012.426,
+            7811.918,
+            5617.733,
+            12464.731
+          ],
+          "dimensions_xy_mm": [
+            1605.307,
+            4652.813
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_breektank_vat",
+      "name": "Breektank & Vat",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Breektank",
+          "pdf_bbox_pt": [
+            269.154,
+            210.54,
+            279.935,
+            213.539
+          ],
+          "pdf_center_pt": [
+            274.544,
+            212.039
+          ],
+          "client_label_anchor_mm": [
+            55640.871,
+            12344.511
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            264.96,
+            208.56,
+            283.08,
+            225.36
+          ],
+          "client_bbox_xy_mm": [
+            55030.26,
+            12095.596,
+            56326.523,
+            13297.43
+          ],
+          "dimensions_xy_mm": [
+            1296.263,
+            1201.834
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_flipatex",
+      "name": "Flipatex",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "flipatex",
+          "pdf_bbox_pt": [
+            418.382,
+            110.526,
+            423.446,
+            124.684
+          ],
+          "pdf_center_pt": [
+            420.914,
+            117.605
+          ],
+          "client_label_anchor_mm": [
+            45169.954,
+            5588.878
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            413.52,
+            109.56,
+            427.44,
+            126.36
+          ],
+          "client_bbox_xy_mm": [
+            44703.076,
+            5013.363,
+            45698.881,
+            6215.196
+          ],
+          "dimensions_xy_mm": [
+            995.805,
+            1201.833
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_unifilo_01",
+      "name": "Unifilo 01",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Unifilo",
+          "pdf_bbox_pt": [
+            431.701,
+            112.191,
+            436.765,
+            124.443
+          ],
+          "pdf_center_pt": [
+            434.233,
+            118.317
+          ],
+          "client_label_anchor_mm": [
+            44217.122,
+            5639.823
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            430.2,
+            109.56,
+            437.16,
+            126.36
+          ],
+          "client_bbox_xy_mm": [
+            44007.73,
+            5013.363,
+            44505.632,
+            6215.196
+          ],
+          "dimensions_xy_mm": [
+            497.902,
+            1201.833
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_unifilo_02",
+      "name": "Unifilo 02",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Unifilo",
+          "pdf_bbox_pt": [
+            441.301,
+            112.191,
+            446.365,
+            124.443
+          ],
+          "pdf_center_pt": [
+            443.833,
+            118.317
+          ],
+          "client_label_anchor_mm": [
+            43530.329,
+            5639.823
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            439.8,
+            109.56,
+            446.76,
+            126.36
+          ],
+          "client_bbox_xy_mm": [
+            43320.968,
+            5013.363,
+            43818.87,
+            6215.196
+          ],
+          "dimensions_xy_mm": [
+            497.902,
+            1201.833
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_r090u",
+      "name": "R090U",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "R090U",
+          "pdf_bbox_pt": [
+            456.061,
+            111.375,
+            461.125,
+            123.842
+          ],
+          "pdf_center_pt": [
+            458.593,
+            117.608
+          ],
+          "client_label_anchor_mm": [
+            42474.438,
+            5589.12
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            449.76,
+            109.56,
+            463.8,
+            126.36
+          ],
+          "client_bbox_xy_mm": [
+            42101.965,
+            5013.363,
+            43106.355,
+            6215.196
+          ],
+          "dimensions_xy_mm": [
+            1004.39,
+            1201.833
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_storten",
+      "name": "Storten",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Storten",
+          "pdf_bbox_pt": [
+            478.621,
+            111.186,
+            483.393,
+            124.439
+          ],
+          "pdf_center_pt": [
+            481.007,
+            117.812
+          ],
+          "client_label_anchor_mm": [
+            40871.013,
+            5603.724
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            476.04,
+            106.44,
+            485.4,
+            129.84
+          ],
+          "client_bbox_xy_mm": [
+            40556.751,
+            4790.165,
+            41226.344,
+            6464.148
+          ],
+          "dimensions_xy_mm": [
+            669.593,
+            1673.983
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_messen_zone",
+      "name": "Messen",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "messen",
+          "pdf_bbox_pt": [
+            492.182,
+            111.547,
+            496.954,
+            125.519
+          ],
+          "pdf_center_pt": [
+            494.568,
+            118.533
+          ],
+          "client_label_anchor_mm": [
+            39900.892,
+            5655.268
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            495.96,
+            108.12,
+            516.96,
+            127.68
+          ],
+          "client_bbox_xy_mm": [
+            38299.02,
+            4910.348,
+            39801.312,
+            6309.626
+          ],
+          "dimensions_xy_mm": [
+            1502.292,
+            1399.278
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_afval_afvoeren",
+      "name": "Afval Afvoeren",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "afval",
+          "pdf_bbox_pt": [
+            860.427,
+            91.137,
+            867.207,
+            103.562
+          ],
+          "pdf_center_pt": [
+            863.817,
+            97.35
+          ],
+          "client_label_anchor_mm": [
+            13485.688,
+            4139.858
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            853.08,
+            85.8,
+            872.64,
+            135.6
+          ],
+          "client_bbox_xy_mm": [
+            12854.487,
+            3313.627,
+            14253.765,
+            6876.205
+          ],
+          "dimensions_xy_mm": [
+            1399.278,
+            3562.578
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_uitbreiding_schakelkast",
+      "name": "Uitbreiding Schakelkast",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Uitbreiding",
+          "pdf_bbox_pt": [
+            326.663,
+            79.891,
+            333.443,
+            107.642
+          ],
+          "pdf_center_pt": [
+            330.053,
+            93.766
+          ],
+          "client_label_anchor_mm": [
+            51669.895,
+            3883.526
+          ]
+        },
+        "footprint": {
+          "status": "VECTOR_SOURCE_GEOMETRY",
+          "source_pdf_bbox_pt": [
+            324.0,
+            82.8,
+            336.0,
+            110.76
+          ],
+          "client_bbox_xy_mm": [
+            51244.485,
+            3099.014,
+            52102.937,
+            5099.208
+          ],
+          "dimensions_xy_mm": [
+            858.452,
+            2000.194
+          ],
+          "note": "Boundary comes directly from a PDF vector path enclosing/associated with the object label; this is plan geometry, not an as-built survey."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_besturingskast",
+      "name": "Besturingskast",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "besturingskast",
+          "pdf_bbox_pt": [
+            262.562,
+            90.619,
+            285.624,
+            94.678
+          ],
+          "pdf_center_pt": [
+            274.093,
+            92.649
+          ],
+          "client_label_anchor_mm": [
+            55673.148,
+            3803.558
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY",
+          "reason": "A label is present, but no object boundary is assigned until it can be associated without interpretation."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_schakelkast_productieband",
+      "name": "Schakelkast Productieband 32A",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "schakelkast",
+          "pdf_bbox_pt": [
+            663.602,
+            159.699,
+            690.612,
+            164.566
+          ],
+          "pdf_center_pt": [
+            677.107,
+            162.132
+          ],
+          "client_label_anchor_mm": [
+            26842.484,
+            8774.262
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY",
+          "reason": "A label is present, but no object boundary is assigned until it can be associated without interpretation."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_coating_productie",
+      "name": "Coating Productie",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Coating",
+          "pdf_bbox_pt": [
+            351.482,
+            43.098,
+            363.487,
+            47.157
+          ],
+          "pdf_center_pt": [
+            357.485,
+            45.128
+          ],
+          "client_label_anchor_mm": [
+            49707.519,
+            404.01
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY",
+          "reason": "A label is present, but no object boundary is assigned until it can be associated without interpretation."
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "notes": [
+        "The label anchor is exact PDF text geometry and is NOT asserted to be the machine center. Footprints are only supplied where an unambiguous enclosing/associated vector boundary was identified."
+      ],
+      "children": []
+    },
+    {
+      "id": "space_quality_control_sample_hok",
+      "name": "Quality Control Sample Hok",
+      "type": "space",
+      "parent_id": "internal_buildings",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "Quality control sample hok",
+          "pdf_bbox_pt": [
+            247.916,
+            536.282,
+            295.161,
+            540.228
+          ],
+          "pdf_center_pt": [
+            271.539,
+            538.255
+          ],
+          "client_label_anchor_mm": [
+            55855.888,
+            35681.226
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    },
+    {
+      "id": "safety_nooddouche",
+      "name": "Nooddouche",
+      "type": "safety_device",
+      "parent_id": "safety_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "nooddouche",
+          "pdf_bbox_pt": [
+            348.603,
+            305.778,
+            367.325,
+            309.838
+          ],
+          "pdf_center_pt": [
+            357.964,
+            307.808
+          ],
+          "client_label_anchor_mm": [
+            49673.233,
+            19195.557
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    },
+    {
+      "id": "process_wastroch_productie",
+      "name": "Wastroch Productie",
+      "type": "process_area",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "wastroch",
+          "pdf_bbox_pt": [
+            348.603,
+            327.26,
+            363.329,
+            331.32
+          ],
+          "pdf_center_pt": [
+            355.966,
+            329.29
+          ],
+          "client_label_anchor_mm": [
+            49816.169,
+            20732.329
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    },
+    {
+      "id": "utility_luchtleiding_top",
+      "name": "Luchtleiding - top hall",
+      "type": "utility_route_label",
+      "parent_id": "utilities",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "luchtleiding",
+          "pdf_bbox_pt": [
+            730.683,
+            50.294,
+            772.9,
+            58.443
+          ],
+          "pdf_center_pt": [
+            751.791,
+            54.369
+          ],
+          "client_label_anchor_mm": [
+            21499.725,
+            1065.093
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    },
+    {
+      "id": "utility_waterleiding",
+      "name": "Waterleiding",
+      "type": "utility_route_label",
+      "parent_id": "utilities",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "waterleiding",
+          "pdf_bbox_pt": [
+            739.323,
+            404.535,
+            784.573,
+            412.684
+          ],
+          "pdf_center_pt": [
+            761.948,
+            408.61
+          ],
+          "client_label_anchor_mm": [
+            20773.131,
+            26406.706
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    },
+    {
+      "id": "equipment_data_modem",
+      "name": "Data Modem",
+      "type": "equipment",
+      "parent_id": "current_equipment",
+      "status": "CURRENT_LAYOUT_VECTOR",
+      "geometry": {
+        "reference_label": {
+          "text": "data modem",
+          "pdf_bbox_pt": [
+            205.805,
+            434.487,
+            220.077,
+            437.364
+          ],
+          "pdf_center_pt": [
+            212.941,
+            435.926
+          ],
+          "client_label_anchor_mm": [
+            60047.86,
+            28360.808
+          ]
+        },
+        "footprint": {
+          "status": "PENDING_UNAMBIGUOUS_VECTOR_BOUNDARY"
+        }
+      },
+      "evidence": [
+        "20260522 current-layout vector PDF"
+      ],
+      "children": []
+    }
+  ],
+  "raw_current_plan_reference_entities": {
+    "equipment": [
+      {
+        "id": "text_116",
+        "text": "Quality control sample hok",
+        "pdf_bbox_pt": [
+          247.916,
+          536.282,
+          295.161,
+          540.228
+        ],
+        "pdf_center_pt": [
+          271.539,
+          538.255
+        ]
+      },
+      {
+        "id": "text_121",
+        "text": "luchtcompressor 63Amp warmtepomp WORKX 32Amp",
+        "pdf_bbox_pt": [
+          365.043,
+          53.899,
+          520.475,
+          57.958
+        ],
+        "pdf_center_pt": [
+          442.759,
+          55.928
+        ]
+      },
+      {
+        "id": "text_125",
+        "text": "Breektank & Vat",
+        "pdf_bbox_pt": [
+          269.154,
+          210.54,
+          279.935,
+          218.819
+        ],
+        "pdf_center_pt": [
+          274.544,
+          214.679
+        ]
+      },
+      {
+        "id": "text_140",
+        "text": "Coating PRODuctie",
+        "pdf_bbox_pt": [
+          351.482,
+          43.098,
+          380.397,
+          47.157
+        ],
+        "pdf_center_pt": [
+          365.939,
+          45.128
+        ]
+      },
+      {
+        "id": "text_141",
+        "text": "Uitbreiding schakelkast",
+        "pdf_bbox_pt": [
+          326.663,
+          47.723,
+          333.443,
+          107.642
+        ],
+        "pdf_center_pt": [
+          330.053,
+          77.683
+        ]
+      },
+      {
+        "id": "text_142",
+        "text": "magnetron",
+        "pdf_bbox_pt": [
+          692.042,
+          193.454,
+          731.791,
+          201.603
+        ],
+        "pdf_center_pt": [
+          711.917,
+          197.529
+        ]
+      },
+      {
+        "id": "text_143",
+        "text": "side shifter",
+        "pdf_bbox_pt": [
+          977.669,
+          182.023,
+          984.45,
+          210.723
+        ],
+        "pdf_center_pt": [
+          981.06,
+          196.373
+        ]
+      },
+      {
+        "id": "text_144",
+        "text": "schakelkast productieband 32 Ampere",
+        "pdf_bbox_pt": [
+          663.481,
+          159.699,
+          722.83,
+          170.324
+        ],
+        "pdf_center_pt": [
+          693.155,
+          165.011
+        ]
+      },
+      {
+        "id": "text_147",
+        "text": "Unifilo",
+        "pdf_bbox_pt": [
+          431.701,
+          112.191,
+          436.765,
+          124.443
+        ],
+        "pdf_center_pt": [
+          434.233,
+          118.317
+        ]
+      },
+      {
+        "id": "text_148",
+        "text": "flipatex",
+        "pdf_bbox_pt": [
+          418.382,
+          110.526,
+          423.446,
+          124.684
+        ],
+        "pdf_center_pt": [
+          420.914,
+          117.605
+        ]
+      },
+      {
+        "id": "text_149",
+        "text": "Unifilo",
+        "pdf_bbox_pt": [
+          441.301,
+          112.191,
+          446.365,
+          124.443
+        ],
+        "pdf_center_pt": [
+          443.833,
+          118.317
+        ]
+      },
+      {
+        "id": "text_151",
+        "text": "afval afvoeren",
+        "pdf_bbox_pt": [
+          860.427,
+          67.132,
+          867.207,
+          103.562
+        ],
+        "pdf_center_pt": [
+          863.817,
+          85.347
+        ]
+      }
+    ],
+    "utilities": [
+      {
+        "id": "text_084",
+        "text": "luchtleiding",
+        "pdf_bbox_pt": [
+          730.683,
+          50.294,
+          772.9,
+          58.443
+        ],
+        "pdf_center_pt": [
+          751.791,
+          54.369
+        ]
+      },
+      {
+        "id": "text_085",
+        "text": "luchtleiding waterleiding",
+        "pdf_bbox_pt": [
+          739.323,
+          404.535,
+          823.661,
+          421.928
+        ],
+        "pdf_center_pt": [
+          781.492,
+          413.232
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "text_019",
+        "text": "2.135 x2.400 Wandopening",
+        "pdf_bbox_pt": [
+          338.904,
+          44.711,
+          345.381,
+          66.48
+        ],
+        "pdf_center_pt": [
+          342.142,
+          55.595
+        ]
+      },
+      {
+        "id": "text_021",
+        "text": "4.160 x5.000 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          145.339,
+          710.327,
+          151.815,
+          756.366
+        ],
+        "pdf_center_pt": [
+          148.577,
+          733.347
+        ]
+      },
+      {
+        "id": "text_022",
+        "text": "Afm. 4.160 x5.000 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          145.339,
+          236.203,
+          151.815,
+          745.791
+        ],
+        "pdf_center_pt": [
+          148.577,
+          490.997
+        ]
+      },
+      {
+        "id": "text_024",
+        "text": "3.100 x4.200 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          1038.524,
+          594.526,
+          1045.0,
+          640.566
+        ],
+        "pdf_center_pt": [
+          1041.762,
+          617.546
+        ]
+      },
+      {
+        "id": "text_026",
+        "text": "4.160 x5.000 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          348.843,
+          786.036,
+          395.003,
+          792.632
+        ],
+        "pdf_center_pt": [
+          371.923,
+          789.334
+        ]
+      },
+      {
+        "id": "text_028",
+        "text": "1.075 x2.400 Kunststof loopdeur",
+        "pdf_bbox_pt": [
+          306.003,
+          800.795,
+          333.084,
+          807.392
+        ],
+        "pdf_center_pt": [
+          319.543,
+          804.094
+        ]
+      },
+      {
+        "id": "text_030",
+        "text": "1.075 x2.400 Kunststof loopdeur",
+        "pdf_bbox_pt": [
+          1056.766,
+          184.482,
+          1063.118,
+          211.442
+        ],
+        "pdf_center_pt": [
+          1059.942,
+          197.962
+        ]
+      },
+      {
+        "id": "text_033",
+        "text": "3.100 x2.400 Kunststof pui",
+        "pdf_bbox_pt": [
+          132.619,
+          387.295,
+          139.096,
+          408.843
+        ],
+        "pdf_center_pt": [
+          135.858,
+          398.069
+        ]
+      },
+      {
+        "id": "text_034",
+        "text": "Afm. Kunststof entreepui",
+        "pdf_bbox_pt": [
+          132.619,
+          405.834,
+          138.615,
+          472.324
+        ],
+        "pdf_center_pt": [
+          135.617,
+          439.079
+        ]
+      },
+      {
+        "id": "text_035",
+        "text": "Afm. 3.120x2.400 Kunststof entreepui",
+        "pdf_bbox_pt": [
+          132.619,
+          447.381,
+          138.615,
+          546.965
+        ],
+        "pdf_center_pt": [
+          135.617,
+          497.173
+        ]
+      },
+      {
+        "id": "text_036",
+        "text": "Afm. 3.120x2.400 3.100 x2.400 Kunststof pui",
+        "pdf_bbox_pt": [
+          132.619,
+          313.138,
+          139.096,
+          544.914
+        ],
+        "pdf_center_pt": [
+          135.858,
+          429.026
+        ]
+      },
+      {
+        "id": "text_038",
+        "text": "4.000 x5.000 Brandwerend roldoek",
+        "pdf_bbox_pt": [
+          363.243,
+          420.627,
+          393.475,
+          427.702
+        ],
+        "pdf_center_pt": [
+          378.359,
+          424.165
+        ]
+      },
+      {
+        "id": "text_040",
+        "text": "4.000 x5.000 Snelroldeur Afm.",
+        "pdf_bbox_pt": [
+          366.356,
+          430.466,
+          390.508,
+          437.543
+        ],
+        "pdf_center_pt": [
+          378.432,
+          434.004
+        ]
+      },
+      {
+        "id": "text_041",
+        "text": "1.990 x2.535 Trafodeur Afm.",
+        "pdf_bbox_pt": [
+          277.797,
+          33.376,
+          301.953,
+          40.573
+        ],
+        "pdf_center_pt": [
+          289.875,
+          36.975
+        ]
+      },
+      {
+        "id": "text_042",
+        "text": "3.100 x3.000 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          145.339,
+          621.406,
+          151.815,
+          667.446
+        ],
+        "pdf_center_pt": [
+          148.577,
+          644.426
+        ]
+      },
+      {
+        "id": "text_109",
+        "text": "4.000 x5.000 Brandwerend roldoek",
+        "pdf_bbox_pt": [
+          1000.808,
+          420.627,
+          1031.04,
+          427.702
+        ],
+        "pdf_center_pt": [
+          1015.924,
+          424.165
+        ]
+      },
+      {
+        "id": "text_111",
+        "text": "4.000 x5.000 Snelroldeur Afm.",
+        "pdf_bbox_pt": [
+          1004.024,
+          430.466,
+          1028.039,
+          437.543
+        ],
+        "pdf_center_pt": [
+          1016.031,
+          434.004
+        ]
+      },
+      {
+        "id": "text_119",
+        "text": "3.100 x3.000 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          244.442,
+          297.263,
+          290.602,
+          303.86
+        ],
+        "pdf_center_pt": [
+          267.522,
+          300.561
+        ]
+      },
+      {
+        "id": "text_156",
+        "text": "3.100 x4.200 Stalen geïsoleerde overheaddeur",
+        "pdf_bbox_pt": [
+          1038.524,
+          213.762,
+          1045.0,
+          259.802
+        ],
+        "pdf_center_pt": [
+          1041.762,
+          236.782
+        ]
+      }
+    ]
+  },
+  "raw_current_plan_text_blocks": [
+    {
+      "id": "text_000",
+      "text": "1",
+      "pdf_bbox_pt": [
+        163.989,
+        444.939,
+        166.147,
+        445.997
+      ],
+      "pdf_center_pt": [
+        165.068,
+        445.468
+      ]
+    },
+    {
+      "id": "text_001",
+      "text": "2",
+      "pdf_bbox_pt": [
+        166.989,
+        445.179,
+        169.147,
+        446.237
+      ],
+      "pdf_center_pt": [
+        168.068,
+        445.708
+      ]
+    },
+    {
+      "id": "text_002",
+      "text": "3",
+      "pdf_bbox_pt": [
+        170.109,
+        445.06,
+        172.267,
+        446.118
+      ],
+      "pdf_center_pt": [
+        171.188,
+        445.589
+      ]
+    },
+    {
+      "id": "text_003",
+      "text": "4",
+      "pdf_bbox_pt": [
+        173.229,
+        445.179,
+        175.387,
+        446.237
+      ],
+      "pdf_center_pt": [
+        174.308,
+        445.708
+      ]
+    },
+    {
+      "id": "text_004",
+      "text": "5",
+      "pdf_bbox_pt": [
+        176.23,
+        445.06,
+        178.387,
+        446.118
+      ],
+      "pdf_center_pt": [
+        177.308,
+        445.589
+      ]
+    },
+    {
+      "id": "text_005",
+      "text": "6",
+      "pdf_bbox_pt": [
+        179.348,
+        445.179,
+        181.506,
+        446.237
+      ],
+      "pdf_center_pt": [
+        180.427,
+        445.708
+      ]
+    },
+    {
+      "id": "text_006",
+      "text": "7",
+      "pdf_bbox_pt": [
+        182.469,
+        445.06,
+        184.626,
+        446.118
+      ],
+      "pdf_center_pt": [
+        183.547,
+        445.589
+      ]
+    },
+    {
+      "id": "text_007",
+      "text": "8",
+      "pdf_bbox_pt": [
+        185.469,
+        445.06,
+        187.626,
+        446.118
+      ],
+      "pdf_center_pt": [
+        186.548,
+        445.589
+      ]
+    },
+    {
+      "id": "text_008",
+      "text": "23O x 196 22A x 220",
+      "pdf_bbox_pt": [
+        179.991,
+        438.403,
+        189.731,
+        442.721
+      ],
+      "pdf_center_pt": [
+        184.861,
+        440.562
+      ]
+    },
+    {
+      "id": "text_009",
+      "text": "1",
+      "pdf_bbox_pt": [
+        325.567,
+        485.892,
+        326.625,
+        488.29
+      ],
+      "pdf_center_pt": [
+        326.096,
+        487.091
+      ]
+    },
+    {
+      "id": "text_010",
+      "text": "2",
+      "pdf_bbox_pt": [
+        325.447,
+        489.373,
+        326.505,
+        491.77
+      ],
+      "pdf_center_pt": [
+        325.976,
+        490.571
+      ]
+    },
+    {
+      "id": "text_011",
+      "text": "3",
+      "pdf_bbox_pt": [
+        325.447,
+        492.732,
+        326.505,
+        495.129
+      ],
+      "pdf_center_pt": [
+        325.976,
+        493.931
+      ]
+    },
+    {
+      "id": "text_012",
+      "text": "4",
+      "pdf_bbox_pt": [
+        325.327,
+        496.212,
+        326.385,
+        498.61
+      ],
+      "pdf_center_pt": [
+        325.856,
+        497.411
+      ]
+    },
+    {
+      "id": "text_013",
+      "text": "5",
+      "pdf_bbox_pt": [
+        325.447,
+        499.691,
+        326.505,
+        502.089
+      ],
+      "pdf_center_pt": [
+        325.976,
+        500.89
+      ]
+    },
+    {
+      "id": "text_014",
+      "text": "6",
+      "pdf_bbox_pt": [
+        325.447,
+        503.172,
+        326.505,
+        505.569
+      ],
+      "pdf_center_pt": [
+        325.976,
+        504.371
+      ]
+    },
+    {
+      "id": "text_015",
+      "text": "7",
+      "pdf_bbox_pt": [
+        325.447,
+        506.532,
+        326.505,
+        508.929
+      ],
+      "pdf_center_pt": [
+        325.976,
+        507.73
+      ]
+    },
+    {
+      "id": "text_016",
+      "text": "8",
+      "pdf_bbox_pt": [
+        325.447,
+        510.012,
+        326.505,
+        512.41
+      ],
+      "pdf_center_pt": [
+        325.976,
+        511.211
+      ]
+    },
+    {
+      "id": "text_017",
+      "text": "23O x 196",
+      "pdf_bbox_pt": [
+        328.724,
+        518.154,
+        330.882,
+        528.986
+      ],
+      "pdf_center_pt": [
+        329.803,
+        523.57
+      ]
+    },
+    {
+      "id": "text_018",
+      "text": "22A x 220",
+      "pdf_bbox_pt": [
+        331.004,
+        518.274,
+        333.162,
+        528.867
+      ],
+      "pdf_center_pt": [
+        332.083,
+        523.57
+      ]
+    },
+    {
+      "id": "text_019",
+      "text": "2.135 x2.400 Wandopening",
+      "pdf_bbox_pt": [
+        338.904,
+        44.711,
+        345.381,
+        66.48
+      ],
+      "pdf_center_pt": [
+        342.142,
+        55.595
+      ]
+    },
+    {
+      "id": "text_020",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        341.544,
+        63.238,
+        344.78,
+        69.239
+      ],
+      "pdf_center_pt": [
+        343.162,
+        66.238
+      ]
+    },
+    {
+      "id": "text_021",
+      "text": "4.160 x5.000 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        145.339,
+        710.327,
+        151.815,
+        756.366
+      ],
+      "pdf_center_pt": [
+        148.577,
+        733.347
+      ]
+    },
+    {
+      "id": "text_022",
+      "text": "Afm. 4.160 x5.000 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        145.339,
+        236.203,
+        151.815,
+        745.791
+      ],
+      "pdf_center_pt": [
+        148.577,
+        490.997
+      ]
+    },
+    {
+      "id": "text_023",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        147.98,
+        265.676,
+        151.216,
+        271.677
+      ],
+      "pdf_center_pt": [
+        149.598,
+        268.676
+      ]
+    },
+    {
+      "id": "text_024",
+      "text": "3.100 x4.200 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        1038.524,
+        594.526,
+        1045.0,
+        640.566
+      ],
+      "pdf_center_pt": [
+        1041.762,
+        617.546
+      ]
+    },
+    {
+      "id": "text_025",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        1041.286,
+        623.992,
+        1044.522,
+        629.993
+      ],
+      "pdf_center_pt": [
+        1042.904,
+        626.992
+      ]
+    },
+    {
+      "id": "text_026",
+      "text": "4.160 x5.000 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        348.843,
+        786.036,
+        395.003,
+        792.632
+      ],
+      "pdf_center_pt": [
+        371.923,
+        789.334
+      ]
+    },
+    {
+      "id": "text_027",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        359.995,
+        789.395,
+        365.997,
+        792.632
+      ],
+      "pdf_center_pt": [
+        362.996,
+        791.014
+      ]
+    },
+    {
+      "id": "text_028",
+      "text": "1.075 x2.400 Kunststof loopdeur",
+      "pdf_bbox_pt": [
+        306.003,
+        800.795,
+        333.084,
+        807.392
+      ],
+      "pdf_center_pt": [
+        319.543,
+        804.094
+      ]
+    },
+    {
+      "id": "text_029",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        307.676,
+        804.156,
+        313.678,
+        807.392
+      ],
+      "pdf_center_pt": [
+        310.677,
+        805.774
+      ]
+    },
+    {
+      "id": "text_030",
+      "text": "1.075 x2.400 Kunststof loopdeur",
+      "pdf_bbox_pt": [
+        1056.766,
+        184.482,
+        1063.118,
+        211.442
+      ],
+      "pdf_center_pt": [
+        1059.942,
+        197.962
+      ]
+    },
+    {
+      "id": "text_031",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        1059.403,
+        204.476,
+        1062.64,
+        210.478
+      ],
+      "pdf_center_pt": [
+        1061.022,
+        207.477
+      ]
+    },
+    {
+      "id": "text_032",
+      "text": "980 x4.000 Kunstsof kozijn Afm. 980 x4.000 Kunstsof kozijn Afm. 980 x4.000 Kunstsof kozijn Afm.",
+      "pdf_bbox_pt": [
+        560.285,
+        28.816,
+        1026.764,
+        35.413
+      ],
+      "pdf_center_pt": [
+        793.524,
+        32.115
+      ]
+    },
+    {
+      "id": "text_033",
+      "text": "3.100 x2.400 Kunststof pui",
+      "pdf_bbox_pt": [
+        132.619,
+        387.295,
+        139.096,
+        408.843
+      ],
+      "pdf_center_pt": [
+        135.858,
+        398.069
+      ]
+    },
+    {
+      "id": "text_034",
+      "text": "Afm. Kunststof entreepui",
+      "pdf_bbox_pt": [
+        132.619,
+        405.834,
+        138.615,
+        472.324
+      ],
+      "pdf_center_pt": [
+        135.617,
+        439.079
+      ]
+    },
+    {
+      "id": "text_035",
+      "text": "Afm. 3.120x2.400 Kunststof entreepui",
+      "pdf_bbox_pt": [
+        132.619,
+        447.381,
+        138.615,
+        546.965
+      ],
+      "pdf_center_pt": [
+        135.617,
+        497.173
+      ]
+    },
+    {
+      "id": "text_036",
+      "text": "Afm. 3.120x2.400 3.100 x2.400 Kunststof pui",
+      "pdf_bbox_pt": [
+        132.619,
+        313.138,
+        139.096,
+        544.914
+      ],
+      "pdf_center_pt": [
+        135.858,
+        429.026
+      ]
+    },
+    {
+      "id": "text_037",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        135.379,
+        331.794,
+        138.615,
+        337.796
+      ],
+      "pdf_center_pt": [
+        136.997,
+        334.795
+      ]
+    },
+    {
+      "id": "text_038",
+      "text": "4.000 x5.000 Brandwerend roldoek",
+      "pdf_bbox_pt": [
+        363.243,
+        420.627,
+        393.475,
+        427.702
+      ],
+      "pdf_center_pt": [
+        378.359,
+        424.165
+      ]
+    },
+    {
+      "id": "text_039",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        366.356,
+        424.466,
+        372.358,
+        427.702
+      ],
+      "pdf_center_pt": [
+        369.357,
+        426.084
+      ]
+    },
+    {
+      "id": "text_040",
+      "text": "4.000 x5.000 Snelroldeur Afm.",
+      "pdf_bbox_pt": [
+        366.356,
+        430.466,
+        390.508,
+        437.543
+      ],
+      "pdf_center_pt": [
+        378.432,
+        434.004
+      ]
+    },
+    {
+      "id": "text_041",
+      "text": "1.990 x2.535 Trafodeur Afm.",
+      "pdf_bbox_pt": [
+        277.797,
+        33.376,
+        301.953,
+        40.573
+      ],
+      "pdf_center_pt": [
+        289.875,
+        36.975
+      ]
+    },
+    {
+      "id": "text_042",
+      "text": "3.100 x3.000 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        145.339,
+        621.406,
+        151.815,
+        667.446
+      ],
+      "pdf_center_pt": [
+        148.577,
+        644.426
+      ]
+    },
+    {
+      "id": "text_043",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        147.98,
+        650.87,
+        151.216,
+        656.872
+      ],
+      "pdf_center_pt": [
+        149.598,
+        653.871
+      ]
+    },
+    {
+      "id": "text_044",
+      "text": "S 6",
+      "pdf_bbox_pt": [
+        692.391,
+        46.696,
+        694.383,
+        53.893
+      ],
+      "pdf_center_pt": [
+        693.387,
+        50.295
+      ]
+    },
+    {
+      "id": "text_045",
+      "text": "S 6",
+      "pdf_bbox_pt": [
+        305.156,
+        780.995,
+        307.148,
+        788.192
+      ],
+      "pdf_center_pt": [
+        306.152,
+        784.594
+      ]
+    },
+    {
+      "id": "text_046",
+      "text": "S",
+      "pdf_bbox_pt": [
+        1040.445,
+        568.122,
+        1043.682,
+        570.114
+      ],
+      "pdf_center_pt": [
+        1042.063,
+        569.118
+      ]
+    },
+    {
+      "id": "text_047",
+      "text": "6",
+      "pdf_bbox_pt": [
+        1043.207,
+        569.53,
+        1046.443,
+        571.193
+      ],
+      "pdf_center_pt": [
+        1044.825,
+        570.361
+      ]
+    },
+    {
+      "id": "text_048",
+      "text": "S 6",
+      "pdf_bbox_pt": [
+        743.032,
+        801.637,
+        745.023,
+        808.712
+      ],
+      "pdf_center_pt": [
+        744.027,
+        805.174
+      ]
+    },
+    {
+      "id": "text_049",
+      "text": "30m",
+      "pdf_bbox_pt": [
+        706.311,
+        48.977,
+        712.032,
+        52.214
+      ],
+      "pdf_center_pt": [
+        709.172,
+        50.596
+      ]
+    },
+    {
+      "id": "text_050",
+      "text": "S 6 30m",
+      "pdf_bbox_pt": [
+        692.391,
+        414.026,
+        712.032,
+        421.223
+      ],
+      "pdf_center_pt": [
+        702.212,
+        417.624
+      ]
+    },
+    {
+      "id": "text_051",
+      "text": "S",
+      "pdf_bbox_pt": [
+        358.465,
+        357.284,
+        361.701,
+        359.275
+      ],
+      "pdf_center_pt": [
+        360.083,
+        358.279
+      ]
+    },
+    {
+      "id": "text_052",
+      "text": "6 30m",
+      "pdf_bbox_pt": [
+        360.145,
+        340.235,
+        364.461,
+        360.356
+      ],
+      "pdf_center_pt": [
+        362.303,
+        350.295
+      ]
+    },
+    {
+      "id": "text_053",
+      "text": "S",
+      "pdf_bbox_pt": [
+        1040.445,
+        193.366,
+        1043.682,
+        195.358
+      ],
+      "pdf_center_pt": [
+        1042.063,
+        194.362
+      ]
+    },
+    {
+      "id": "text_054",
+      "text": "6 30m",
+      "pdf_bbox_pt": [
+        1042.118,
+        176.318,
+        1046.443,
+        196.438
+      ],
+      "pdf_center_pt": [
+        1044.28,
+        186.378
+      ]
+    },
+    {
+      "id": "text_055",
+      "text": "S",
+      "pdf_bbox_pt": [
+        145.22,
+        559.961,
+        148.457,
+        561.953
+      ],
+      "pdf_center_pt": [
+        146.838,
+        560.957
+      ]
+    },
+    {
+      "id": "text_056",
+      "text": "6 S",
+      "pdf_bbox_pt": [
+        145.22,
+        478.844,
+        151.216,
+        563.033
+      ],
+      "pdf_center_pt": [
+        148.218,
+        520.938
+      ]
+    },
+    {
+      "id": "text_057",
+      "text": "6",
+      "pdf_bbox_pt": [
+        147.98,
+        480.251,
+        151.216,
+        481.914
+      ],
+      "pdf_center_pt": [
+        149.598,
+        481.083
+      ]
+    },
+    {
+      "id": "text_058",
+      "text": "S 6",
+      "pdf_bbox_pt": [
+        898.909,
+        775.835,
+        900.901,
+        782.912
+      ],
+      "pdf_center_pt": [
+        899.905,
+        779.374
+      ]
+    },
+    {
+      "id": "text_059",
+      "text": "S 6 S 6",
+      "pdf_bbox_pt": [
+        485.515,
+        439.346,
+        915.185,
+        446.544
+      ],
+      "pdf_center_pt": [
+        700.35,
+        442.945
+      ]
+    },
+    {
+      "id": "text_060",
+      "text": "S",
+      "pdf_bbox_pt": [
+        145.22,
+        605.921,
+        148.457,
+        607.913
+      ],
+      "pdf_center_pt": [
+        146.838,
+        606.917
+      ]
+    },
+    {
+      "id": "text_061",
+      "text": "6",
+      "pdf_bbox_pt": [
+        147.98,
+        607.331,
+        151.216,
+        608.994
+      ],
+      "pdf_center_pt": [
+        149.598,
+        608.162
+      ]
+    },
+    {
+      "id": "text_062",
+      "text": "1734100",
+      "pdf_bbox_pt": [
+        150.117,
+        303.863,
+        161.97,
+        307.1
+      ],
+      "pdf_center_pt": [
+        156.044,
+        305.482
+      ]
+    },
+    {
+      "id": "text_063",
+      "text": "2730",
+      "pdf_bbox_pt": [
+        151.819,
+        682.224,
+        155.056,
+        688.672
+      ],
+      "pdf_center_pt": [
+        153.437,
+        685.448
+      ]
+    },
+    {
+      "id": "text_064",
+      "text": "5400 2780 160",
+      "pdf_bbox_pt": [
+        112.899,
+        582.674,
+        117.214,
+        662.172
+      ],
+      "pdf_center_pt": [
+        115.056,
+        622.423
+      ]
+    },
+    {
+      "id": "text_065",
+      "text": "160",
+      "pdf_bbox_pt": [
+        233.284,
+        589.531,
+        239.701,
+        593.846
+      ],
+      "pdf_center_pt": [
+        236.493,
+        591.689
+      ]
+    },
+    {
+      "id": "text_066",
+      "text": "160",
+      "pdf_bbox_pt": [
+        348.095,
+        420.789,
+        352.411,
+        427.207
+      ],
+      "pdf_center_pt": [
+        350.253,
+        423.998
+      ]
+    },
+    {
+      "id": "text_067",
+      "text": "Minimaal 2500mm",
+      "pdf_bbox_pt": [
+        164.278,
+        681.633,
+        188.24,
+        684.87
+      ],
+      "pdf_center_pt": [
+        176.259,
+        683.251
+      ]
+    },
+    {
+      "id": "text_068",
+      "text": "60",
+      "pdf_bbox_pt": [
+        1064.63,
+        795.516,
+        1067.967,
+        798.753
+      ],
+      "pdf_center_pt": [
+        1066.299,
+        797.135
+      ]
+    },
+    {
+      "id": "text_069",
+      "text": "60 60",
+      "pdf_bbox_pt": [
+        125.999,
+        427.706,
+        1067.967,
+        430.942
+      ],
+      "pdf_center_pt": [
+        596.983,
+        429.324
+      ]
+    },
+    {
+      "id": "text_070",
+      "text": "PS",
+      "pdf_bbox_pt": [
+        142.339,
+        545.689,
+        145.576,
+        549.594
+      ],
+      "pdf_center_pt": [
+        143.957,
+        547.641
+      ]
+    },
+    {
+      "id": "text_071",
+      "text": "elektr. cilinder PS",
+      "pdf_bbox_pt": [
+        142.339,
+        442.61,
+        148.511,
+        555.493
+      ],
+      "pdf_center_pt": [
+        145.425,
+        499.051
+      ]
+    },
+    {
+      "id": "text_072",
+      "text": "elektr. cilinder",
+      "pdf_bbox_pt": [
+        145.634,
+        436.721,
+        148.511,
+        452.412
+      ],
+      "pdf_center_pt": [
+        147.073,
+        444.566
+      ]
+    },
+    {
+      "id": "text_073",
+      "text": "PS",
+      "pdf_bbox_pt": [
+        318.356,
+        792.756,
+        322.381,
+        795.992
+      ],
+      "pdf_center_pt": [
+        320.368,
+        794.374
+      ]
+    },
+    {
+      "id": "text_074",
+      "text": "PS PS",
+      "pdf_bbox_pt": [
+        421.795,
+        39.736,
+        721.631,
+        42.972
+      ],
+      "pdf_center_pt": [
+        571.713,
+        41.354
+      ]
+    },
+    {
+      "id": "text_075",
+      "text": "PS",
+      "pdf_bbox_pt": [
+        1045.366,
+        616.607,
+        1048.603,
+        620.512
+      ],
+      "pdf_center_pt": [
+        1046.984,
+        618.56
+      ]
+    },
+    {
+      "id": "text_076",
+      "text": "PS",
+      "pdf_bbox_pt": [
+        1048.72,
+        204.532,
+        1051.957,
+        208.438
+      ],
+      "pdf_center_pt": [
+        1050.339,
+        206.485
+      ]
+    },
+    {
+      "id": "text_077",
+      "text": "60",
+      "pdf_bbox_pt": [
+        239.037,
+        578.19,
+        242.375,
+        581.426
+      ],
+      "pdf_center_pt": [
+        240.706,
+        579.808
+      ]
+    },
+    {
+      "id": "text_078",
+      "text": "60",
+      "pdf_bbox_pt": [
+        225.478,
+        591.751,
+        228.815,
+        594.988
+      ],
+      "pdf_center_pt": [
+        227.147,
+        593.369
+      ]
+    },
+    {
+      "id": "text_079",
+      "text": "60",
+      "pdf_bbox_pt": [
+        334.196,
+        559.709,
+        337.533,
+        562.946
+      ],
+      "pdf_center_pt": [
+        335.865,
+        561.328
+      ]
+    },
+    {
+      "id": "text_080",
+      "text": "60",
+      "pdf_bbox_pt": [
+        320.876,
+        573.03,
+        324.213,
+        576.266
+      ],
+      "pdf_center_pt": [
+        322.544,
+        574.648
+      ]
+    },
+    {
+      "id": "text_081",
+      "text": "60",
+      "pdf_bbox_pt": [
+        125.999,
+        578.19,
+        129.336,
+        581.426
+      ],
+      "pdf_center_pt": [
+        127.668,
+        579.808
+      ]
+    },
+    {
+      "id": "text_082",
+      "text": "60 60",
+      "pdf_bbox_pt": [
+        225.478,
+        416.186,
+        324.213,
+        419.422
+      ],
+      "pdf_center_pt": [
+        274.845,
+        417.804
+      ]
+    },
+    {
+      "id": "text_083",
+      "text": "60",
+      "pdf_bbox_pt": [
+        322.431,
+        287.495,
+        325.802,
+        290.761
+      ],
+      "pdf_center_pt": [
+        324.116,
+        289.128
+      ]
+    },
+    {
+      "id": "text_084",
+      "text": "luchtleiding",
+      "pdf_bbox_pt": [
+        730.683,
+        50.294,
+        772.9,
+        58.443
+      ],
+      "pdf_center_pt": [
+        751.791,
+        54.369
+      ]
+    },
+    {
+      "id": "text_085",
+      "text": "luchtleiding waterleiding",
+      "pdf_bbox_pt": [
+        739.323,
+        404.535,
+        823.661,
+        421.928
+      ],
+      "pdf_center_pt": [
+        781.492,
+        413.232
+      ]
+    },
+    {
+      "id": "text_086",
+      "text": "dames",
+      "pdf_bbox_pt": [
+        287.877,
+        441.6,
+        299.652,
+        445.546
+      ],
+      "pdf_center_pt": [
+        293.764,
+        443.573
+      ]
+    },
+    {
+      "id": "text_087",
+      "text": "heren",
+      "pdf_bbox_pt": [
+        285.236,
+        489.721,
+        295.494,
+        493.667
+      ],
+      "pdf_center_pt": [
+        290.365,
+        491.694
+      ]
+    },
+    {
+      "id": "text_088",
+      "text": "kantine",
+      "pdf_bbox_pt": [
+        170.637,
+        536.041,
+        183.563,
+        539.988
+      ],
+      "pdf_center_pt": [
+        177.1,
+        538.015
+      ]
+    },
+    {
+      "id": "text_089",
+      "text": "heren",
+      "pdf_bbox_pt": [
+        194.158,
+        458.761,
+        204.416,
+        462.708
+      ],
+      "pdf_center_pt": [
+        199.287,
+        460.734
+      ]
+    },
+    {
+      "id": "text_090",
+      "text": "1",
+      "pdf_bbox_pt": [
+        353.623,
+        377.084,
+        354.681,
+        379.242
+      ],
+      "pdf_center_pt": [
+        354.152,
+        378.163
+      ]
+    },
+    {
+      "id": "text_091",
+      "text": "2",
+      "pdf_bbox_pt": [
+        353.743,
+        374.084,
+        354.801,
+        376.241
+      ],
+      "pdf_center_pt": [
+        354.272,
+        375.163
+      ]
+    },
+    {
+      "id": "text_092",
+      "text": "3",
+      "pdf_bbox_pt": [
+        353.743,
+        370.964,
+        354.801,
+        373.121
+      ],
+      "pdf_center_pt": [
+        354.272,
+        372.043
+      ]
+    },
+    {
+      "id": "text_093",
+      "text": "4",
+      "pdf_bbox_pt": [
+        353.743,
+        367.963,
+        354.801,
+        370.121
+      ],
+      "pdf_center_pt": [
+        354.272,
+        369.042
+      ]
+    },
+    {
+      "id": "text_094",
+      "text": "5",
+      "pdf_bbox_pt": [
+        353.743,
+        364.843,
+        354.801,
+        367.001
+      ],
+      "pdf_center_pt": [
+        354.272,
+        365.922
+      ]
+    },
+    {
+      "id": "text_095",
+      "text": "6",
+      "pdf_bbox_pt": [
+        353.743,
+        361.725,
+        354.801,
+        363.882
+      ],
+      "pdf_center_pt": [
+        354.272,
+        362.803
+      ]
+    },
+    {
+      "id": "text_096",
+      "text": "7",
+      "pdf_bbox_pt": [
+        353.743,
+        358.724,
+        354.801,
+        360.882
+      ],
+      "pdf_center_pt": [
+        354.272,
+        359.803
+      ]
+    },
+    {
+      "id": "text_097",
+      "text": "8",
+      "pdf_bbox_pt": [
+        353.743,
+        355.604,
+        354.801,
+        357.762
+      ],
+      "pdf_center_pt": [
+        354.272,
+        356.683
+      ]
+    },
+    {
+      "id": "text_098",
+      "text": "23O x 196 22A x 220",
+      "pdf_bbox_pt": [
+        347.106,
+        340.785,
+        351.463,
+        350.532
+      ],
+      "pdf_center_pt": [
+        349.285,
+        345.658
+      ]
+    },
+    {
+      "id": "text_099",
+      "text": "’",
+      "pdf_bbox_pt": [
+        230.044,
+        369.334,
+        230.888,
+        373.649
+      ],
+      "pdf_center_pt": [
+        230.466,
+        371.491
+      ]
+    },
+    {
+      "id": "text_100",
+      "text": "vliegende",
+      "pdf_bbox_pt": [
+        508.864,
+        109.439,
+        513.635,
+        126.478
+      ],
+      "pdf_center_pt": [
+        511.249,
+        117.958
+      ]
+    },
+    {
+      "id": "text_101",
+      "text": "dames 0.1",
+      "pdf_bbox_pt": [
+        146.999,
+        458.761,
+        184.932,
+        465.226
+      ],
+      "pdf_center_pt": [
+        165.965,
+        461.993
+      ]
+    },
+    {
+      "id": "text_102",
+      "text": "0.2",
+      "pdf_bbox_pt": [
+        184.077,
+        484.561,
+        189.254,
+        488.507
+      ],
+      "pdf_center_pt": [
+        186.666,
+        486.534
+      ]
+    },
+    {
+      "id": "text_103",
+      "text": "0.6",
+      "pdf_bbox_pt": [
+        232.437,
+        503.161,
+        237.481,
+        507.108
+      ],
+      "pdf_center_pt": [
+        234.959,
+        505.134
+      ]
+    },
+    {
+      "id": "text_104",
+      "text": "0.3 0.4",
+      "pdf_bbox_pt": [
+        176.037,
+        464.521,
+        200.874,
+        468.467
+      ],
+      "pdf_center_pt": [
+        188.455,
+        466.494
+      ]
+    },
+    {
+      "id": "text_105",
+      "text": "0.5",
+      "pdf_bbox_pt": [
+        183.837,
+        521.761,
+        189.006,
+        525.708
+      ],
+      "pdf_center_pt": [
+        186.422,
+        523.734
+      ]
+    },
+    {
+      "id": "text_106",
+      "text": "0.11",
+      "pdf_bbox_pt": [
+        289.076,
+        446.16,
+        294.716,
+        450.107
+      ],
+      "pdf_center_pt": [
+        291.896,
+        448.133
+      ]
+    },
+    {
+      "id": "text_107",
+      "text": "0.7",
+      "pdf_bbox_pt": [
+        289.076,
+        507.242,
+        294.081,
+        511.188
+      ],
+      "pdf_center_pt": [
+        291.579,
+        509.215
+      ]
+    },
+    {
+      "id": "text_108",
+      "text": "0.13",
+      "pdf_bbox_pt": [
+        160.317,
+        361.678,
+        166.74,
+        365.624
+      ],
+      "pdf_center_pt": [
+        163.529,
+        363.651
+      ]
+    },
+    {
+      "id": "text_109",
+      "text": "4.000 x5.000 Brandwerend roldoek",
+      "pdf_bbox_pt": [
+        1000.808,
+        420.627,
+        1031.04,
+        427.702
+      ],
+      "pdf_center_pt": [
+        1015.924,
+        424.165
+      ]
+    },
+    {
+      "id": "text_110",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        1004.024,
+        424.466,
+        1010.026,
+        427.702
+      ],
+      "pdf_center_pt": [
+        1007.025,
+        426.084
+      ]
+    },
+    {
+      "id": "text_111",
+      "text": "4.000 x5.000 Snelroldeur Afm.",
+      "pdf_bbox_pt": [
+        1004.024,
+        430.466,
+        1028.039,
+        437.543
+      ],
+      "pdf_center_pt": [
+        1016.031,
+        434.004
+      ]
+    },
+    {
+      "id": "text_112",
+      "text": "vw mgn",
+      "pdf_bbox_pt": [
+        197.757,
+        497.761,
+        213.66,
+        502.788
+      ],
+      "pdf_center_pt": [
+        205.708,
+        500.274
+      ]
+    },
+    {
+      "id": "text_113",
+      "text": "WM + DG",
+      "pdf_bbox_pt": [
+        259.677,
+        445.56,
+        269.216,
+        454.187
+      ],
+      "pdf_center_pt": [
+        264.446,
+        449.874
+      ]
+    },
+    {
+      "id": "text_114",
+      "text": "schoonmaakkast",
+      "pdf_bbox_pt": [
+        238.832,
+        487.073,
+        242.779,
+        516.935
+      ],
+      "pdf_center_pt": [
+        240.806,
+        502.004
+      ]
+    },
+    {
+      "id": "text_115",
+      "text": "koffie kk",
+      "pdf_bbox_pt": [
+        164.759,
+        498.841,
+        219.553,
+        502.788
+      ],
+      "pdf_center_pt": [
+        192.156,
+        500.814
+      ]
+    },
+    {
+      "id": "text_116",
+      "text": "Quality control sample hok",
+      "pdf_bbox_pt": [
+        247.916,
+        536.282,
+        295.161,
+        540.228
+      ],
+      "pdf_center_pt": [
+        271.539,
+        538.255
+      ]
+    },
+    {
+      "id": "text_117",
+      "text": "0.9 0.10",
+      "pdf_bbox_pt": [
+        236.397,
+        450.48,
+        268.802,
+        458.507
+      ],
+      "pdf_center_pt": [
+        252.599,
+        454.493
+      ]
+    },
+    {
+      "id": "text_118",
+      "text": "0.8",
+      "pdf_bbox_pt": [
+        268.077,
+        468.481,
+        273.318,
+        472.428
+      ],
+      "pdf_center_pt": [
+        270.697,
+        470.455
+      ]
+    },
+    {
+      "id": "text_119",
+      "text": "3.100 x3.000 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        244.442,
+        297.263,
+        290.602,
+        303.86
+      ],
+      "pdf_center_pt": [
+        267.522,
+        300.561
+      ]
+    },
+    {
+      "id": "text_120",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        255.596,
+        300.623,
+        261.598,
+        303.86
+      ],
+      "pdf_center_pt": [
+        258.597,
+        302.242
+      ]
+    },
+    {
+      "id": "text_121",
+      "text": "luchtcompressor 63Amp warmtepomp WORKX 32Amp",
+      "pdf_bbox_pt": [
+        365.043,
+        53.899,
+        520.475,
+        57.958
+      ],
+      "pdf_center_pt": [
+        442.759,
+        55.928
+      ]
+    },
+    {
+      "id": "text_122",
+      "text": "nooddouche",
+      "pdf_bbox_pt": [
+        348.603,
+        305.778,
+        367.325,
+        309.838
+      ],
+      "pdf_center_pt": [
+        357.964,
+        307.808
+      ]
+    },
+    {
+      "id": "text_123",
+      "text": "wastroch productie",
+      "pdf_bbox_pt": [
+        348.603,
+        327.26,
+        378.493,
+        331.32
+      ],
+      "pdf_center_pt": [
+        363.548,
+        329.29
+      ]
+    },
+    {
+      "id": "text_124",
+      "text": "3460",
+      "pdf_bbox_pt": [
+        134.278,
+        25.216,
+        140.875,
+        28.453
+      ],
+      "pdf_center_pt": [
+        137.577,
+        26.835
+      ]
+    },
+    {
+      "id": "text_125",
+      "text": "Breektank & Vat",
+      "pdf_bbox_pt": [
+        269.154,
+        210.54,
+        279.935,
+        218.819
+      ],
+      "pdf_center_pt": [
+        274.544,
+        214.679
+      ]
+    },
+    {
+      "id": "text_126",
+      "text": "1 3 7",
+      "pdf_bbox_pt": [
+        140.285,
+        25.186,
+        338.948,
+        29.261
+      ],
+      "pdf_center_pt": [
+        239.616,
+        27.224
+      ]
+    },
+    {
+      "id": "text_127",
+      "text": "6060 2800 5200",
+      "pdf_bbox_pt": [
+        181.322,
+        13.417,
+        304.077,
+        16.414
+      ],
+      "pdf_center_pt": [
+        242.699,
+        14.916
+      ]
+    },
+    {
+      "id": "text_128",
+      "text": "B",
+      "pdf_bbox_pt": [
+        119.403,
+        221.744,
+        121.667,
+        225.819
+      ],
+      "pdf_center_pt": [
+        120.535,
+        223.781
+      ]
+    },
+    {
+      "id": "text_129",
+      "text": "4400 4400 4400",
+      "pdf_bbox_pt": [
+        123.578,
+        67.688,
+        126.216,
+        195.722
+      ],
+      "pdf_center_pt": [
+        124.897,
+        131.705
+      ]
+    },
+    {
+      "id": "text_130",
+      "text": "A",
+      "pdf_bbox_pt": [
+        118.083,
+        37.306,
+        120.34,
+        41.382
+      ],
+      "pdf_center_pt": [
+        119.211,
+        39.344
+      ]
+    },
+    {
+      "id": "text_131",
+      "text": "1750 1870 1870 1860",
+      "pdf_bbox_pt": [
+        151.081,
+        18.817,
+        233.636,
+        21.454
+      ],
+      "pdf_center_pt": [
+        192.358,
+        20.136
+      ]
+    },
+    {
+      "id": "text_132",
+      "text": "1740 1670",
+      "pdf_bbox_pt": [
+        215.402,
+        40.658,
+        246.596,
+        43.415
+      ],
+      "pdf_center_pt": [
+        230.999,
+        42.036
+      ]
+    },
+    {
+      "id": "text_133",
+      "text": "700 1100",
+      "pdf_bbox_pt": [
+        132.219,
+        152.288,
+        134.856,
+        169.202
+      ],
+      "pdf_center_pt": [
+        133.538,
+        160.745
+      ]
+    },
+    {
+      "id": "text_134",
+      "text": "1218,7",
+      "pdf_bbox_pt": [
+        146.402,
+        129.699,
+        153.475,
+        132.336
+      ],
+      "pdf_center_pt": [
+        149.939,
+        131.017
+      ]
+    },
+    {
+      "id": "text_135",
+      "text": "500",
+      "pdf_bbox_pt": [
+        276.94,
+        81.717,
+        279.577,
+        85.561
+      ],
+      "pdf_center_pt": [
+        278.259,
+        83.639
+      ]
+    },
+    {
+      "id": "text_136",
+      "text": "1000",
+      "pdf_bbox_pt": [
+        326.403,
+        111.578,
+        331.437,
+        114.215
+      ],
+      "pdf_center_pt": [
+        328.92,
+        112.897
+      ]
+    },
+    {
+      "id": "text_137",
+      "text": "63Amp 63Amp",
+      "pdf_bbox_pt": [
+        281.882,
+        81.258,
+        307.826,
+        85.318
+      ],
+      "pdf_center_pt": [
+        294.854,
+        83.288
+      ]
+    },
+    {
+      "id": "text_138",
+      "text": "2x CAT5 data kabels",
+      "pdf_bbox_pt": [
+        211.921,
+        106.099,
+        242.961,
+        110.158
+      ],
+      "pdf_center_pt": [
+        227.441,
+        108.128
+      ]
+    },
+    {
+      "id": "text_139",
+      "text": "besturingskast",
+      "pdf_bbox_pt": [
+        262.562,
+        90.619,
+        285.624,
+        94.678
+      ],
+      "pdf_center_pt": [
+        274.093,
+        92.649
+      ]
+    },
+    {
+      "id": "text_140",
+      "text": "Coating PRODuctie",
+      "pdf_bbox_pt": [
+        351.482,
+        43.098,
+        380.397,
+        47.157
+      ],
+      "pdf_center_pt": [
+        365.939,
+        45.128
+      ]
+    },
+    {
+      "id": "text_141",
+      "text": "Uitbreiding schakelkast",
+      "pdf_bbox_pt": [
+        326.663,
+        47.723,
+        333.443,
+        107.642
+      ],
+      "pdf_center_pt": [
+        330.053,
+        77.683
+      ]
+    },
+    {
+      "id": "text_142",
+      "text": "magnetron",
+      "pdf_bbox_pt": [
+        692.042,
+        193.454,
+        731.791,
+        201.603
+      ],
+      "pdf_center_pt": [
+        711.917,
+        197.529
+      ]
+    },
+    {
+      "id": "text_143",
+      "text": "side shifter",
+      "pdf_bbox_pt": [
+        977.669,
+        182.023,
+        984.45,
+        210.723
+      ],
+      "pdf_center_pt": [
+        981.06,
+        196.373
+      ]
+    },
+    {
+      "id": "text_144",
+      "text": "schakelkast productieband 32 Ampere",
+      "pdf_bbox_pt": [
+        663.481,
+        159.699,
+        722.83,
+        170.324
+      ],
+      "pdf_center_pt": [
+        693.155,
+        165.011
+      ]
+    },
+    {
+      "id": "text_145",
+      "text": "Storten",
+      "pdf_bbox_pt": [
+        478.621,
+        111.186,
+        483.393,
+        124.439
+      ],
+      "pdf_center_pt": [
+        481.007,
+        117.812
+      ]
+    },
+    {
+      "id": "text_146",
+      "text": "R090U",
+      "pdf_bbox_pt": [
+        456.061,
+        111.375,
+        461.125,
+        123.842
+      ],
+      "pdf_center_pt": [
+        458.593,
+        117.608
+      ]
+    },
+    {
+      "id": "text_147",
+      "text": "Unifilo",
+      "pdf_bbox_pt": [
+        431.701,
+        112.191,
+        436.765,
+        124.443
+      ],
+      "pdf_center_pt": [
+        434.233,
+        118.317
+      ]
+    },
+    {
+      "id": "text_148",
+      "text": "flipatex",
+      "pdf_bbox_pt": [
+        418.382,
+        110.526,
+        423.446,
+        124.684
+      ],
+      "pdf_center_pt": [
+        420.914,
+        117.605
+      ]
+    },
+    {
+      "id": "text_149",
+      "text": "Unifilo",
+      "pdf_bbox_pt": [
+        441.301,
+        112.191,
+        446.365,
+        124.443
+      ],
+      "pdf_center_pt": [
+        443.833,
+        118.317
+      ]
+    },
+    {
+      "id": "text_150",
+      "text": "messen",
+      "pdf_bbox_pt": [
+        492.182,
+        111.547,
+        496.954,
+        125.519
+      ],
+      "pdf_center_pt": [
+        494.568,
+        118.533
+      ]
+    },
+    {
+      "id": "text_151",
+      "text": "afval afvoeren",
+      "pdf_bbox_pt": [
+        860.427,
+        67.132,
+        867.207,
+        103.562
+      ],
+      "pdf_center_pt": [
+        863.817,
+        85.347
+      ]
+    },
+    {
+      "id": "text_152",
+      "text": "2850",
+      "pdf_bbox_pt": [
+        804.735,
+        195.217,
+        813.321,
+        199.533
+      ],
+      "pdf_center_pt": [
+        809.028,
+        197.375
+      ]
+    },
+    {
+      "id": "text_153",
+      "text": "overkapping voor luchtafvoer optioneel",
+      "pdf_bbox_pt": [
+        690.85,
+        98.66,
+        790.634,
+        105.44
+      ],
+      "pdf_center_pt": [
+        740.742,
+        102.05
+      ]
+    },
+    {
+      "id": "text_154",
+      "text": "data modem",
+      "pdf_bbox_pt": [
+        205.805,
+        434.487,
+        220.077,
+        437.364
+      ],
+      "pdf_center_pt": [
+        212.941,
+        435.926
+      ]
+    },
+    {
+      "id": "text_155",
+      "text": "3061",
+      "pdf_bbox_pt": [
+        1022.015,
+        155.346,
+        1033.006,
+        160.741
+      ],
+      "pdf_center_pt": [
+        1027.51,
+        158.044
+      ]
+    },
+    {
+      "id": "text_156",
+      "text": "3.100 x4.200 Stalen geïsoleerde overheaddeur",
+      "pdf_bbox_pt": [
+        1038.524,
+        213.762,
+        1045.0,
+        259.802
+      ],
+      "pdf_center_pt": [
+        1041.762,
+        236.782
+      ]
+    },
+    {
+      "id": "text_157",
+      "text": "Afm.",
+      "pdf_bbox_pt": [
+        1041.286,
+        243.236,
+        1044.522,
+        249.237
+      ],
+      "pdf_center_pt": [
+        1042.904,
+        246.237
+      ]
+    },
+    {
+      "id": "text_158",
+      "text": "PS",
+      "pdf_bbox_pt": [
+        1045.366,
+        235.851,
+        1048.603,
+        239.756
+      ],
+      "pdf_center_pt": [
+        1046.984,
+        237.804
+      ]
+    }
+  ],
+  "rejected_previous_assumptions": [
+    {
+      "item": "universal 5000/5100 longitudinal pitch",
+      "action": "REJECTED",
+      "reason": "source chains contain 5150, 5100 and local 4110/1950/5350/2650 / 6060/160/5190/1500/1150 intervals"
+    },
+    {
+      "item": "same first-end columns on both long facades",
+      "action": "REJECTED",
+      "reason": "C4a/C5a show facade A local axis 2; facade M local axes 4 and 6; separate exact station sequences are stored"
+    },
+    {
+      "item": "axis 6 full main portal",
+      "action": "REJECTED",
+      "reason": "A3 shows local/partial structure only"
+    },
+    {
+      "item": "full-hall inferred fire walls",
+      "action": "REJECTED",
+      "reason": "current layout + photo show open hall; no such wall is added"
+    },
+    {
+      "item": "previous reconstructed facade opening centres",
+      "action": "NOT_PROMOTED",
+      "reason": "kept out of exact geometry until source vector boundaries / dimension chains provide unambiguous positions"
+    },
+    {
+      "item": "local extension N/O absolute coordinates from prior model",
+      "action": "NOT_PROMOTED",
+      "reason": "requires independent exact tie before inclusion"
+    }
+  ],
+  "pending_inputs": [
+    {
+      "id": "steeldeck_profile",
+      "needed_for": "steeldeck_roof geometry / roof penetration detailing",
+      "status": "PENDING_USER_INPUT"
+    },
+    {
+      "id": "window_frame_profile",
+      "needed_for": "kozijn/window detail",
+      "status": "PENDING_USER_INPUT"
+    },
+    {
+      "id": "sandwich_ceiling_module",
+      "needed_for": "individual ceiling panel seam catalog",
+      "status": "PENDING_COUNT_AGAINST_EXACT_GEOMETRY",
+      "note": "Do not set 1000 mm merely because it is typical."
+    },
+    {
+      "id": "sandwich_wall_module",
+      "needed_for": "individual external wall panel seam catalog",
+      "status": "PENDING_COUNT_AGAINST_EXACT_GEOMETRY"
+    },
+    {
+      "id": "ceiling_layer_z_and_thickness",
+      "needed_for": "3D ceiling surface",
+      "status": "PENDING_SECTION/DETAIL_SOURCE"
+    },
+    {
+      "id": "remaining_equipment_footprints",
+      "needed_for": "exact machine envelopes where only labels are currently unambiguous",
+      "status": "PENDING_VECTOR_ASSOCIATION"
+    }
+  ],
+  "generation_notes": {
+    "FreeCAD": "Generate groups from component parent_id/children. Never auto-copy local A-side station 2 to M or local M-side stations 4/6 to A.",
+    "DXF": "Companion base DXF uses the same client datum and exact reference grid. Equipment label anchors are on a separate layer from confirmed vector footprints.",
+    "future": "Steeldeck and window-frame details can be added as children without changing frozen grid coordinates."
+  }
+}

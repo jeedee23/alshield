@@ -1,0 +1,25 @@
+{
+  "status": "PASS_STATIC_ONLY",
+  "prepared_utc": "2026-09-07T11:28:53.948977+00:00",
+  "python": "3.14.0 (tags/v3.14.0:ebf955d, Oct  7 2025, 10:15:03) [MSC v.1944 64 bit (AMD64)]",
+  "component_nodes": 449,
+  "geometry_nodes_all_modes": 366,
+  "mode_counts": {
+    "WORK": {
+      "active_geometry_nodes": 141,
+      "shape_style_prototypes": 109
+    },
+    "PANELS": {
+      "active_geometry_nodes": 358,
+      "shape_style_prototypes": 304
+    }
+  },
+  "negative_controls": {
+    "wrong_units_rejected": true,
+    "excluded_machine_rejected": true
+  },
+  "source_hashes_match": true,
+  "native_FreeCAD_executed": false,
+  "GUI_executed": false,
+  "notes": "Structure, source byte identity and pure-Python functions only; not a shape/kernel test."
+}
