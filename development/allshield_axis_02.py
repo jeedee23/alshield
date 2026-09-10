@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Add approved A11 axis-1 members to the cumulative development build."""
+"""Add approved A11 axis-2 members to the cumulative development build."""
 from __future__ import annotations
 
 import hashlib
@@ -10,16 +10,16 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-AXIS07_MODULE = Path(__file__).with_name("allshield_axis_07.py")
-CATALOG = Path(__file__).with_name("steel_catalog_axis_01_draft.json")
+AXIS01_MODULE = Path(__file__).with_name("allshield_axis_01.py")
+CATALOG = Path(__file__).with_name("steel_catalog_axis_02_draft.json")
 
 
 def _profile_key(member):
     return member["profile_label"].split("-", 1)[0]
 
 
-def _load_axis07():
-    spec = importlib.util.spec_from_file_location("allshield_axis07_for_axis01", str(AXIS07_MODULE))
+def _load_axis01():
+    spec = importlib.util.spec_from_file_location("allshield_axis01_for_axis02", str(AXIS01_MODULE))
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -28,25 +28,20 @@ def _load_axis07():
 def _load_catalog():
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     if catalog.get("schema") != "allshield.steel-member-catalog.draft.v1":
-        raise ValueError("Unsupported axis-1 catalog schema.")
+        raise ValueError("Unsupported axis-2 catalog schema.")
     expected_profiles = {
-        "A11_01_324": "HEA200",
-        "A11_01_323": "HEA200",
-        "A11_01_341": "IPE300",
-        "A11_01_339": "IPE300",
-        "A11_01_337": "IPE300",
-        "A11_01_338": "IPE300",
-        "A11_01_340": "IPE300",
-        "A11_01_302": "HEA180",
-        "A11_01_303": "HEA180",
+        "A11_02_313": "HEA180",
+        "A11_02_311": "HEA180",
+        "A11_02_312": "HEA180",
+        "A11_02_301": "HEA160",
     }
     members = catalog.get("approved_members", [])
     if {member.get("id") for member in members} != set(expected_profiles):
-        raise ValueError("Axis-1 catalog must contain exactly the nine approved members.")
+        raise ValueError("Axis-2 catalog must contain exactly the four approved members.")
     for member in members:
         member_id = member["id"]
         if member.get("profile_label") != expected_profiles[member_id]:
-            raise ValueError("Unapproved profile in axis-1 solid slice: " + member_id)
+            raise ValueError("Unapproved profile in axis-2 solid slice: " + member_id)
         if member.get("geometry_status") != "APPROVED_FOR_NOMINAL_COORDINATION_SOLID":
             raise ValueError("Member is not approved for nominal solid generation: " + member_id)
         if member_id not in catalog["centreline_definitions_mm"]:
@@ -57,43 +52,32 @@ def _load_catalog():
     return catalog
 
 
-def _nominal_profile_face(axis08, App, Part, profile):
-    face = axis08._ipe_profile_face(App, Part, profile["dimensions_mm"])
-    if profile.get("section_orientation") == "FLANGE_WIDTH_B_IN_A11_ELEVATION_PLANE":
-        face.rotate(App.Vector(0, 0, 0), App.Vector(0, 1, 0), 90)
-    return face
-
-
-def audit_axis_01(doc, catalog, axis07, axis08):
-    """Check the cumulative build and the nine source-derived axis-1 solids."""
+def audit_axis_02(doc, catalog, axis01, axis07, axis08):
+    """Check the cumulative build and four source-derived axis-2 solids."""
     import FreeCAD as App
     import Part
 
-    axis07.audit_axis_07(doc, axis07._load_catalog(), axis08)
-    frame = doc.getObject("Frame_Axis_01")
-    hea_columns = doc.getObject("Axis01_HEA200_Columns")
-    ipe_columns = doc.getObject("Axis01_IPE300_Columns")
-    hea_rafters = doc.getObject("Axis01_HEA180_Rafters")
+    axis01.audit_axis_01(doc, axis01._load_catalog(), axis07, axis08)
+    frame = doc.getObject("Frame_Axis_02")
+    hea180_columns = doc.getObject("Axis02_HEA180_Columns")
+    hea160_horizontal = doc.getObject("Axis02_HEA160_Horizontal")
     portal_frames = doc.getObject("Portal_Frames")
-    if (frame is None or hea_columns is None or ipe_columns is None or
-            hea_rafters is None or portal_frames is None):
-        raise AssertionError("Missing axis-1 portal hierarchy.")
+    if (frame is None or hea180_columns is None or hea160_horizontal is None or
+            portal_frames is None):
+        raise AssertionError("Missing axis-2 portal hierarchy.")
     failures = []
-    if (frame not in portal_frames.Group or hea_columns not in frame.Group or
-            ipe_columns not in frame.Group or hea_rafters not in frame.Group):
-        failures.append("Wrong Frame_Axis_01 parentage.")
+    if (frame not in portal_frames.Group or hea180_columns not in frame.Group or
+            hea160_horizontal not in frame.Group):
+        failures.append("Wrong Frame_Axis_02 parentage.")
     expected_members = {member["id"]: member for member in catalog["approved_members"]}
-    actual_axis01 = {
-        obj.Name for group in (hea_columns, ipe_columns, hea_rafters)
-        for obj in group.Group
-    }
-    if actual_axis01 != set(expected_members):
-        failures.append("Unexpected axis-1 member set: " + repr(sorted(actual_axis01)))
+    actual_axis02 = {obj.Name for obj in doc.Objects if obj.Name.startswith("A11_02_")}
+    if actual_axis02 != set(expected_members):
+        failures.append("Unexpected axis-2 member set: " + repr(sorted(actual_axis02)))
     expected_groups = {
-        "HEA200": hea_columns,
-        "IPE300": ipe_columns,
-        "HEA180": hea_rafters,
+        "HEA180": hea180_columns,
+        "HEA160": hea160_horizontal,
     }
+    change_set = catalog["change_visualisation"]
     rows = []
     for member_id, member in expected_members.items():
         obj = doc.getObject(member_id)
@@ -105,7 +89,6 @@ def audit_axis_01(doc, catalog, axis07, axis08):
             continue
         if obj.EvidenceStatus != catalog["centreline_definitions_mm"]["evidence_status"]:
             failures.append("Incorrect centreline evidence status " + member_id)
-        change_set = catalog["change_visualisation"]
         if obj.ChangeSet != change_set["change_set"]:
             failures.append("Incorrect change-set ID " + member_id)
         if obj.DisplayVisibilityRequested != "VISIBLE":
@@ -114,7 +97,7 @@ def audit_axis_01(doc, catalog, axis07, axis08):
             failures.append("Unexpected LinkTransform=True for " + member_id)
         profile_key = _profile_key(member)
         if obj not in expected_groups[profile_key].Group:
-            failures.append("Member outside expected axis-1 group " + member_id)
+            failures.append("Member outside expected axis-2 group " + member_id)
         shape = Part.getShape(obj)
         if shape.isNull() or not shape.isValid() or not shape.Solids or shape.Volume <= 0:
             failures.append("Invalid or non-solid geometry " + member_id)
@@ -123,7 +106,7 @@ def audit_axis_01(doc, catalog, axis07, axis08):
         end = catalog["centreline_definitions_mm"][member_id]["end"]
         expected_placement, length = axis08._member_placement(App, start, end)
         profile = catalog["nominal_profile_status"][profile_key]
-        nominal_face = _nominal_profile_face(axis08, App, Part, profile)
+        nominal_face = axis01._nominal_profile_face(axis08, App, Part, profile)
         expected = nominal_face.extrude(App.Vector(0, length, 0))
         expected.Placement = expected_placement
         bbox = axis08._bbox(shape)
@@ -135,19 +118,16 @@ def audit_axis_01(doc, catalog, axis07, axis08):
             failures.append("Nominal section volume mismatch %s: %.6f mm3" % (member_id, volume_error))
         if obj.SectionOrientation != profile["section_orientation"]:
             failures.append("Incorrect section orientation metadata " + member_id)
-        if profile_key == "HEA200":
-            if abs((bbox[4] - bbox[1]) - profile["source_projected_in_plane_height_mm"]) > axis08.TOLERANCE_MM:
-                failures.append("HEA200 source-plane height mismatch " + member_id)
-            if abs((bbox[3] - bbox[0]) - profile["dimensions_mm"]["flange_width_b"]) > axis08.TOLERANCE_MM:
-                failures.append("HEA200 out-of-plane flange width mismatch " + member_id)
-        if profile_key == "IPE300":
-            if abs((bbox[4] - bbox[1]) - profile["source_projected_in_plane_width_mm"]) > axis08.TOLERANCE_MM:
-                failures.append("IPE300 source-plane flange width mismatch " + member_id)
-            if abs((bbox[3] - bbox[0]) - profile["dimensions_mm"]["height_h"]) > axis08.TOLERANCE_MM:
-                failures.append("IPE300 out-of-plane section height mismatch " + member_id)
         if profile_key == "HEA180":
+            if abs((bbox[4] - bbox[1]) - profile["source_projected_in_plane_width_mm"]) > axis08.TOLERANCE_MM:
+                failures.append("HEA180 source-plane flange width mismatch " + member_id)
+            if abs((bbox[3] - bbox[0]) - profile["dimensions_mm"]["height_h"]) > axis08.TOLERANCE_MM:
+                failures.append("HEA180 out-of-plane section height mismatch " + member_id)
+        if profile_key == "HEA160":
+            if abs((bbox[5] - bbox[2]) - profile["source_projected_in_plane_height_mm"]) > axis08.TOLERANCE_MM:
+                failures.append("HEA160 source-plane height mismatch " + member_id)
             if abs((bbox[3] - bbox[0]) - profile["dimensions_mm"]["flange_width_b"]) > axis08.TOLERANCE_MM:
-                failures.append("HEA180 out-of-plane flange width mismatch " + member_id)
+                failures.append("HEA160 out-of-plane flange width mismatch " + member_id)
         rows.append({
             "id": member_id,
             "source_mark": member["source_mark"],
@@ -173,38 +153,35 @@ def audit_axis_01(doc, catalog, axis07, axis08):
     return report
 
 
-def build_axis_01(output_dir, detail_mode="WORK"):
-    """Build the validated axis-8/axis-7 slices plus nine axis-1 members."""
+def build_axis_02(output_dir, detail_mode="WORK"):
+    """Build the validated axis-8/axis-7/axis-1 slices plus four axis-2 members."""
     import FreeCAD as App
     import Part
 
     output = Path(output_dir).resolve()
     output.mkdir(parents=True, exist_ok=True)
-    axis07 = _load_axis07()
+    axis01 = _load_axis01()
+    axis07 = axis01._load_axis07()
     axis08 = axis07._load_axis08()
     catalog = _load_catalog()
-    doc = axis07.build_axis_07(output, detail_mode)
+    doc = axis01.build_axis_01(output, detail_mode)
     try:
-        doc.openTransaction("Add approved A11 axis-1 nominal main profiles")
+        doc.openTransaction("Add approved A11 axis-2 nominal HEA members")
         portal_frames = doc.getObject("Portal_Frames")
         library = doc.getObject("Component_Library")
         if portal_frames is None or library is None:
             raise RuntimeError("Cumulative build has no Portal_Frames or Component_Library.")
         frame = axis08._add_group(
-            doc, portal_frames, "Frame_Axis_01", "Frame_Axis_01 | A11 source-based", "VECTOR_MEASUREMENT",
-            "A11 page 1, AANZICHT as-1; only approved HEA200, IPE300 and HEA180 members are nominal coordination solids.",
+            doc, portal_frames, "Frame_Axis_02", "Frame_Axis_02 | A11 source-based", "VECTOR_MEASUREMENT",
+            "A11 page 1, AANZICHT as-2; only approved HEA180 and HEA160 members are nominal coordination solids.",
         )
-        hea_columns = axis08._add_group(
-            doc, frame, "Axis01_HEA200_Columns", "HEA200_Columns", "VECTOR_MEASUREMENT",
-            "Only approved outer columns 324 and 323 from A11/as-1.",
+        hea180_columns = axis08._add_group(
+            doc, frame, "Axis02_HEA180_Columns", "HEA180_Columns", "VECTOR_MEASUREMENT",
+            "Only approved vertical members 313, 311 and 312 from A11/as-2.",
         )
-        ipe_columns = axis08._add_group(
-            doc, frame, "Axis01_IPE300_Columns", "IPE300_Columns", "VECTOR_MEASUREMENT",
-            "Only approved internal vertical members 341, 339, 337, 338 and 340 from A11/as-1.",
-        )
-        hea_rafters = axis08._add_group(
-            doc, frame, "Axis01_HEA180_Rafters", "HEA180_Rafters", "VECTOR_MEASUREMENT",
-            "Only approved roof rafters 302 and 303 from A11/as-1.",
+        hea160_horizontal = axis08._add_group(
+            doc, frame, "Axis02_HEA160_Horizontal", "HEA160_Horizontal", "VECTOR_MEASUREMENT",
+            "Only approved horizontal member 301 from A11/as-2.",
         )
         axis08._add_property(frame, "App::PropertyString", "CatalogPath", str(CATALOG), "Build")
         axis08._add_property(frame, "App::PropertyString", "CatalogSHA256", hashlib.sha256(CATALOG.read_bytes()).hexdigest(), "Build")
@@ -213,7 +190,7 @@ def build_axis_01(output_dir, detail_mode="WORK"):
         axis08._add_property(frame, "App::PropertyString", "ChangeSetJSON", json.dumps(catalog["change_visualisation"], sort_keys=True), "Display")
 
         prototypes = {}
-        groups = {"HEA200": hea_columns, "IPE300": ipe_columns, "HEA180": hea_rafters}
+        groups = {"HEA180": hea180_columns, "HEA160": hea160_horizontal}
         change_set = catalog["change_visualisation"]
         change_colour = tuple(float(component) for component in change_set["rgb"])
         if len(change_colour) != 3 or any(component < 0 or component > 1 for component in change_colour):
@@ -227,11 +204,11 @@ def build_axis_01(output_dir, detail_mode="WORK"):
             profile = catalog["nominal_profile_status"][profile_key]
             prototype_key = "%s_%.6f" % (profile_key, length)
             if prototype_key not in prototypes:
-                shape = _nominal_profile_face(axis08, App, Part, profile).extrude(App.Vector(0, length, 0))
+                shape = axis01._nominal_profile_face(axis08, App, Part, profile).extrude(App.Vector(0, length, 0))
                 if shape.isNull() or not shape.isValid() or not shape.Solids:
                     raise RuntimeError("Invalid nominal %s solid for %s" % (profile_key, prototype_key))
-                prototype = doc.addObject("Part::Feature", "Prototype_Axis01_%s" % prototype_key.replace(".", "_"))
-                prototype.Label = "Prototype | nominal %s | as-1" % profile_key
+                prototype = doc.addObject("Part::Feature", "Prototype_Axis02_%s" % prototype_key.replace(".", "_"))
+                prototype.Label = "Prototype | nominal %s | as-2" % profile_key
                 prototype.Shape = shape
                 prototype.Placement = placement
                 axis08._add_property(prototype, "App::PropertyString", "NominalProfileStandard", profile["source"])
@@ -247,7 +224,7 @@ def build_axis_01(output_dir, detail_mode="WORK"):
                 prototypes[prototype_key] = prototype
             obj = doc.addObject("App::Link", member_id)
             obj.setLink(prototypes[prototype_key])
-            obj.Label = "A11 / as-1 / %s / %s" % (member["source_mark"], member["profile_label"])
+            obj.Label = "A11 / as-2 / %s / %s" % (member["source_mark"], member["profile_label"])
             if "LinkTransform" in obj.PropertiesList:
                 obj.LinkTransform = False
             obj.LinkPlacement = placement
@@ -280,7 +257,7 @@ def build_axis_01(output_dir, detail_mode="WORK"):
         if library_view is not None:
             library_view.Visibility = False
         doc.recompute()
-        audit_axis_01(doc, catalog, axis07, axis08)
+        audit_axis_02(doc, catalog, axis01, axis07, axis08)
         doc.commitTransaction()
         doc.recompute()
         return doc
@@ -293,8 +270,8 @@ def build_axis_01(output_dir, detail_mode="WORK"):
 
 
 def _default_output_dir():
-    return ROOT / "outputs" / ("axis01_manual_" + datetime.now().strftime("%Y%m%d_%H%M%S_%f"))
+    return ROOT / "outputs" / ("axis02_manual_" + datetime.now().strftime("%Y%m%d_%H%M%S_%f"))
 
 
 if __name__ == "__main__":
-    build_axis_01(_default_output_dir())
+    build_axis_02(_default_output_dir())

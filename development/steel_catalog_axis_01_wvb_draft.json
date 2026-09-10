@@ -1,0 +1,151 @@
+{
+  "schema": "allshield.steel-member-catalog.draft.v1",
+  "revision": "2026-09-09-axis01-wvb-source-projection",
+  "scope": "Approved coordination-model inventory for the six explicitly drawn WVB100*7 brace bars in A11/AANZICHT as-1. This is not a fabrication or as-built model.",
+  "change_visualisation": {
+    "change_set": "2026-09-09_axis01_wvb_source_projection",
+    "rgb": [0.1, 0.62, 0.3],
+    "meaning": "Display-only identification of this development change set. It does not describe steel paint, coating, material, construction status or source confidence."
+  },
+  "coordinate_system": {
+    "units": "mm",
+    "station_axis": "1",
+    "client_x_mm": 65160.0,
+    "section_span": "A-D",
+    "reference_component_id": "Section_A11_Axis_1"
+  },
+  "source": {
+    "file": "sources/pdf/a11_ovz-b.pdf",
+    "sheet": "A11",
+    "page": 1,
+    "view": "AANZICHT as-1",
+    "drawing_status": "TER CONTROLE",
+    "evidence_type": "LITERAL_SOURCE_LABELS_AND_SOURCE_PROJECTED_VECTOR_CENTRELINES",
+    "source_projection": {
+      "component_id": "Section_A11_Axis_1",
+      "status": "SOURCE_PROJECTION_NOT_SOLID",
+      "calibration": {
+        "source_x0_pt": 139.28027,
+        "source_z0_pt": 1918.103,
+        "scale_mm_per_pt": 35.294279,
+        "axis_registration_max_residual_mm": 0.001632
+      },
+      "method": "Brace centreline endpoints are the midpoint of the paired source-outline endpoints already projected in Section_A11_Axis_1. Gaps at intermediate rails remain a source-graphic interruption of one continuous labelled brace, not separate members."
+    }
+  },
+  "approved_members": [
+    {
+      "id": "A11_01_WVB400",
+      "source_mark": "400",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "A-B lower bay",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [252, 253],
+      "endpoint_outline_half_width_max_mm": 62.9
+    },
+    {
+      "id": "A11_01_WVB401_ASC",
+      "source_mark": "401",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "B-C bay, ascending towards C",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [254, 255],
+      "endpoint_outline_half_width_max_mm": 66.7
+    },
+    {
+      "id": "A11_01_WVB401_DESC",
+      "source_mark": "401",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "B-C bay, descending towards C",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [313],
+      "endpoint_outline_half_width_max_mm": 66.7
+    },
+    {
+      "id": "A11_01_WVB402",
+      "source_mark": "402",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "C-D upper bay",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [256],
+      "endpoint_outline_half_width_max_mm": 50.0
+    },
+    {
+      "id": "A11_01_WVB399",
+      "source_mark": "399",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "C-D lower bay",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [257, 258],
+      "endpoint_outline_half_width_max_mm": 62.4
+    },
+    {
+      "id": "A11_01_WVB403",
+      "source_mark": "403",
+      "profile_label": "WVB100*7",
+      "role": "wall_wind_brace",
+      "location": "A-B upper bay",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID",
+      "direct_pdf_path_indices": [259],
+      "endpoint_outline_half_width_max_mm": 50.0
+    }
+  ],
+  "nominal_profile_status": {
+    "WVB100*7": {
+      "source": "Literal A11 WVB100*7 member label",
+      "dimensions_mm": {
+        "width_in_A11_elevation_plane": 100.0,
+        "thickness_out_of_A11_elevation_plane": 7.0
+      },
+      "section_orientation": "FLAT_BAR_WIDTH_IN_A11_ELEVATION_PLANE",
+      "representation": "Nominal 100x7 rectangular flat-bar solid for coordination. End connections, bolts, gusset plates, tension state, material grade and fabrication details are excluded."
+    }
+  },
+  "centreline_definitions_mm": {
+    "method": "Each endpoint is the midpoint of the two source-outline extremities for one visibly continuous, explicitly labelled WVB bar in the calibrated A11/as-1 source projection. The stated per-member margin is the largest half separation of the paired outline endpoints; it is source-projection uncertainty, not an as-built survey tolerance.",
+    "evidence_status": "VECTOR_MEASUREMENT",
+    "section_orientation": "A11/as-1 is a YZ elevation at X=65160 mm. The flat-bar width is in the elevation plane and its 7-mm thickness is out of plane along X.",
+    "A11_01_WVB400": {
+      "start": [65160.0, 262.85674, -105.1428545],
+      "end": [65160.0, 4316.6425865, 3948.160453],
+      "derivation": "Midpoint of source-outline endpoints from projected PDF paths 252/253: start [Y=275.715110/Z=-162.991517] and [Y=249.998370/Z=-47.294192]; end [Y=4325.000850/Z=3885.811684] and [Y=4308.284323/Z=4010.509222]."
+    },
+    "A11_01_WVB401_ASC": {
+      "start": [65160.0, 4498.053528, 4097.2499025],
+      "end": [65160.0, 8660.5571185, 6888.0159525],
+      "derivation": "Midpoint of paired source-outline endpoints from projected PDF paths 254/255."
+    },
+    "A11_01_WVB401_DESC": {
+      "start": [65160.0, 4539.4441665, 6888.0159525],
+      "end": [65160.0, 8701.9456025, 4097.2499025],
+      "derivation": "Midpoint of paired source-outline endpoints from projected PDF path 313. The repeated source mark 401 is retained for this separately drawn physical bar."
+    },
+    "A11_01_WVB402": {
+      "start": [65160.0, 8902.08724, 7044.969279],
+      "end": [65160.0, 13046.329748, 9621.3383285],
+      "derivation": "Midpoint of paired source-outline endpoints from projected PDF path 256."
+    },
+    "A11_01_WVB399": {
+      "start": [65160.0, 8884.2763835, 3949.8838065],
+      "end": [65160.0, 13067.046609, -101.089743],
+      "derivation": "Midpoint of source-outline endpoints from projected PDF paths 257/258, preserving the graphic interruption at intermediate rails as one continuous brace."
+    },
+    "A11_01_WVB403": {
+      "start": [65160.0, 312.9718545, 8951.617379],
+      "end": [65160.0, 4262.9989065, 7047.546769],
+      "derivation": "Midpoint of paired source-outline endpoints from projected PDF path 259."
+    }
+  },
+  "explicitly_not_inferred": [
+    "No WVB, K, CN, secondary-steel or brace member outside the six explicitly drawn bars is included.",
+    "No unobserved counterpart is mirrored or repeated from the WVB400, WVB401, WVB402, WVB399 or WVB403 patterns.",
+    "No brace is placed at any station other than A11/as-1 X=65160 mm.",
+    "No connections, bolts, gusset plates, cleats, stiffeners, rail interruptions or member overlap at crossings is modelled.",
+    "The source drawing and projection prove nominal configuration, not an as-built survey or fabrication definition."
+  ]
+}

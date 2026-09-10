@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+"""Create a fresh GUI-rendered review document for approved A11/as-5 members."""
+from pathlib import Path
+from datetime import datetime
+import importlib.util
+import json
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+
+ROOT_OVERRIDE = ''
+
+
+def _load_axis05(root):
+    path = root / 'development' / 'allshield_axis_05.py'
+    spec = importlib.util.spec_from_file_location('allshield_axis05_gui_review', str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _style_link(link, colour):
+    prototype_view = getattr(link.LinkedObject, 'ViewObject', None)
+    link_view = getattr(link, 'ViewObject', None)
+    if prototype_view is None or link_view is None:
+        raise AssertionError('Missing view provider for ' + link.Name)
+    for key, value in (('ShapeColor', colour), ('LineColor', colour), ('Transparency', 0)):
+        if key in prototype_view.PropertiesList:
+            setattr(prototype_view, key, value)
+    for view in (prototype_view, link_view):
+        if 'Flat Lines' in view.listDisplayModes():
+            view.DisplayMode = 'Flat Lines'
+    prototype_view.Visibility = False
+    link_view.Visibility = True
+    return tuple(float(value) for value in prototype_view.ShapeColor)
+
+
+def main():
+    if not getattr(App, 'GuiUp', False):
+        raise RuntimeError('Run this macro with the full FreeCAD GUI, not FreeCADCmd.')
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    if not (root / 'development' / 'allshield_axis_05.py').is_file():
+        raise FileNotFoundError('Set ROOT_OVERRIDE to the Allshield workspace root.')
+    out = root / 'outputs' / ('gui_axis05_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    axis05 = _load_axis05(root)
+    catalog = axis05._load_catalog()
+    doc = axis05.build_axis_05(out)
+    required_ids = ('A11_05_358', 'A11_05_353', 'A11_05_316', 'A11_05_319', 'A11_05_347', 'A11_05_348')
+    colour = tuple(float(value) for value in catalog['change_visualisation']['rgb'])
+    colour_checks = {}
+    for object_id in required_ids:
+        obj = doc.getObject(object_id)
+        if obj is None:
+            raise AssertionError('Missing review member ' + object_id)
+        actual = _style_link(obj, colour)
+        colour_checks[object_id] = {'requested_rgb': list(colour), 'prototype_rgb_after_apply': list(actual[:3]), 'property_roundtrip_matches': all(abs(actual[index] - colour[index]) <= 1.0 / 255.0 for index in range(3))}
+    library = doc.getObject('Component_Library')
+    if library is None:
+        raise AssertionError('Missing Component_Library.')
+    library.ViewObject.Visibility = False
+    for prototype in library.Group:
+        prototype.ViewObject.Visibility = False
+    doc.recompute()
+    active_view = Gui.activeDocument().activeView()
+    active_view.viewAxonometric()
+    active_view.fitAll()
+    Gui.updateGui()
+    screenshot = out / 'Axis05_GUI_colour_review.png'
+    active_view.saveImage(str(screenshot), 1800, 1200, 'Current')
+    target = out / 'Axis05_GUI_colour_review.FCStd'
+    doc.saveAs(str(target))
+    report = {'status': 'GUI_COLOUR_REVIEW_READY', 'fcstd': str(target), 'screenshot': str(screenshot), 'change_set': catalog['change_visualisation']['change_set'], 'visible_members': list(required_ids), 'draw_style': 'Flat Lines', 'colour_property_checks': colour_checks, 'colour_property_roundtrip_all_match': all(check['property_roundtrip_matches'] for check in colour_checks.values()), 'manual_visual_review_required': True, 'as_built_verified': False, 'fabrication_model': False}
+    (out / 'gui_axis05_colour_review.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    App.Console.PrintMessage('Axis-5 GUI colour review: ' + str(out) + '\n')
+    App.closeDocument(doc.Name)
+    Gui.getMainWindow().close()
+
+
+main()

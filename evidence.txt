@@ -1,0 +1,1288 @@
+﻿warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+
+### model/allshield_building_02.json
+/sources/0 id='c4a' | filename='c04a_gevels.pdf' | sha256='1f4af215ff58087125339029a950113a4cda1819f6a5c2bebd53a6422df37fa0' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/1 id='a11' | filename='a11_ovz-b.pdf' | sha256='377a91cdfd02d63ae0a422e9eabf5369dcaca4e61a740a9b6050c1e3497303b4' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/2 id='a03' | filename='a03_ovz-a.pdf' | sha256='681c8bab8c01b9c3fe7700ea46bb3bad8e700fe34144cc7a215d37436ae38d7f' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/3 id='architecture' | filename='44449_Logivast_07maart2025(1).pdf' | sha256='77e7f34408ff5531fcd2684b5f489eb10ab9e2deb506fbc30a0778c72bf1fe46' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/4 id='current_plan' | filename='20260522 ter Aar Indeling totaal (002).pdf' | sha256='192409574ae602b08c7c6dc52b0cb9d19b4e191267e6a1aa6ec45a66e830042e' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/5 id='reference_v02' | filename='allshield_building_reference_v0_2.json' | sha256='8216ede415de97a98e1f2c6e011b4166da10a9ff58719e183304871b9b7774c0' | note='Source drawing/model evidence; not certified as-built measurements.'
+/sources/6 id='profile_evidence_v03' | filename='allshield_roof_window_source_evidence_v0_3.json' | sha256='76be63c579632e8fe2719be80be7b27fb44f3a772f7a275e6d009c2ec5276715' | note='Source drawing/model evidence; not certified as-built measurements.'
+/components/0 id='Building' | name='Building' | parent_id=None | category='building' | status='SOURCE_GEOMETRY'
+/components/1 id='Reference_System' | name='Reference_System' | parent_id='Building' | category='reference' | status='SOURCE_GEOMETRY'
+/components/2 id='Structure' | name='Structure' | parent_id='Building' | category='building' | status='SOURCE_GEOMETRY'
+/components/3 id='Steel_Source_Sections' | name='Steel_Source_Sections' | parent_id='Structure' | category='steel_source' | status='SOURCE_PROJECTIONS_NOT_SOLIDS'
+/components/4 id='Unresolved_Steel' | name='Unresolved_Steel' | parent_id='Structure' | category='building' | status='PENDING'
+/components/5 id='Envelope' | name='Envelope' | parent_id='Building' | category='building' | status='SOURCE_GEOMETRY'
+/components/6 id='Floor' | name='Floor' | parent_id='Envelope' | category='floor' | status='SOURCE_GEOMETRY'
+/components/7 id='Roof' | name='Roof' | parent_id='Envelope' | category='roof' | status='SOURCE_GEOMETRY'
+/components/8 id='Roof_Cladding' | name='Roof_Cladding' | parent_id='Roof' | category='roof' | status='SOURCE_GEOMETRY'
+/components/9 id='SteelDeck' | name='SteelDeck' | parent_id='Roof_Cladding' | category='roof' | status='SOURCE_GEOMETRY'
+/components/10 id='Ceiling' | name='Ceiling' | parent_id='Roof' | category='ceiling' | status='SOURCE_GEOMETRY'
+/components/11 id='Sandwich_Ceiling' | name='Sandwich_Ceiling' | parent_id='Ceiling' | category='ceiling' | status='SOURCE_GEOMETRY'
+/components/12 id='Facades' | name='Facades' | parent_id='Envelope' | category='facade' | status='SOURCE_GEOMETRY'
+/components/13 id='Existing_Equipment' | name='Existing_Equipment' | parent_id='Building' | category='equipment' | status='SOURCE_GEOMETRY'
+/components/14 id='Equipment_Footprints' | name='Equipment_Footprints' | parent_id='Existing_Equipment' | category='equipment' | status='SOURCE_GEOMETRY'
+/components/15 id='Source_Elevations' | name='Source_Elevations' | parent_id='Reference_System' | category='source_elevation' | status='SOURCE_GEOMETRY'
+/components/16 id='Internal_Buildings' | name='Internal_Buildings' | parent_id='Building' | category='building' | status='PENDING_CURRENT_LAYOUT_EXTRACTION'
+/components/17 id='Existing_Services' | name='Existing_Services' | parent_id='Building' | category='building' | status='PENDING_3D_ROUTES'
+/components/18 id='Floor_Slab' | name='Floor_Slab' | parent_id='Floor' | category='floor' | status='SOURCE_GEOMETRY'
+/components/19 id='Architectural_Grid' | name='Architectural_Grid' | parent_id='Reference_System' | category='reference' | status='EXACT_DIMENSION' | note='Reference axes only. A grid crossing does not prove presence of a steel column.'
+/components/20 id='Datum_21_A' | name='Datum_21_A' | parent_id='Reference_System' | category='datum' | status='USER_CONFIRMED' | note='Axis marker lengths are display settings, not building dimensions.'
+/components/21 id='Sandwich_Ceiling_A_to_Ridge1' | name='Sandwich_Ceiling_A_to_Ridge1' | parent_id='Sandwich_Ceiling' | category='ceiling' | status='DRAWING_BASED_ENVELOPE' | note='Bulk envelope of sandwich assembly from underside to trough. Not a metal/insulation material take-off.'
+/components/22 id='SteelDeck_Envelope_A_to_Ridge1' | name='SteelDeck_Envelope_A_to_Ridge1' | parent_id='SteelDeck' | category='roof' | status='REFERENCE_ENVELOPE' | note='Zero-thickness crest-envelope surface in WORK/PANELS. It is not a flat physical sheet and not valid for sheet mass. Actual rib start offset is still unknown.'
+/components/23 id='Sandwich_Ceiling_Ridge1_to_E' | name='Sandwich_Ceiling_Ridge1_to_E' | parent_id='Sandwich_Ceiling' | category='ceiling' | status='DRAWING_BASED_ENVELOPE' | note='Bulk envelope of sandwich assembly from underside to trough. Not a metal/insulation material take-off.'
+/components/24 id='SteelDeck_Envelope_Ridge1_to_E' | name='SteelDeck_Envelope_Ridge1_to_E' | parent_id='SteelDeck' | category='roof' | status='REFERENCE_ENVELOPE' | note='Zero-thickness crest-envelope surface in WORK/PANELS. It is not a flat physical sheet and not valid for sheet mass. Actual rib start offset is still unknown.'
+/components/25 id='Sandwich_Ceiling_F_to_Ridge2' | name='Sandwich_Ceiling_F_to_Ridge2' | parent_id='Sandwich_Ceiling' | category='ceiling' | status='DRAWING_BASED_ENVELOPE' | note='Bulk envelope of sandwich assembly from underside to trough. Not a metal/insulation material take-off.'
+/components/26 id='SteelDeck_Envelope_F_to_Ridge2' | name='SteelDeck_Envelope_F_to_Ridge2' | parent_id='SteelDeck' | category='roof' | status='REFERENCE_ENVELOPE' | note='Zero-thickness crest-envelope surface in WORK/PANELS. It is not a flat physical sheet and not valid for sheet mass. Actual rib start offset is still unknown.'
+/components/27 id='Sandwich_Ceiling_Ridge2_to_M' | name='Sandwich_Ceiling_Ridge2_to_M' | parent_id='Sandwich_Ceiling' | category='ceiling' | status='DRAWING_BASED_ENVELOPE' | note='Bulk envelope of sandwich assembly from underside to trough. Not a metal/insulation material take-off.'
+/components/28 id='SteelDeck_Envelope_Ridge2_to_M' | name='SteelDeck_Envelope_Ridge2_to_M' | parent_id='SteelDeck' | category='roof' | status='REFERENCE_ENVELOPE' | note='Zero-thickness crest-envelope surface in WORK/PANELS. It is not a flat physical sheet and not valid for sheet mass. Actual rib start offset is still unknown.'
+/components/29 id='Facade_A' | name='Facade_A' | parent_id='Facades' | category='facade' | status='SOURCE_GEOMETRY'
+/components/30 id='Facade_A_Sandwich_Wall' | name='Sandwich_Wall' | parent_id='Facade_A' | category='facade' | status='SOURCE_GEOMETRY'
+/components/31 id='Facade_A_Plinth' | name='Plinth' | parent_id='Facade_A' | category='facade' | status='SOURCE_GEOMETRY'
+/components/32 id='Facade_A_Openings' | name='Openings' | parent_id='Facade_A' | category='facade' | status='SOURCE_GEOMETRY'
+/components/33 id='Facade_A_Source_Elevation' | name='Source_Elevation_A' | parent_id='Source_Elevations' | category='source_elevation' | status='SOURCE_PROJECTION' | note='Projected facade linework, not an inferred depth model.'
+/components/34 id='Facade_A_High_Window_01' | name='High_Window_01' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/35 id='Facade_A_High_Window_01_Opening' | name='Opening_Reference' | parent_id='Facade_A_High_Window_01' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/36 id='Facade_A_High_Window_01_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_High_Window_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/37 id='Facade_A_High_Window_01_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_High_Window_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/38 id='Facade_A_High_Window_01_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_High_Window_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/39 id='Facade_A_Door_and_Overlight_01' | name='Door_and_Overlight_01' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/40 id='Facade_A_Door_and_Overlight_01_Opening' | name='Opening_Reference' | parent_id='Facade_A_Door_and_Overlight_01' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/41 id='Facade_A_Door_and_Overlight_01_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_Door_and_Overlight_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/42 id='Facade_A_Door_and_Overlight_01_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_Door_and_Overlight_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/43 id='Facade_A_Door_and_Overlight_01_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_Door_and_Overlight_01' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/44 id='Facade_A_High_Window_02' | name='High_Window_02' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/45 id='Facade_A_High_Window_02_Opening' | name='Opening_Reference' | parent_id='Facade_A_High_Window_02' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/46 id='Facade_A_High_Window_02_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_High_Window_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/47 id='Facade_A_High_Window_02_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_High_Window_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/48 id='Facade_A_High_Window_02_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_High_Window_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/49 id='Facade_A_Door_and_Overlight_02' | name='Door_and_Overlight_02' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/50 id='Facade_A_Door_and_Overlight_02_Opening' | name='Opening_Reference' | parent_id='Facade_A_Door_and_Overlight_02' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/51 id='Facade_A_Door_and_Overlight_02_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_Door_and_Overlight_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/52 id='Facade_A_Door_and_Overlight_02_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_Door_and_Overlight_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/53 id='Facade_A_Door_and_Overlight_02_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_Door_and_Overlight_02' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/54 id='Facade_A_High_Window_03' | name='High_Window_03' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/55 id='Facade_A_High_Window_03_Opening' | name='Opening_Reference' | parent_id='Facade_A_High_Window_03' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/56 id='Facade_A_High_Window_03_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_High_Window_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/57 id='Facade_A_High_Window_03_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_High_Window_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/58 id='Facade_A_High_Window_03_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_High_Window_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/59 id='Facade_A_Door_and_Overlight_03' | name='Door_and_Overlight_03' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/60 id='Facade_A_Door_and_Overlight_03_Opening' | name='Opening_Reference' | parent_id='Facade_A_Door_and_Overlight_03' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/61 id='Facade_A_Door_and_Overlight_03_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_Door_and_Overlight_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/62 id='Facade_A_Door_and_Overlight_03_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_Door_and_Overlight_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/63 id='Facade_A_Door_and_Overlight_03_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_Door_and_Overlight_03' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/64 id='Facade_A_High_Window_04' | name='High_Window_04' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/65 id='Facade_A_High_Window_04_Opening' | name='Opening_Reference' | parent_id='Facade_A_High_Window_04' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/66 id='Facade_A_High_Window_04_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_High_Window_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/67 id='Facade_A_High_Window_04_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_High_Window_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/68 id='Facade_A_High_Window_04_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_High_Window_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/69 id='Facade_A_Door_and_Overlight_04' | name='Door_and_Overlight_04' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/70 id='Facade_A_Door_and_Overlight_04_Opening' | name='Opening_Reference' | parent_id='Facade_A_Door_and_Overlight_04' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/71 id='Facade_A_Door_and_Overlight_04_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_Door_and_Overlight_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/72 id='Facade_A_Door_and_Overlight_04_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_Door_and_Overlight_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/73 id='Facade_A_Door_and_Overlight_04_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_Door_and_Overlight_04' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/74 id='Facade_A_High_Window_05' | name='High_Window_05' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/75 id='Facade_A_High_Window_05_Opening' | name='Opening_Reference' | parent_id='Facade_A_High_Window_05' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/76 id='Facade_A_High_Window_05_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_High_Window_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/77 id='Facade_A_High_Window_05_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_High_Window_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/78 id='Facade_A_High_Window_05_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_High_Window_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/79 id='Facade_A_Door_and_Overlight_05' | name='Door_and_Overlight_05' | parent_id='Facade_A_Openings' | category='facade' | status='DRAWING_SOURCE_NOT_AS_BUILT'
+/components/80 id='Facade_A_Door_and_Overlight_05_Opening' | name='Opening_Reference' | parent_id='Facade_A_Door_and_Overlight_05' | category='facade' | status='SOURCE_GEOMETRY' | note='Outer drawing opening, not clear glazing. The separate plan label 980x4000 has not been substituted.' | material_role='frame'
+/components/81 id='Facade_A_Door_and_Overlight_05_Window_Frame' | name='Window_Frame' | parent_id='Facade_A_Door_and_Overlight_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/82 id='Facade_A_Door_and_Overlight_05_Exterior_Flashings' | name='Exterior_Flashings' | parent_id='Facade_A_Door_and_Overlight_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/83 id='Facade_A_Door_and_Overlight_05_Interior_Reveal' | name='Interior_Reveal' | parent_id='Facade_A_Door_and_Overlight_05' | category='facade' | status='PENDING_DEPTH_DETAIL'
+/components/84 id='Facade_A_Glass_Projection_01' | name='Glass_Projection_01' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/85 id='Facade_A_Glass_Projection_02' | name='Glass_Projection_02' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/86 id='Facade_A_Glass_Projection_03' | name='Glass_Projection_03' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/87 id='Facade_A_Glass_Projection_04' | name='Glass_Projection_04' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/88 id='Facade_A_Glass_Projection_05' | name='Glass_Projection_05' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/89 id='Facade_A_Glass_Projection_06' | name='Glass_Projection_06' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/90 id='Facade_A_Glass_Projection_07' | name='Glass_Projection_07' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/91 id='Facade_A_Glass_Projection_08' | name='Glass_Projection_08' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/92 id='Facade_A_Glass_Projection_09' | name='Glass_Projection_09' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/93 id='Facade_A_Glass_Projection_10' | name='Glass_Projection_10' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/94 id='Facade_A_Door_Projection_11' | name='Door_Projection_11' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='door' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/95 id='Facade_A_Door_Projection_12' | name='Door_Projection_12' | parent_id='Facade_A_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='door' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/96 id='Facade_A_Wall_WORK' | name='Facade_A_Wall_WORK' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall'
+/components/97 id='Facade_A_Panel_001' | name='Facade_A_Panel_001' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/98 id='Facade_A_Panel_002' | name='Facade_A_Panel_002' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/99 id='Facade_A_Panel_003' | name='Facade_A_Panel_003' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/100 id='Facade_A_Panel_004' | name='Facade_A_Panel_004' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/101 id='Facade_A_Panel_005' | name='Facade_A_Panel_005' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/102 id='Facade_A_Panel_006' | name='Facade_A_Panel_006' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/103 id='Facade_A_Panel_007' | name='Facade_A_Panel_007' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/104 id='Facade_A_Panel_008' | name='Facade_A_Panel_008' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/105 id='Facade_A_Panel_009' | name='Facade_A_Panel_009' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/106 id='Facade_A_Panel_010' | name='Facade_A_Panel_010' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/107 id='Facade_A_Panel_011' | name='Facade_A_Panel_011' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/108 id='Facade_A_Panel_012' | name='Facade_A_Panel_012' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/109 id='Facade_A_Panel_013' | name='Facade_A_Panel_013' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/110 id='Facade_A_Panel_014' | name='Facade_A_Panel_014' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/111 id='Facade_A_Panel_015' | name='Facade_A_Panel_015' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/112 id='Facade_A_Panel_016' | name='Facade_A_Panel_016' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/113 id='Facade_A_Panel_017' | name='Facade_A_Panel_017' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/114 id='Facade_A_Panel_018' | name='Facade_A_Panel_018' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/115 id='Facade_A_Panel_019' | name='Facade_A_Panel_019' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/116 id='Facade_A_Panel_020' | name='Facade_A_Panel_020' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/117 id='Facade_A_Panel_021' | name='Facade_A_Panel_021' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/118 id='Facade_A_Panel_022' | name='Facade_A_Panel_022' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/119 id='Facade_A_Panel_023' | name='Facade_A_Panel_023' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/120 id='Facade_A_Panel_024' | name='Facade_A_Panel_024' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/121 id='Facade_A_Panel_025' | name='Facade_A_Panel_025' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/122 id='Facade_A_Panel_026' | name='Facade_A_Panel_026' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/123 id='Facade_A_Panel_027' | name='Facade_A_Panel_027' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/124 id='Facade_A_Panel_028' | name='Facade_A_Panel_028' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/125 id='Facade_A_Panel_029' | name='Facade_A_Panel_029' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/126 id='Facade_A_Panel_030' | name='Facade_A_Panel_030' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/127 id='Facade_A_Panel_031' | name='Facade_A_Panel_031' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/128 id='Facade_A_Panel_032' | name='Facade_A_Panel_032' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/129 id='Facade_A_Panel_033' | name='Facade_A_Panel_033' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/130 id='Facade_A_Panel_034' | name='Facade_A_Panel_034' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/131 id='Facade_A_Panel_035' | name='Facade_A_Panel_035' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/132 id='Facade_A_Panel_036' | name='Facade_A_Panel_036' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/133 id='Facade_A_Panel_037' | name='Facade_A_Panel_037' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/134 id='Facade_A_Panel_038' | name='Facade_A_Panel_038' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/135 id='Facade_A_Panel_039' | name='Facade_A_Panel_039' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/136 id='Facade_A_Panel_040' | name='Facade_A_Panel_040' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/137 id='Facade_A_Panel_041' | name='Facade_A_Panel_041' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/138 id='Facade_A_Panel_042' | name='Facade_A_Panel_042' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/139 id='Facade_A_Panel_043' | name='Facade_A_Panel_043' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/140 id='Facade_A_Panel_044' | name='Facade_A_Panel_044' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/141 id='Facade_A_Panel_045' | name='Facade_A_Panel_045' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/142 id='Facade_A_Panel_046' | name='Facade_A_Panel_046' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/143 id='Facade_A_Panel_047' | name='Facade_A_Panel_047' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/144 id='Facade_A_Panel_048' | name='Facade_A_Panel_048' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/145 id='Facade_A_Panel_049' | name='Facade_A_Panel_049' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/146 id='Facade_A_Panel_050' | name='Facade_A_Panel_050' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/147 id='Facade_A_Panel_051' | name='Facade_A_Panel_051' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/148 id='Facade_A_Panel_052' | name='Facade_A_Panel_052' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/149 id='Facade_A_Panel_053' | name='Facade_A_Panel_053' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/150 id='Facade_A_Panel_054' | name='Facade_A_Panel_054' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/151 id='Facade_A_Panel_055' | name='Facade_A_Panel_055' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/152 id='Facade_A_Panel_056' | name='Facade_A_Panel_056' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/153 id='Facade_A_Panel_057' | name='Facade_A_Panel_057' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/154 id='Facade_A_Panel_058' | name='Facade_A_Panel_058' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/155 id='Facade_A_Panel_059' | name='Facade_A_Panel_059' | parent_id='Facade_A_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/156 id='Facade_A_Concrete_Plinth_1' | name='Facade_A_Concrete_Plinth_1' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/157 id='Facade_A_Concrete_Plinth_2' | name='Facade_A_Concrete_Plinth_2' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/158 id='Facade_A_Concrete_Plinth_3' | name='Facade_A_Concrete_Plinth_3' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/159 id='Facade_A_Concrete_Plinth_4' | name='Facade_A_Concrete_Plinth_4' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/160 id='Facade_A_Concrete_Plinth_5' | name='Facade_A_Concrete_Plinth_5' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/161 id='Facade_A_Concrete_Plinth_6' | name='Facade_A_Concrete_Plinth_6' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/162 id='Facade_A_Concrete_Plinth_7' | name='Facade_A_Concrete_Plinth_7' | parent_id='Facade_A_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/163 id='Facade_M' | name='Facade_M' | parent_id='Facades' | category='facade' | status='SOURCE_GEOMETRY'
+/components/164 id='Facade_M_Sandwich_Wall' | name='Sandwich_Wall' | parent_id='Facade_M' | category='facade' | status='SOURCE_GEOMETRY'
+/components/165 id='Facade_M_Plinth' | name='Plinth' | parent_id='Facade_M' | category='facade' | status='SOURCE_GEOMETRY'
+/components/166 id='Facade_M_Openings' | name='Openings' | parent_id='Facade_M' | category='facade' | status='SOURCE_GEOMETRY'
+/components/167 id='Facade_M_Source_Elevation' | name='Source_Elevation_M' | parent_id='Source_Elevations' | category='source_elevation' | status='SOURCE_PROJECTION' | note='Projected facade linework, not an inferred depth model.'
+/components/168 id='Facade_M_Glass_Projection_01' | name='Glass_Projection_01' | parent_id='Facade_M_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/169 id='Facade_M_Glass_Projection_02' | name='Glass_Projection_02' | parent_id='Facade_M_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/170 id='Facade_M_Glass_Projection_03' | name='Glass_Projection_03' | parent_id='Facade_M_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/171 id='Facade_M_Glass_Projection_04' | name='Glass_Projection_04' | parent_id='Facade_M_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/172 id='Facade_M_Wall_WORK' | name='Facade_M_Wall_WORK' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall'
+/components/173 id='Facade_M_Panel_001' | name='Facade_M_Panel_001' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/174 id='Facade_M_Panel_002' | name='Facade_M_Panel_002' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/175 id='Facade_M_Panel_003' | name='Facade_M_Panel_003' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/176 id='Facade_M_Panel_004' | name='Facade_M_Panel_004' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/177 id='Facade_M_Panel_005' | name='Facade_M_Panel_005' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/178 id='Facade_M_Panel_006' | name='Facade_M_Panel_006' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/179 id='Facade_M_Panel_007' | name='Facade_M_Panel_007' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/180 id='Facade_M_Panel_008' | name='Facade_M_Panel_008' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/181 id='Facade_M_Panel_009' | name='Facade_M_Panel_009' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/182 id='Facade_M_Panel_010' | name='Facade_M_Panel_010' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/183 id='Facade_M_Panel_011' | name='Facade_M_Panel_011' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/184 id='Facade_M_Panel_012' | name='Facade_M_Panel_012' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/185 id='Facade_M_Panel_013' | name='Facade_M_Panel_013' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/186 id='Facade_M_Panel_014' | name='Facade_M_Panel_014' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/187 id='Facade_M_Panel_015' | name='Facade_M_Panel_015' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/188 id='Facade_M_Panel_016' | name='Facade_M_Panel_016' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/189 id='Facade_M_Panel_017' | name='Facade_M_Panel_017' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/190 id='Facade_M_Panel_018' | name='Facade_M_Panel_018' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/191 id='Facade_M_Panel_019' | name='Facade_M_Panel_019' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/192 id='Facade_M_Panel_020' | name='Facade_M_Panel_020' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/193 id='Facade_M_Panel_021' | name='Facade_M_Panel_021' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/194 id='Facade_M_Panel_022' | name='Facade_M_Panel_022' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/195 id='Facade_M_Panel_023' | name='Facade_M_Panel_023' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/196 id='Facade_M_Panel_024' | name='Facade_M_Panel_024' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/197 id='Facade_M_Panel_025' | name='Facade_M_Panel_025' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/198 id='Facade_M_Panel_026' | name='Facade_M_Panel_026' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/199 id='Facade_M_Panel_027' | name='Facade_M_Panel_027' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/200 id='Facade_M_Panel_028' | name='Facade_M_Panel_028' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/201 id='Facade_M_Panel_029' | name='Facade_M_Panel_029' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/202 id='Facade_M_Panel_030' | name='Facade_M_Panel_030' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/203 id='Facade_M_Panel_031' | name='Facade_M_Panel_031' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/204 id='Facade_M_Panel_032' | name='Facade_M_Panel_032' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/205 id='Facade_M_Panel_033' | name='Facade_M_Panel_033' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/206 id='Facade_M_Panel_034' | name='Facade_M_Panel_034' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/207 id='Facade_M_Panel_035' | name='Facade_M_Panel_035' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/208 id='Facade_M_Panel_036' | name='Facade_M_Panel_036' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/209 id='Facade_M_Panel_037' | name='Facade_M_Panel_037' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/210 id='Facade_M_Panel_038' | name='Facade_M_Panel_038' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/211 id='Facade_M_Panel_039' | name='Facade_M_Panel_039' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/212 id='Facade_M_Panel_040' | name='Facade_M_Panel_040' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/213 id='Facade_M_Panel_041' | name='Facade_M_Panel_041' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/214 id='Facade_M_Panel_042' | name='Facade_M_Panel_042' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/215 id='Facade_M_Panel_043' | name='Facade_M_Panel_043' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/216 id='Facade_M_Panel_044' | name='Facade_M_Panel_044' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/217 id='Facade_M_Panel_045' | name='Facade_M_Panel_045' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/218 id='Facade_M_Panel_046' | name='Facade_M_Panel_046' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/219 id='Facade_M_Panel_047' | name='Facade_M_Panel_047' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/220 id='Facade_M_Panel_048' | name='Facade_M_Panel_048' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/221 id='Facade_M_Panel_049' | name='Facade_M_Panel_049' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/222 id='Facade_M_Panel_050' | name='Facade_M_Panel_050' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/223 id='Facade_M_Panel_051' | name='Facade_M_Panel_051' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/224 id='Facade_M_Panel_052' | name='Facade_M_Panel_052' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/225 id='Facade_M_Panel_053' | name='Facade_M_Panel_053' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/226 id='Facade_M_Panel_054' | name='Facade_M_Panel_054' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/227 id='Facade_M_Panel_055' | name='Facade_M_Panel_055' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/228 id='Facade_M_Panel_056' | name='Facade_M_Panel_056' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/229 id='Facade_M_Panel_057' | name='Facade_M_Panel_057' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/230 id='Facade_M_Panel_058' | name='Facade_M_Panel_058' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/231 id='Facade_M_Panel_059' | name='Facade_M_Panel_059' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/232 id='Facade_M_Panel_060' | name='Facade_M_Panel_060' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/233 id='Facade_M_Panel_061' | name='Facade_M_Panel_061' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/234 id='Facade_M_Panel_062' | name='Facade_M_Panel_062' | parent_id='Facade_M_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/235 id='Facade_M_Concrete_Plinth' | name='Facade_M_Concrete_Plinth' | parent_id='Facade_M_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/236 id='Facade_1' | name='Facade_1' | parent_id='Facades' | category='facade' | status='SOURCE_GEOMETRY'
+/components/237 id='Facade_1_Sandwich_Wall' | name='Sandwich_Wall' | parent_id='Facade_1' | category='facade' | status='SOURCE_GEOMETRY'
+/components/238 id='Facade_1_Plinth' | name='Plinth' | parent_id='Facade_1' | category='facade' | status='SOURCE_GEOMETRY'
+/components/239 id='Facade_1_Openings' | name='Openings' | parent_id='Facade_1' | category='facade' | status='SOURCE_GEOMETRY'
+/components/240 id='Facade_1_Source_Elevation' | name='Source_Elevation_1' | parent_id='Source_Elevations' | category='source_elevation' | status='SOURCE_PROJECTION' | note='Projected facade linework, not an inferred depth model.'
+/components/241 id='Facade_1_Glass_Projection_01' | name='Glass_Projection_01' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/242 id='Facade_1_Glass_Projection_02' | name='Glass_Projection_02' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/243 id='Facade_1_Glass_Projection_03' | name='Glass_Projection_03' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/244 id='Facade_1_Glass_Projection_04' | name='Glass_Projection_04' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/245 id='Facade_1_Glass_Projection_05' | name='Glass_Projection_05' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/246 id='Facade_1_Glass_Projection_06' | name='Glass_Projection_06' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/247 id='Facade_1_Glass_Projection_07' | name='Glass_Projection_07' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/248 id='Facade_1_Glass_Projection_08' | name='Glass_Projection_08' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/249 id='Facade_1_Glass_Projection_09' | name='Glass_Projection_09' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/250 id='Facade_1_Glass_Projection_10' | name='Glass_Projection_10' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/251 id='Facade_1_Glass_Projection_11' | name='Glass_Projection_11' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/252 id='Facade_1_Glass_Projection_12' | name='Glass_Projection_12' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/253 id='Facade_1_Glass_Projection_13' | name='Glass_Projection_13' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/254 id='Facade_1_Glass_Projection_14' | name='Glass_Projection_14' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/255 id='Facade_1_Glass_Projection_15' | name='Glass_Projection_15' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/256 id='Facade_1_Glass_Projection_16' | name='Glass_Projection_16' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/257 id='Facade_1_Glass_Projection_17' | name='Glass_Projection_17' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/258 id='Facade_1_Glass_Projection_18' | name='Glass_Projection_18' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/259 id='Facade_1_Glass_Projection_19' | name='Glass_Projection_19' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/260 id='Facade_1_Glass_Projection_20' | name='Glass_Projection_20' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/261 id='Facade_1_Glass_Projection_21' | name='Glass_Projection_21' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/262 id='Facade_1_Glass_Projection_22' | name='Glass_Projection_22' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/263 id='Facade_1_Glass_Projection_23' | name='Glass_Projection_23' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/264 id='Facade_1_Glass_Projection_24' | name='Glass_Projection_24' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/265 id='Facade_1_Glass_Projection_25' | name='Glass_Projection_25' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/266 id='Facade_1_Glass_Projection_26' | name='Glass_Projection_26' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/267 id='Facade_1_Glass_Projection_27' | name='Glass_Projection_27' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/268 id='Facade_1_Glass_Projection_28' | name='Glass_Projection_28' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/269 id='Facade_1_Glass_Projection_29' | name='Glass_Projection_29' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/270 id='Facade_1_Glass_Projection_30' | name='Glass_Projection_30' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/271 id='Facade_1_Glass_Projection_31' | name='Glass_Projection_31' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/272 id='Facade_1_Glass_Projection_32' | name='Glass_Projection_32' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/273 id='Facade_1_Glass_Projection_33' | name='Glass_Projection_33' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/274 id='Facade_1_Glass_Projection_34' | name='Glass_Projection_34' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/275 id='Facade_1_Glass_Projection_35' | name='Glass_Projection_35' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/276 id='Facade_1_Glass_Projection_36' | name='Glass_Projection_36' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/277 id='Facade_1_Glass_Projection_37' | name='Glass_Projection_37' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/278 id='Facade_1_Glass_Projection_38' | name='Glass_Projection_38' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/279 id='Facade_1_Glass_Projection_39' | name='Glass_Projection_39' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/280 id='Facade_1_Glass_Projection_40' | name='Glass_Projection_40' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/281 id='Facade_1_Glass_Projection_41' | name='Glass_Projection_41' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/282 id='Facade_1_Glass_Projection_42' | name='Glass_Projection_42' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/283 id='Facade_1_Glass_Projection_43' | name='Glass_Projection_43' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/284 id='Facade_1_Glass_Projection_44' | name='Glass_Projection_44' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/285 id='Facade_1_Glass_Projection_45' | name='Glass_Projection_45' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/286 id='Facade_1_Glass_Projection_46' | name='Glass_Projection_46' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/287 id='Facade_1_Glass_Projection_47' | name='Glass_Projection_47' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/288 id='Facade_1_Glass_Projection_48' | name='Glass_Projection_48' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/289 id='Facade_1_Glass_Projection_49' | name='Glass_Projection_49' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/290 id='Facade_1_Glass_Projection_50' | name='Glass_Projection_50' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/291 id='Facade_1_Glass_Projection_51' | name='Glass_Projection_51' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/292 id='Facade_1_Glass_Projection_52' | name='Glass_Projection_52' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/293 id='Facade_1_Glass_Projection_53' | name='Glass_Projection_53' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/294 id='Facade_1_Glass_Projection_54' | name='Glass_Projection_54' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/295 id='Facade_1_Glass_Projection_55' | name='Glass_Projection_55' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/296 id='Facade_1_Glass_Projection_56' | name='Glass_Projection_56' | parent_id='Facade_1_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/297 id='Facade_1_Wall_WORK' | name='Facade_1_Wall_WORK' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall'
+/components/298 id='Facade_1_Panel_001' | name='Facade_1_Panel_001' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/299 id='Facade_1_Panel_002' | name='Facade_1_Panel_002' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/300 id='Facade_1_Panel_003' | name='Facade_1_Panel_003' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/301 id='Facade_1_Panel_004' | name='Facade_1_Panel_004' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/302 id='Facade_1_Panel_005' | name='Facade_1_Panel_005' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/303 id='Facade_1_Panel_006' | name='Facade_1_Panel_006' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/304 id='Facade_1_Panel_007' | name='Facade_1_Panel_007' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/305 id='Facade_1_Panel_008' | name='Facade_1_Panel_008' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/306 id='Facade_1_Panel_009' | name='Facade_1_Panel_009' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/307 id='Facade_1_Panel_010' | name='Facade_1_Panel_010' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/308 id='Facade_1_Panel_011' | name='Facade_1_Panel_011' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/309 id='Facade_1_Panel_012' | name='Facade_1_Panel_012' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/310 id='Facade_1_Panel_013' | name='Facade_1_Panel_013' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/311 id='Facade_1_Panel_014' | name='Facade_1_Panel_014' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/312 id='Facade_1_Panel_015' | name='Facade_1_Panel_015' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/313 id='Facade_1_Panel_016' | name='Facade_1_Panel_016' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/314 id='Facade_1_Panel_017' | name='Facade_1_Panel_017' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/315 id='Facade_1_Panel_018' | name='Facade_1_Panel_018' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/316 id='Facade_1_Panel_019' | name='Facade_1_Panel_019' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/317 id='Facade_1_Panel_020' | name='Facade_1_Panel_020' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/318 id='Facade_1_Panel_021' | name='Facade_1_Panel_021' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/319 id='Facade_1_Panel_022' | name='Facade_1_Panel_022' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/320 id='Facade_1_Panel_023' | name='Facade_1_Panel_023' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/321 id='Facade_1_Panel_024' | name='Facade_1_Panel_024' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/322 id='Facade_1_Panel_025' | name='Facade_1_Panel_025' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/323 id='Facade_1_Panel_026' | name='Facade_1_Panel_026' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/324 id='Facade_1_Panel_027' | name='Facade_1_Panel_027' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/325 id='Facade_1_Panel_028' | name='Facade_1_Panel_028' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/326 id='Facade_1_Panel_029' | name='Facade_1_Panel_029' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/327 id='Facade_1_Panel_030' | name='Facade_1_Panel_030' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/328 id='Facade_1_Panel_031' | name='Facade_1_Panel_031' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/329 id='Facade_1_Panel_032' | name='Facade_1_Panel_032' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/330 id='Facade_1_Panel_033' | name='Facade_1_Panel_033' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/331 id='Facade_1_Panel_034' | name='Facade_1_Panel_034' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/332 id='Facade_1_Panel_035' | name='Facade_1_Panel_035' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/333 id='Facade_1_Panel_036' | name='Facade_1_Panel_036' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/334 id='Facade_1_Panel_037' | name='Facade_1_Panel_037' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/335 id='Facade_1_Panel_038' | name='Facade_1_Panel_038' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/336 id='Facade_1_Panel_039' | name='Facade_1_Panel_039' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/337 id='Facade_1_Panel_040' | name='Facade_1_Panel_040' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/338 id='Facade_1_Panel_041' | name='Facade_1_Panel_041' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/339 id='Facade_1_Panel_042' | name='Facade_1_Panel_042' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/340 id='Facade_1_Panel_043' | name='Facade_1_Panel_043' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/341 id='Facade_1_Panel_044' | name='Facade_1_Panel_044' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/342 id='Facade_1_Panel_045' | name='Facade_1_Panel_045' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/343 id='Facade_1_Panel_046' | name='Facade_1_Panel_046' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/344 id='Facade_1_Panel_047' | name='Facade_1_Panel_047' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/345 id='Facade_1_Panel_048' | name='Facade_1_Panel_048' | parent_id='Facade_1_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/346 id='Facade_1_Concrete_Plinth' | name='Facade_1_Concrete_Plinth' | parent_id='Facade_1_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/347 id='Facade_21' | name='Facade_21' | parent_id='Facades' | category='facade' | status='SOURCE_GEOMETRY'
+/components/348 id='Facade_21_Sandwich_Wall' | name='Sandwich_Wall' | parent_id='Facade_21' | category='facade' | status='SOURCE_GEOMETRY'
+/components/349 id='Facade_21_Plinth' | name='Plinth' | parent_id='Facade_21' | category='facade' | status='SOURCE_GEOMETRY'
+/components/350 id='Facade_21_Openings' | name='Openings' | parent_id='Facade_21' | category='facade' | status='SOURCE_GEOMETRY'
+/components/351 id='Facade_21_Source_Elevation' | name='Source_Elevation_21' | parent_id='Source_Elevations' | category='source_elevation' | status='SOURCE_PROJECTION' | note='Projected facade linework, not an inferred depth model.'
+/components/352 id='Facade_21_Glass_Projection_01' | name='Glass_Projection_01' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/353 id='Facade_21_Glass_Projection_02' | name='Glass_Projection_02' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/354 id='Facade_21_Glass_Projection_03' | name='Glass_Projection_03' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/355 id='Facade_21_Glass_Projection_04' | name='Glass_Projection_04' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/356 id='Facade_21_Glass_Projection_05' | name='Glass_Projection_05' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/357 id='Facade_21_Glass_Projection_06' | name='Glass_Projection_06' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/358 id='Facade_21_Glass_Projection_07' | name='Glass_Projection_07' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/359 id='Facade_21_Glass_Projection_08' | name='Glass_Projection_08' | parent_id='Facade_21_Openings' | category='facade' | status='SOURCE_PROJECTION' | material_role='glass' | note='Zero-thickness source projection; no glass or frame depth has been guessed.'
+/components/360 id='Facade_21_Wall_WORK' | name='Facade_21_Wall_WORK' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall'
+/components/361 id='Facade_21_Panel_001' | name='Facade_21_Panel_001' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/362 id='Facade_21_Panel_002' | name='Facade_21_Panel_002' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/363 id='Facade_21_Panel_003' | name='Facade_21_Panel_003' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/364 id='Facade_21_Panel_004' | name='Facade_21_Panel_004' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/365 id='Facade_21_Panel_005' | name='Facade_21_Panel_005' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/366 id='Facade_21_Panel_006' | name='Facade_21_Panel_006' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/367 id='Facade_21_Panel_007' | name='Facade_21_Panel_007' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/368 id='Facade_21_Panel_008' | name='Facade_21_Panel_008' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/369 id='Facade_21_Panel_009' | name='Facade_21_Panel_009' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/370 id='Facade_21_Panel_010' | name='Facade_21_Panel_010' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/371 id='Facade_21_Panel_011' | name='Facade_21_Panel_011' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/372 id='Facade_21_Panel_012' | name='Facade_21_Panel_012' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/373 id='Facade_21_Panel_013' | name='Facade_21_Panel_013' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/374 id='Facade_21_Panel_014' | name='Facade_21_Panel_014' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/375 id='Facade_21_Panel_015' | name='Facade_21_Panel_015' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/376 id='Facade_21_Panel_016' | name='Facade_21_Panel_016' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/377 id='Facade_21_Panel_017' | name='Facade_21_Panel_017' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/378 id='Facade_21_Panel_018' | name='Facade_21_Panel_018' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/379 id='Facade_21_Panel_019' | name='Facade_21_Panel_019' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/380 id='Facade_21_Panel_020' | name='Facade_21_Panel_020' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/381 id='Facade_21_Panel_021' | name='Facade_21_Panel_021' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/382 id='Facade_21_Panel_022' | name='Facade_21_Panel_022' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/383 id='Facade_21_Panel_023' | name='Facade_21_Panel_023' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/384 id='Facade_21_Panel_024' | name='Facade_21_Panel_024' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/385 id='Facade_21_Panel_025' | name='Facade_21_Panel_025' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/386 id='Facade_21_Panel_026' | name='Facade_21_Panel_026' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/387 id='Facade_21_Panel_027' | name='Facade_21_Panel_027' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/388 id='Facade_21_Panel_028' | name='Facade_21_Panel_028' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/389 id='Facade_21_Panel_029' | name='Facade_21_Panel_029' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/390 id='Facade_21_Panel_030' | name='Facade_21_Panel_030' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/391 id='Facade_21_Panel_031' | name='Facade_21_Panel_031' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/392 id='Facade_21_Panel_032' | name='Facade_21_Panel_032' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/393 id='Facade_21_Panel_033' | name='Facade_21_Panel_033' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/394 id='Facade_21_Panel_034' | name='Facade_21_Panel_034' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/395 id='Facade_21_Panel_035' | name='Facade_21_Panel_035' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/396 id='Facade_21_Panel_036' | name='Facade_21_Panel_036' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/397 id='Facade_21_Panel_037' | name='Facade_21_Panel_037' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/398 id='Facade_21_Panel_038' | name='Facade_21_Panel_038' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/399 id='Facade_21_Panel_039' | name='Facade_21_Panel_039' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/400 id='Facade_21_Panel_040' | name='Facade_21_Panel_040' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/401 id='Facade_21_Panel_041' | name='Facade_21_Panel_041' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/402 id='Facade_21_Panel_042' | name='Facade_21_Panel_042' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/403 id='Facade_21_Panel_043' | name='Facade_21_Panel_043' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/404 id='Facade_21_Panel_044' | name='Facade_21_Panel_044' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/405 id='Facade_21_Panel_045' | name='Facade_21_Panel_045' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/406 id='Facade_21_Panel_046' | name='Facade_21_Panel_046' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/407 id='Facade_21_Panel_047' | name='Facade_21_Panel_047' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/408 id='Facade_21_Panel_048' | name='Facade_21_Panel_048' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/409 id='Facade_21_Panel_049' | name='Facade_21_Panel_049' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/410 id='Facade_21_Panel_050' | name='Facade_21_Panel_050' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/411 id='Facade_21_Panel_051' | name='Facade_21_Panel_051' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/412 id='Facade_21_Panel_052' | name='Facade_21_Panel_052' | parent_id='Facade_21_Sandwich_Wall' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='wall' | note='Lightweight panel envelope bounded at measured drawing joint-centre clusters; tongue/groove profile and joint gap are not modeled.'
+/components/413 id='Facade_21_Concrete_Plinth' | name='Facade_21_Concrete_Plinth' | parent_id='Facade_21_Plinth' | category='facade' | status='DRAWING_BASED_ENVELOPE' | material_role='plinth'
+/components/414 id='equipment_warmtepomp_workx' | name='Warmtepomp_WORKX' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/415 id='equipment_luchtcompressor_63a' | name='Luchtcompressor_63A' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/416 id='equipment_side_shifter' | name='Side_Shifter' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/417 id='equipment_breektank_vat' | name='Breektank_&_Vat' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/418 id='equipment_flipatex' | name='Flipatex' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/419 id='equipment_unifilo_01' | name='Unifilo_01' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/420 id='equipment_unifilo_02' | name='Unifilo_02' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/421 id='equipment_r090u' | name='R090U' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/422 id='equipment_storten' | name='Storten' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/423 id='equipment_messen_zone' | name='Messen' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/424 id='equipment_afval_afvoeren' | name='Afval_Afvoeren' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/425 id='equipment_uitbreiding_schakelkast' | name='Uitbreiding_Schakelkast' | parent_id='Equipment_Footprints' | category='equipment' | status='SOURCE_FOOTPRINT_ONLY' | note='2D source footprint, no inferred height.'
+/components/426 id='Section_A11_Axis_1' | name='Steel_Section_Axis_1_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/427 id='Section_A11_Axis_3' | name='Steel_Section_Axis_3_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/428 id='Section_A11_Axis_5' | name='Steel_Section_Axis_5_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/429 id='Section_A11_Axis_7' | name='Steel_Section_Axis_7_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/430 id='Section_A11_Axis_8' | name='Steel_Section_Axis_8_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/431 id='Section_A11_Axis_20' | name='Steel_Section_Axis_20_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/432 id='Section_A11_Axis_21' | name='Steel_Section_Axis_21_A_E' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/433 id='Section_A03_Axis_3' | name='Steel_Section_Axis_3_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/434 id='Section_A03_Axis_4' | name='Steel_Section_Axis_4_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/435 id='Section_A03_Axis_5' | name='Steel_Section_Axis_5_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/436 id='Section_A03_Axis_6' | name='Steel_Section_Axis_6_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/437 id='Section_A03_Axis_7' | name='Steel_Section_Axis_7_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/438 id='Section_A03_Axis_14' | name='Steel_Section_Axis_14_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/439 id='Section_A03_Axis_20' | name='Steel_Section_Axis_20_F_M' | parent_id='Steel_Source_Sections' | category='steel_source' | status='SOURCE_PROJECTION_NOT_SOLID' | note='2D member outlines lifted to their own structural station; no inferred section depth, no automatically copied typical frame.'
+/components/440 id='Pending_STEEL_SOLIDS' | name='Pending_STEEL_SOLIDS' | parent_id='Unresolved_Steel' | category='pending' | status='PENDING' | note='Individual member depth/profile assignment, connection offsets and member matching between views have not yet been fully extracted. Placed steel source sections are reference linework, not collision solids.'
+/components/441 id='Pending_STEEL_INTERMEDIATE_FRAMES' | name='Pending_STEEL_INTERMEDIATE_FRAMES' | parent_id='Unresolved_Steel' | category='pending' | status='PENDING' | note='Some intermediate station sections are not separately shown in A3/A11. No regular full portal is guessed or copied solely from grid spacing.'
+/components/442 id='Pending_SECONDARY_STEEL' | name='Pending_SECONDARY_STEEL' | parent_id='Unresolved_Steel' | category='pending' | status='PENDING' | note='Complete purlin, wall-girt and bracing route catalog remains to be resolved from source views.'
+/components/443 id='Pending_ROOF_PHASE' | name='Pending_ROOF_PHASE' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='32/1000 nominal profile known; first rib/panel start relative to datum is not yet verified. No full roof corrugation is fabricated.'
+/components/444 id='Pending_CEILING_JOINTS' | name='Pending_CEILING_JOINTS' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='Flat underside and 132/164 roof panel specification are documented; exact global panel-joint start/grid is not yet assigned.'
+/components/445 id='Pending_WINDOWS' | name='Pending_WINDOWS' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='C4a drawing opening representation retained. 980-mm plan types, 1100-mm drawn outer frames and photographed openings are not silently treated as identical; full frame depth and rough openings remain separate.'
+/components/446 id='Pending_ARCHITECTURE_REVISION' | name='Pending_ARCHITECTURE_REVISION' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='Wall/floor/roof layer specs come from March-2025 drawings. Geometry is drawing-based; final installed layer build-up is not as-built certified.'
+/components/447 id='Pending_INTERNAL_BLOCK' | name='Pending_INTERNAL_BLOCK' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='Current interior partitions and their heights need explicit extraction; no obsolete full-hall fire walls are generated.'
+/components/448 id='Pending_ROOF_FLASHINGS' | name='Pending_ROOF_FLASHINGS' | parent_id='Reference_System' | category='pending' | status='PENDING' | note='Ridge, valley, eaves and gutters are not replaced with guessed cross-sections.'
+/unresolved/0 id='STEEL_SOLIDS' | component='Structure' | reason='Individual member depth/profile assignment, connection offsets and member matching between views have not yet been fully extracted. Placed steel source sections are reference linework, not collision solids.'
+/unresolved/1 id='STEEL_INTERMEDIATE_FRAMES' | component='Unresolved_Steel' | reason='Some intermediate station sections are not separately shown in A3/A11. No regular full portal is guessed or copied solely from grid spacing.'
+/unresolved/2 id='SECONDARY_STEEL' | component='Structure' | reason='Complete purlin, wall-girt and bracing route catalog remains to be resolved from source views.'
+/unresolved/3 id='ROOF_PHASE' | component='SteelDeck' | reason='32/1000 nominal profile known; first rib/panel start relative to datum is not yet verified. No full roof corrugation is fabricated.'
+/unresolved/4 id='CEILING_JOINTS' | component='Sandwich_Ceiling' | reason='Flat underside and 132/164 roof panel specification are documented; exact global panel-joint start/grid is not yet assigned.'
+/unresolved/5 id='WINDOWS' | component='Facades' | reason='C4a drawing opening representation retained. 980-mm plan types, 1100-mm drawn outer frames and photographed openings are not silently treated as identical; full frame depth and rough openings remain separate.'
+/unresolved/6 id='ARCHITECTURE_REVISION' | component='Envelope' | reason='Wall/floor/roof layer specs come from March-2025 drawings. Geometry is drawing-based; final installed layer build-up is not as-built certified.'
+/unresolved/7 id='INTERNAL_BLOCK' | component='Internal_Buildings' | reason='Current interior partitions and their heights need explicit extraction; no obsolete full-hall fire walls are generated.'
+/unresolved/8 id='ROOF_FLASHINGS' | component='Roof' | reason='Ridge, valley, eaves and gutters are not replaced with guessed cross-sections.'
+/source_extractions/Facade_A/view_transform name='A' | x0=130.426514 | z0=2185.796875 | u_end=65160.0 | dir=1 | offset=0 | plane=-100 | axis='X'
+/source_extractions/Facade_M/view_transform name='M' | x0=130.426514 | z0=1009.75293 | u_end=65160.0 | dir=-1 | offset=65160.0 | plane=54260.0 | axis='X'
+/source_extractions/Facade_1/view_transform name='1' | x0=130.426514 | z0=426.445679 | u_end=54160.0 | dir=1 | offset=0 | plane=65260.0 | axis='Y'
+/source_extractions/Facade_21/view_transform name='21' | x0=130.426514 | z0=1615.431885 | u_end=54160.0 | dir=-1 | offset=54160.0 | plane=-100 | axis='Y'
+/exclusions/0 id='equipment_magnetron_main_body' | reason='User installs the microwave separately; no body, footprint or placeholder is generated.'
+/exclusions/1 id='legacy_V3' | reason='Old FreeCAD script is not imported, read or executed.'
+
+### reference/allshield_building_reference_v0_2.json
+/sources/0 id='current_layout_20260522' | name='20260522 ter Aar Indeling totaal (002).pdf' | role='current layout / equipment / local dimension calibration' | type='vector_pdf'
+/sources/1 id='c05a' | name='c05a_binnen(1).pdf' | role='exact longitudinal dimension chains / internal elevations'
+/sources/2 id='c04a' | name='c04a_gevels_opmTS(1).pdf' | role='facade axes, roof/cladding elevations, opening source'
+/sources/3 id='a03' | name='a03_ovz-a(1).pdf' | role='phase-A steel elevations and profiles'
+/sources/4 id='a11' | name='a11_ovz-b_gezien_geen_opm(1).pdf' | role='phase-B steel elevations and profiles'
+/sources/5 id='hardeman_set' | name='Tekeningenset plantekenaar_Hardeman.pdf' | role='cross-check / architectural set'
+/sources/6 id='photos_20260905' | name='photos allshield inside 2026_09_05_@_12-37-16.pdf' | role='visual confirmation of steel, sandwich ceiling/walls, bracing and plinth'
+/sources/7 id='client_datum' | name='client/user datum clarification' | role='final coordinate datum and axis directions'
+/reference_grids/longitudinal_station_catalog/0 axis='21' | source_x_mm=65160.0 | client_x_mm=0.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='End/grid station; exact coordinate, member-by-member steel extent handled separately.'
+/reference_grids/longitudinal_station_catalog/1 axis='20' | source_x_mm=60010.0 | client_x_mm=5150.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/2 axis='18' | source_x_mm=54910.0 | client_x_mm=10250.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/3 axis='16' | source_x_mm=49810.0 | client_x_mm=15350.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/4 axis='14' | source_x_mm=44710.0 | client_x_mm=20450.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/5 axis='12' | source_x_mm=39610.0 | client_x_mm=25550.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/6 axis='11' | source_x_mm=34510.0 | client_x_mm=30650.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/7 axis='10' | source_x_mm=29410.0 | client_x_mm=35750.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/8 axis='9' | source_x_mm=24310.0 | client_x_mm=40850.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/9 axis='8' | source_x_mm=19210.0 | client_x_mm=45950.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/10 axis='7' | source_x_mm=14060.0 | client_x_mm=51100.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common longitudinal station on both long facades.'
+/reference_grids/longitudinal_station_catalog/11 axis='6' | source_x_mm=12910.0 | client_x_mm=52250.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Local/partial structure in A3; not a full main roof portal.'
+/reference_grids/longitudinal_station_catalog/12 axis='5' | source_x_mm=11410.0 | client_x_mm=53750.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common station; main roof spans on both gables.'
+/reference_grids/longitudinal_station_catalog/13 axis='4' | source_x_mm=6220.0 | client_x_mm=58940.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Local phase-A axis; do not project blindly to facade A.'
+/reference_grids/longitudinal_station_catalog/14 axis='3' | source_x_mm=6060.0 | client_x_mm=59100.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='Common station; main roof portal applies to A-E span, not duplicated F-M.'
+/reference_grids/longitudinal_station_catalog/15 axis='2' | source_x_mm=4110.0 | client_x_mm=61050.0 | status='EXACT_DIMENSION' | source='C5a view B/C dimension chain' | note='Exact local A-side/interior-build station; absent from facade M chain.'
+/reference_grids/longitudinal_station_catalog/16 axis='1' | source_x_mm=0.0 | client_x_mm=65160.0 | status='EXACT_DIMENSION' | source='C5a/C4a dimension chain' | note='End/grid station; exact coordinate, member-by-member steel extent handled separately.'
+/reference_grids/transverse_axis_catalog/0 axis='A' | source_y_mm=0.0 | client_y_mm=0.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/1 axis='B' | source_y_mm=13250.0 | client_y_mm=13250.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/2 axis='C' | source_y_mm=18130.0 | client_y_mm=18130.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/3 axis='D' | source_y_mm=22980.0 | client_y_mm=22980.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/4 axis='E' | source_y_mm=27830.0 | client_y_mm=27830.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/5 axis='F' | source_y_mm=27990.0 | client_y_mm=27990.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/6 axis='G' | source_y_mm=29290.0 | client_y_mm=29290.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/7 axis='H' | source_y_mm=33290.0 | client_y_mm=33290.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/8 axis='J' | source_y_mm=37240.0 | client_y_mm=37240.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/9 axis='K' | source_y_mm=38590.0 | client_y_mm=38590.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/10 axis='L' | source_y_mm=38750.0 | client_y_mm=38750.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/reference_grids/transverse_axis_catalog/11 axis='M' | source_y_mm=54160.0 | client_y_mm=54160.0 | status='EXACT_DIMENSION' | source='C4a facade dimension chain'
+/roof_reference_geometry/eave_cladding_z_mm value=9550.0 | status='EXACT_SOURCE' | source='C4a facade elevation'
+/roof_reference_geometry/ridge_cladding_z_mm value=10300.0 | status='EXACT_SOURCE' | source='C4a facade elevation'
+/roof_reference_geometry/steel_eave_z_mm value=9165.0 | status='EXACT_SOURCE' | source='A3/A11 steel elevations'
+/roof_reference_geometry/steel_ridge_z_mm value=9910.0 | status='EXACT_SOURCE' | source='A3/A11 steel elevations'
+/opening_type_catalog/0 id='opening_wall_2135x2400' | kind='wall_opening' | width_mm=2135 | height_mm=2400 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/1 id='overhead_4160x5000' | kind='overhead_door' | width_mm=4160 | height_mm=5000 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/2 id='overhead_3100x4200' | kind='overhead_door' | width_mm=3100 | height_mm=4200 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/3 id='overhead_3100x3000' | kind='overhead_door' | width_mm=3100 | height_mm=3000 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/4 id='loopdeur_1075x2400' | kind='personnel_door' | width_mm=1075 | height_mm=2400 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/5 id='kozijn_980x4000' | kind='window_frame_opening' | width_mm=980 | height_mm=4000 | status='EXACT_SOURCE_LABEL' | frame_profile_status='PENDING_USER_INPUT'
+/opening_type_catalog/6 id='pui_3100x2400' | kind='glazed_facade' | width_mm=3100 | height_mm=2400 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/7 id='pui_3120x2400' | kind='glazed_facade' | width_mm=3120 | height_mm=2400 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/8 id='trafodeur_1990x2535' | kind='transformer_door' | width_mm=1990 | height_mm=2535 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/9 id='brandwerend_roldoek_4000x5000' | kind='fire_screen' | width_mm=4000 | height_mm=5000 | status='EXACT_SOURCE_LABEL'
+/opening_type_catalog/10 id='snelroldeur_4000x5000' | kind='rapid_roll_door' | width_mm=4000 | height_mm=5000 | status='EXACT_SOURCE_LABEL'
+/components/0 id='building_allshield_ter_aar' | name='Allshield Ter Aar Building' | type='building' | parent_id=None | status='VERIFIED_MULTI_SOURCE'
+/components/1 id='reference_system' | name='Reference System' | type='reference_system' | parent_id='building_allshield_ter_aar' | status='EXACT'
+/components/2 id='structure' | name='Structure' | type='assembly' | parent_id='building_allshield_ter_aar' | status='VERIFIED_MULTI_SOURCE'
+/components/3 id='envelope' | name='Envelope' | type='assembly' | parent_id='building_allshield_ter_aar' | status='VERIFIED_MULTI_SOURCE'
+/components/4 id='internal_buildings' | name='Internal Buildings / Rooms' | type='assembly' | parent_id='building_allshield_ter_aar' | status='PARTIALLY_EXTRACTED'
+/components/5 id='current_equipment' | name='Current Equipment' | type='assembly' | parent_id='building_allshield_ter_aar' | status='CURRENT_LAYOUT_SOURCE'
+/components/6 id='utilities' | name='Utilities' | type='assembly' | parent_id='building_allshield_ter_aar' | status='CURRENT_LAYOUT_SOURCE'
+/components/7 id='safety_equipment' | name='Safety Equipment' | type='assembly' | parent_id='building_allshield_ter_aar' | status='CURRENT_LAYOUT_SOURCE'
+/components/8 id='main_steel' | name='Main Steel' | type='assembly' | parent_id='structure' | status='VERIFIED_MULTI_SOURCE'
+/components/9 id='portal_frames' | name='Portal Frames' | type='assembly' | parent_id='main_steel' | status='VERIFIED_MULTI_SOURCE'
+/components/10 id='columns' | name='Columns' | type='assembly' | parent_id='main_steel' | status='REFERENCE_POINTS_EXACT'
+/components/11 id='secondary_steel' | name='Secondary Steel' | type='assembly' | parent_id='structure' | status='PARTIALLY_EXTRACTED'
+/components/12 id='purlins' | name='Purlins' | type='assembly' | parent_id='secondary_steel' | status='SOURCE_PRESENT_MEMBER_CATALOG_PENDING'
+/components/13 id='wall_rails' | name='Wall Rails' | type='assembly' | parent_id='secondary_steel' | status='SOURCE_PRESENT_MEMBER_CATALOG_PENDING'
+/components/14 id='bracing' | name='Bracing' | type='assembly' | parent_id='secondary_steel' | status='SOURCE_PRESENT_MEMBER_CATALOG_PENDING'
+/components/15 id='roof' | name='Roof' | type='assembly' | parent_id='envelope' | status='GEOMETRY_RESOLVED'
+/components/15/geometry/eave_cladding_z_mm value=9550.0 | status='EXACT_SOURCE' | source='C4a facade elevation'
+/components/15/geometry/ridge_cladding_z_mm value=10300.0 | status='EXACT_SOURCE' | source='C4a facade elevation'
+/components/15/geometry/steel_eave_z_mm value=9165.0 | status='EXACT_SOURCE' | source='A3/A11 steel elevations'
+/components/15/geometry/steel_ridge_z_mm value=9910.0 | status='EXACT_SOURCE' | source='A3/A11 steel elevations'
+/components/16 id='roof_cladding' | name='Roof Cladding' | type='assembly' | parent_id='roof' | status='PARTIALLY_RESOLVED'
+/components/17 id='steeldeck_roof' | name='Steel Deck Roof' | type='cladding' | parent_id='roof_cladding' | status='PENDING_PROFILE'
+/components/18 id='ceiling' | name='Ceiling' | type='assembly' | parent_id='roof' | status='VISUAL_CONFIRMED'
+/components/19 id='sandwich_ceiling' | name='Sandwich Ceiling' | type='sandwich_panels' | parent_id='ceiling' | status='VISUAL_CONFIRMED'
+/components/20 id='walls' | name='Walls' | type='assembly' | parent_id='envelope' | status='VERIFIED_MULTI_SOURCE'
+/components/21 id='wall_A' | name='Wall A' | type='wall' | parent_id='walls' | status='REFERENCE_GEOMETRY'
+/components/22 id='sandwich_wall_A' | name='Sandwich Wall Panels A' | type='sandwich_panels' | parent_id='wall_A' | status='VISUAL_CONFIRMED'
+/components/23 id='plinth_A' | name='Exterior Plinth A' | type='plinth' | parent_id='wall_A' | status='VISUAL_CONFIRMED'
+/components/24 id='openings_A' | name='Openings A' | type='opening_group' | parent_id='wall_A' | status='PARTIALLY_EXTRACTED'
+/components/25 id='wall_M' | name='Wall M' | type='wall' | parent_id='walls' | status='REFERENCE_GEOMETRY'
+/components/26 id='sandwich_wall_M' | name='Sandwich Wall Panels M' | type='sandwich_panels' | parent_id='wall_M' | status='VISUAL_CONFIRMED'
+/components/27 id='plinth_M' | name='Exterior Plinth M' | type='plinth' | parent_id='wall_M' | status='VISUAL_CONFIRMED'
+/components/28 id='openings_M' | name='Openings M' | type='opening_group' | parent_id='wall_M' | status='PARTIALLY_EXTRACTED'
+/components/29 id='wall_1' | name='Wall 1' | type='wall' | parent_id='walls' | status='REFERENCE_GEOMETRY'
+/components/30 id='sandwich_wall_1' | name='Sandwich Wall Panels 1' | type='sandwich_panels' | parent_id='wall_1' | status='SOURCE_PRESENT'
+/components/31 id='plinth_1' | name='Exterior Plinth 1' | type='plinth' | parent_id='wall_1' | status='SOURCE_PRESENT'
+/components/32 id='openings_1' | name='Openings 1' | type='opening_group' | parent_id='wall_1' | status='PARTIALLY_EXTRACTED'
+/components/33 id='wall_21' | name='Wall 21' | type='wall' | parent_id='walls' | status='REFERENCE_GEOMETRY'
+/components/34 id='sandwich_wall_21' | name='Sandwich Wall Panels 21' | type='sandwich_panels' | parent_id='wall_21' | status='SOURCE_PRESENT'
+/components/35 id='plinth_21' | name='Exterior Plinth 21' | type='plinth' | parent_id='wall_21' | status='SOURCE_PRESENT'
+/components/36 id='openings_21' | name='Openings 21' | type='opening_group' | parent_id='wall_21' | status='PARTIALLY_EXTRACTED'
+/components/37 id='floor' | name='Floor / Slab' | type='slab' | parent_id='envelope' | status='SOURCE_PRESENT'
+/components/38 id='frame_axis_3_AE' | name='Portal Frame Axis 3 - A-E' | type='portal_frame' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/39 id='frame_axis_4_FM' | name='Portal Frame Axis 4 - F-M' | type='portal_frame' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/40 id='frame_axis_5_AE' | name='Portal Frame Axis 5 - A-E' | type='portal_frame' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/41 id='frame_axis_5_FM' | name='Portal Frame Axis 5 - F-M' | type='portal_frame' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/42 id='local_steel_axis_6' | name='Local / Partial Steel Axis 6' | type='local_steel' | parent_id='main_steel' | status='VERIFIED_MULTI_SOURCE'
+/components/43 id='frame_station_7' | name='Main Frame Station 7' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/44 id='frame_station_8' | name='Main Frame Station 8' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/45 id='frame_station_9' | name='Main Frame Station 9' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/46 id='frame_station_10' | name='Main Frame Station 10' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/47 id='frame_station_11' | name='Main Frame Station 11' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/48 id='frame_station_12' | name='Main Frame Station 12' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/49 id='frame_station_14' | name='Main Frame Station 14' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/50 id='frame_station_16' | name='Main Frame Station 16' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/51 id='frame_station_18' | name='Main Frame Station 18' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/52 id='frame_station_20' | name='Main Frame Station 20' | type='frame_station' | parent_id='portal_frames' | status='VERIFIED_MULTI_SOURCE'
+/components/53 id='column_ref_A_21' | name='Column Reference A/21' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/54 id='column_ref_A_20' | name='Column Reference A/20' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/55 id='column_ref_A_18' | name='Column Reference A/18' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/56 id='column_ref_A_16' | name='Column Reference A/16' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/57 id='column_ref_A_14' | name='Column Reference A/14' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/58 id='column_ref_A_12' | name='Column Reference A/12' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/59 id='column_ref_A_11' | name='Column Reference A/11' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/60 id='column_ref_A_10' | name='Column Reference A/10' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/61 id='column_ref_A_9' | name='Column Reference A/9' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/62 id='column_ref_A_8' | name='Column Reference A/8' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/63 id='column_ref_A_7' | name='Column Reference A/7' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/64 id='column_ref_A_5' | name='Column Reference A/5' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/65 id='column_ref_A_3' | name='Column Reference A/3' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/66 id='column_ref_A_2' | name='Column Reference A/2' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/67 id='column_ref_A_1' | name='Column Reference A/1' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/68 id='column_ref_M_21' | name='Column Reference M/21' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/69 id='column_ref_M_20' | name='Column Reference M/20' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/70 id='column_ref_M_18' | name='Column Reference M/18' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/71 id='column_ref_M_16' | name='Column Reference M/16' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/72 id='column_ref_M_14' | name='Column Reference M/14' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/73 id='column_ref_M_12' | name='Column Reference M/12' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/74 id='column_ref_M_11' | name='Column Reference M/11' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/75 id='column_ref_M_10' | name='Column Reference M/10' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/76 id='column_ref_M_9' | name='Column Reference M/9' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/77 id='column_ref_M_8' | name='Column Reference M/8' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/78 id='column_ref_M_7' | name='Column Reference M/7' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/79 id='column_ref_M_6' | name='Column Reference M/6' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/80 id='column_ref_M_5' | name='Column Reference M/5' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/81 id='column_ref_M_4' | name='Column Reference M/4' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/82 id='column_ref_M_3' | name='Column Reference M/3' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/83 id='column_ref_M_1' | name='Column Reference M/1' | type='reference_point' | parent_id='columns' | status='EXACT_DIMENSION'
+/components/84 id='equipment_warmtepomp_workx' | name='Warmtepomp WORKX' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/85 id='equipment_luchtcompressor_63a' | name='Luchtcompressor 63A' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/86 id='equipment_magnetron_main_body' | name='Magnetron - main body' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/87 id='equipment_side_shifter' | name='Side Shifter' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/88 id='equipment_breektank_vat' | name='Breektank & Vat' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/89 id='equipment_flipatex' | name='Flipatex' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/90 id='equipment_unifilo_01' | name='Unifilo 01' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/91 id='equipment_unifilo_02' | name='Unifilo 02' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/92 id='equipment_r090u' | name='R090U' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/93 id='equipment_storten' | name='Storten' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/94 id='equipment_messen_zone' | name='Messen' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/95 id='equipment_afval_afvoeren' | name='Afval Afvoeren' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/96 id='equipment_uitbreiding_schakelkast' | name='Uitbreiding Schakelkast' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/97 id='equipment_besturingskast' | name='Besturingskast' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/98 id='equipment_schakelkast_productieband' | name='Schakelkast Productieband 32A' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/99 id='equipment_coating_productie' | name='Coating Productie' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/100 id='space_quality_control_sample_hok' | name='Quality Control Sample Hok' | type='space' | parent_id='internal_buildings' | status='CURRENT_LAYOUT_VECTOR'
+/components/101 id='safety_nooddouche' | name='Nooddouche' | type='safety_device' | parent_id='safety_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/102 id='process_wastroch_productie' | name='Wastroch Productie' | type='process_area' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/components/103 id='utility_luchtleiding_top' | name='Luchtleiding - top hall' | type='utility_route_label' | parent_id='utilities' | status='CURRENT_LAYOUT_VECTOR'
+/components/104 id='utility_waterleiding' | name='Waterleiding' | type='utility_route_label' | parent_id='utilities' | status='CURRENT_LAYOUT_VECTOR'
+/components/105 id='equipment_data_modem' | name='Data Modem' | type='equipment' | parent_id='current_equipment' | status='CURRENT_LAYOUT_VECTOR'
+/raw_current_plan_reference_entities/equipment/0 id='text_116' | text='Quality control sample hok'
+/raw_current_plan_reference_entities/equipment/1 id='text_121' | text='luchtcompressor 63Amp warmtepomp WORKX 32Amp'
+/raw_current_plan_reference_entities/equipment/2 id='text_125' | text='Breektank & Vat'
+/raw_current_plan_reference_entities/equipment/3 id='text_140' | text='Coating PRODuctie'
+/raw_current_plan_reference_entities/equipment/4 id='text_141' | text='Uitbreiding schakelkast'
+/raw_current_plan_reference_entities/equipment/5 id='text_142' | text='magnetron'
+/raw_current_plan_reference_entities/equipment/6 id='text_143' | text='side shifter'
+/raw_current_plan_reference_entities/equipment/7 id='text_144' | text='schakelkast productieband 32 Ampere'
+/raw_current_plan_reference_entities/equipment/8 id='text_147' | text='Unifilo'
+/raw_current_plan_reference_entities/equipment/9 id='text_148' | text='flipatex'
+/raw_current_plan_reference_entities/equipment/10 id='text_149' | text='Unifilo'
+/raw_current_plan_reference_entities/equipment/11 id='text_151' | text='afval afvoeren'
+/raw_current_plan_reference_entities/utilities/0 id='text_084' | text='luchtleiding'
+/raw_current_plan_reference_entities/utilities/1 id='text_085' | text='luchtleiding waterleiding'
+/raw_current_plan_reference_entities/openings/0 id='text_019' | text='2.135 x2.400 Wandopening'
+/raw_current_plan_reference_entities/openings/1 id='text_021' | text='4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/2 id='text_022' | text='Afm. 4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/3 id='text_024' | text='3.100 x4.200 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/4 id='text_026' | text='4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/5 id='text_028' | text='1.075 x2.400 Kunststof loopdeur'
+/raw_current_plan_reference_entities/openings/6 id='text_030' | text='1.075 x2.400 Kunststof loopdeur'
+/raw_current_plan_reference_entities/openings/7 id='text_033' | text='3.100 x2.400 Kunststof pui'
+/raw_current_plan_reference_entities/openings/8 id='text_034' | text='Afm. Kunststof entreepui'
+/raw_current_plan_reference_entities/openings/9 id='text_035' | text='Afm. 3.120x2.400 Kunststof entreepui'
+/raw_current_plan_reference_entities/openings/10 id='text_036' | text='Afm. 3.120x2.400 3.100 x2.400 Kunststof pui'
+/raw_current_plan_reference_entities/openings/11 id='text_038' | text='4.000 x5.000 Brandwerend roldoek'
+/raw_current_plan_reference_entities/openings/12 id='text_040' | text='4.000 x5.000 Snelroldeur Afm.'
+/raw_current_plan_reference_entities/openings/13 id='text_041' | text='1.990 x2.535 Trafodeur Afm.'
+/raw_current_plan_reference_entities/openings/14 id='text_042' | text='3.100 x3.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/15 id='text_109' | text='4.000 x5.000 Brandwerend roldoek'
+/raw_current_plan_reference_entities/openings/16 id='text_111' | text='4.000 x5.000 Snelroldeur Afm.'
+/raw_current_plan_reference_entities/openings/17 id='text_119' | text='3.100 x3.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_reference_entities/openings/18 id='text_156' | text='3.100 x4.200 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/0 id='text_000' | text='1'
+/raw_current_plan_text_blocks/1 id='text_001' | text='2'
+/raw_current_plan_text_blocks/2 id='text_002' | text='3'
+/raw_current_plan_text_blocks/3 id='text_003' | text='4'
+/raw_current_plan_text_blocks/4 id='text_004' | text='5'
+/raw_current_plan_text_blocks/5 id='text_005' | text='6'
+/raw_current_plan_text_blocks/6 id='text_006' | text='7'
+/raw_current_plan_text_blocks/7 id='text_007' | text='8'
+/raw_current_plan_text_blocks/8 id='text_008' | text='23O x 196 22A x 220'
+/raw_current_plan_text_blocks/9 id='text_009' | text='1'
+/raw_current_plan_text_blocks/10 id='text_010' | text='2'
+/raw_current_plan_text_blocks/11 id='text_011' | text='3'
+/raw_current_plan_text_blocks/12 id='text_012' | text='4'
+/raw_current_plan_text_blocks/13 id='text_013' | text='5'
+/raw_current_plan_text_blocks/14 id='text_014' | text='6'
+/raw_current_plan_text_blocks/15 id='text_015' | text='7'
+/raw_current_plan_text_blocks/16 id='text_016' | text='8'
+/raw_current_plan_text_blocks/17 id='text_017' | text='23O x 196'
+/raw_current_plan_text_blocks/18 id='text_018' | text='22A x 220'
+/raw_current_plan_text_blocks/19 id='text_019' | text='2.135 x2.400 Wandopening'
+/raw_current_plan_text_blocks/20 id='text_020' | text='Afm.'
+/raw_current_plan_text_blocks/21 id='text_021' | text='4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/22 id='text_022' | text='Afm. 4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/23 id='text_023' | text='Afm.'
+/raw_current_plan_text_blocks/24 id='text_024' | text='3.100 x4.200 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/25 id='text_025' | text='Afm.'
+/raw_current_plan_text_blocks/26 id='text_026' | text='4.160 x5.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/27 id='text_027' | text='Afm.'
+/raw_current_plan_text_blocks/28 id='text_028' | text='1.075 x2.400 Kunststof loopdeur'
+/raw_current_plan_text_blocks/29 id='text_029' | text='Afm.'
+/raw_current_plan_text_blocks/30 id='text_030' | text='1.075 x2.400 Kunststof loopdeur'
+/raw_current_plan_text_blocks/31 id='text_031' | text='Afm.'
+/raw_current_plan_text_blocks/32 id='text_032' | text='980 x4.000 Kunstsof kozijn Afm. 980 x4.000 Kunstsof kozijn Afm. 980 x4.000 Kunstsof kozijn Afm.'
+/raw_current_plan_text_blocks/33 id='text_033' | text='3.100 x2.400 Kunststof pui'
+/raw_current_plan_text_blocks/34 id='text_034' | text='Afm. Kunststof entreepui'
+/raw_current_plan_text_blocks/35 id='text_035' | text='Afm. 3.120x2.400 Kunststof entreepui'
+/raw_current_plan_text_blocks/36 id='text_036' | text='Afm. 3.120x2.400 3.100 x2.400 Kunststof pui'
+/raw_current_plan_text_blocks/37 id='text_037' | text='Afm.'
+/raw_current_plan_text_blocks/38 id='text_038' | text='4.000 x5.000 Brandwerend roldoek'
+/raw_current_plan_text_blocks/39 id='text_039' | text='Afm.'
+/raw_current_plan_text_blocks/40 id='text_040' | text='4.000 x5.000 Snelroldeur Afm.'
+/raw_current_plan_text_blocks/41 id='text_041' | text='1.990 x2.535 Trafodeur Afm.'
+/raw_current_plan_text_blocks/42 id='text_042' | text='3.100 x3.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/43 id='text_043' | text='Afm.'
+/raw_current_plan_text_blocks/44 id='text_044' | text='S 6'
+/raw_current_plan_text_blocks/45 id='text_045' | text='S 6'
+/raw_current_plan_text_blocks/46 id='text_046' | text='S'
+/raw_current_plan_text_blocks/47 id='text_047' | text='6'
+/raw_current_plan_text_blocks/48 id='text_048' | text='S 6'
+/raw_current_plan_text_blocks/49 id='text_049' | text='30m'
+/raw_current_plan_text_blocks/50 id='text_050' | text='S 6 30m'
+/raw_current_plan_text_blocks/51 id='text_051' | text='S'
+/raw_current_plan_text_blocks/52 id='text_052' | text='6 30m'
+/raw_current_plan_text_blocks/53 id='text_053' | text='S'
+/raw_current_plan_text_blocks/54 id='text_054' | text='6 30m'
+/raw_current_plan_text_blocks/55 id='text_055' | text='S'
+/raw_current_plan_text_blocks/56 id='text_056' | text='6 S'
+/raw_current_plan_text_blocks/57 id='text_057' | text='6'
+/raw_current_plan_text_blocks/58 id='text_058' | text='S 6'
+/raw_current_plan_text_blocks/59 id='text_059' | text='S 6 S 6'
+/raw_current_plan_text_blocks/60 id='text_060' | text='S'
+/raw_current_plan_text_blocks/61 id='text_061' | text='6'
+/raw_current_plan_text_blocks/62 id='text_062' | text='1734100'
+/raw_current_plan_text_blocks/63 id='text_063' | text='2730'
+/raw_current_plan_text_blocks/64 id='text_064' | text='5400 2780 160'
+/raw_current_plan_text_blocks/65 id='text_065' | text='160'
+/raw_current_plan_text_blocks/66 id='text_066' | text='160'
+/raw_current_plan_text_blocks/67 id='text_067' | text='Minimaal 2500mm'
+/raw_current_plan_text_blocks/68 id='text_068' | text='60'
+/raw_current_plan_text_blocks/69 id='text_069' | text='60 60'
+/raw_current_plan_text_blocks/70 id='text_070' | text='PS'
+/raw_current_plan_text_blocks/71 id='text_071' | text='elektr. cilinder PS'
+/raw_current_plan_text_blocks/72 id='text_072' | text='elektr. cilinder'
+/raw_current_plan_text_blocks/73 id='text_073' | text='PS'
+/raw_current_plan_text_blocks/74 id='text_074' | text='PS PS'
+/raw_current_plan_text_blocks/75 id='text_075' | text='PS'
+/raw_current_plan_text_blocks/76 id='text_076' | text='PS'
+/raw_current_plan_text_blocks/77 id='text_077' | text='60'
+/raw_current_plan_text_blocks/78 id='text_078' | text='60'
+/raw_current_plan_text_blocks/79 id='text_079' | text='60'
+/raw_current_plan_text_blocks/80 id='text_080' | text='60'
+/raw_current_plan_text_blocks/81 id='text_081' | text='60'
+/raw_current_plan_text_blocks/82 id='text_082' | text='60 60'
+/raw_current_plan_text_blocks/83 id='text_083' | text='60'
+/raw_current_plan_text_blocks/84 id='text_084' | text='luchtleiding'
+/raw_current_plan_text_blocks/85 id='text_085' | text='luchtleiding waterleiding'
+/raw_current_plan_text_blocks/86 id='text_086' | text='dames'
+/raw_current_plan_text_blocks/87 id='text_087' | text='heren'
+/raw_current_plan_text_blocks/88 id='text_088' | text='kantine'
+/raw_current_plan_text_blocks/89 id='text_089' | text='heren'
+/raw_current_plan_text_blocks/90 id='text_090' | text='1'
+/raw_current_plan_text_blocks/91 id='text_091' | text='2'
+/raw_current_plan_text_blocks/92 id='text_092' | text='3'
+/raw_current_plan_text_blocks/93 id='text_093' | text='4'
+/raw_current_plan_text_blocks/94 id='text_094' | text='5'
+/raw_current_plan_text_blocks/95 id='text_095' | text='6'
+/raw_current_plan_text_blocks/96 id='text_096' | text='7'
+/raw_current_plan_text_blocks/97 id='text_097' | text='8'
+/raw_current_plan_text_blocks/98 id='text_098' | text='23O x 196 22A x 220'
+/raw_current_plan_text_blocks/99 id='text_099' | text='Æ'
+/raw_current_plan_text_blocks/100 id='text_100' | text='vliegende'
+/raw_current_plan_text_blocks/101 id='text_101' | text='dames 0.1'
+/raw_current_plan_text_blocks/102 id='text_102' | text='0.2'
+/raw_current_plan_text_blocks/103 id='text_103' | text='0.6'
+/raw_current_plan_text_blocks/104 id='text_104' | text='0.3 0.4'
+/raw_current_plan_text_blocks/105 id='text_105' | text='0.5'
+/raw_current_plan_text_blocks/106 id='text_106' | text='0.11'
+/raw_current_plan_text_blocks/107 id='text_107' | text='0.7'
+/raw_current_plan_text_blocks/108 id='text_108' | text='0.13'
+/raw_current_plan_text_blocks/109 id='text_109' | text='4.000 x5.000 Brandwerend roldoek'
+/raw_current_plan_text_blocks/110 id='text_110' | text='Afm.'
+/raw_current_plan_text_blocks/111 id='text_111' | text='4.000 x5.000 Snelroldeur Afm.'
+/raw_current_plan_text_blocks/112 id='text_112' | text='vw mgn'
+/raw_current_plan_text_blocks/113 id='text_113' | text='WM + DG'
+/raw_current_plan_text_blocks/114 id='text_114' | text='schoonmaakkast'
+/raw_current_plan_text_blocks/115 id='text_115' | text='koffie kk'
+/raw_current_plan_text_blocks/116 id='text_116' | text='Quality control sample hok'
+/raw_current_plan_text_blocks/117 id='text_117' | text='0.9 0.10'
+/raw_current_plan_text_blocks/118 id='text_118' | text='0.8'
+/raw_current_plan_text_blocks/119 id='text_119' | text='3.100 x3.000 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/120 id='text_120' | text='Afm.'
+/raw_current_plan_text_blocks/121 id='text_121' | text='luchtcompressor 63Amp warmtepomp WORKX 32Amp'
+/raw_current_plan_text_blocks/122 id='text_122' | text='nooddouche'
+/raw_current_plan_text_blocks/123 id='text_123' | text='wastroch productie'
+/raw_current_plan_text_blocks/124 id='text_124' | text='3460'
+/raw_current_plan_text_blocks/125 id='text_125' | text='Breektank & Vat'
+/raw_current_plan_text_blocks/126 id='text_126' | text='1 3 7'
+/raw_current_plan_text_blocks/127 id='text_127' | text='6060 2800 5200'
+/raw_current_plan_text_blocks/128 id='text_128' | text='B'
+/raw_current_plan_text_blocks/129 id='text_129' | text='4400 4400 4400'
+/raw_current_plan_text_blocks/130 id='text_130' | text='A'
+/raw_current_plan_text_blocks/131 id='text_131' | text='1750 1870 1870 1860'
+/raw_current_plan_text_blocks/132 id='text_132' | text='1740 1670'
+/raw_current_plan_text_blocks/133 id='text_133' | text='700 1100'
+/raw_current_plan_text_blocks/134 id='text_134' | text='1218,7'
+/raw_current_plan_text_blocks/135 id='text_135' | text='500'
+/raw_current_plan_text_blocks/136 id='text_136' | text='1000'
+/raw_current_plan_text_blocks/137 id='text_137' | text='63Amp 63Amp'
+/raw_current_plan_text_blocks/138 id='text_138' | text='2x CAT5 data kabels'
+/raw_current_plan_text_blocks/139 id='text_139' | text='besturingskast'
+/raw_current_plan_text_blocks/140 id='text_140' | text='Coating PRODuctie'
+/raw_current_plan_text_blocks/141 id='text_141' | text='Uitbreiding schakelkast'
+/raw_current_plan_text_blocks/142 id='text_142' | text='magnetron'
+/raw_current_plan_text_blocks/143 id='text_143' | text='side shifter'
+/raw_current_plan_text_blocks/144 id='text_144' | text='schakelkast productieband 32 Ampere'
+/raw_current_plan_text_blocks/145 id='text_145' | text='Storten'
+/raw_current_plan_text_blocks/146 id='text_146' | text='R090U'
+/raw_current_plan_text_blocks/147 id='text_147' | text='Unifilo'
+/raw_current_plan_text_blocks/148 id='text_148' | text='flipatex'
+/raw_current_plan_text_blocks/149 id='text_149' | text='Unifilo'
+/raw_current_plan_text_blocks/150 id='text_150' | text='messen'
+/raw_current_plan_text_blocks/151 id='text_151' | text='afval afvoeren'
+/raw_current_plan_text_blocks/152 id='text_152' | text='2850'
+/raw_current_plan_text_blocks/153 id='text_153' | text='overkapping voor luchtafvoer optioneel'
+/raw_current_plan_text_blocks/154 id='text_154' | text='data modem'
+/raw_current_plan_text_blocks/155 id='text_155' | text='3061'
+/raw_current_plan_text_blocks/156 id='text_156' | text='3.100 x4.200 Stalen ge´soleerde overheaddeur'
+/raw_current_plan_text_blocks/157 id='text_157' | text='Afm.'
+/raw_current_plan_text_blocks/158 id='text_158' | text='PS'
+/pending_inputs/0 id='steeldeck_profile' | needed_for='steeldeck_roof geometry / roof penetration detailing' | status='PENDING_USER_INPUT'
+/pending_inputs/1 id='window_frame_profile' | needed_for='kozijn/window detail' | status='PENDING_USER_INPUT'
+/pending_inputs/2 id='sandwich_ceiling_module' | needed_for='individual ceiling panel seam catalog' | status='PENDING_COUNT_AGAINST_EXACT_GEOMETRY' | note='Do not set 1000 mm merely because it is typical.'
+/pending_inputs/3 id='sandwich_wall_module' | needed_for='individual external wall panel seam catalog' | status='PENDING_COUNT_AGAINST_EXACT_GEOMETRY'
+/pending_inputs/4 id='ceiling_layer_z_and_thickness' | needed_for='3D ceiling surface' | status='PENDING_SECTION/DETAIL_SOURCE'
+/pending_inputs/5 id='remaining_equipment_footprints' | needed_for='exact machine envelopes where only labels are currently unambiguous' | status='PENDING_VECTOR_ASSOCIATION'
+
+### reference/allshield_roof_window_source_evidence_v0_3.json
+/sources/0 id='plan_20260522' | filename='20260522 ter Aar Indeling totaal (002).pdf' | sha256='192409574ae602b08c7c6dc52b0cb9d19b4e191267e6a1aa6ec45a66e830042e' | note='Current supplied top-view PDF. Page 1; coordinates in PDF points, origin top-left.'
+/sources/1 id='c4a' | filename='c04a_gevels.pdf' | sha256='1f4af215ff58087125339029a950113a4cda1819f6a5c2bebd53a6422df37fa0' | note='C4a facade elevations, revision 24.07.2025. Page 1. Status on sheet: VOORLOPIG.'
+/sources/2 id='photo_facade' | filename='IMG-20260905-WA0015.jpg' | sha256='7d8b6ab276bd04fc43c9c7b229ce97b5ab3116215b0a6353a7e18204669c075f' | note='Exterior perspective image. Not assumed metric or orthographic.'
+/sources/3 id='marked_plan' | filename='71f5dfbc-3363-47d5-99b4-001cfbaa2b0d.png' | sha256='4d5b6902311244e57dc70f2e90bcdf00c83eb4ce40fe7dd5a51766abd7355aa9' | note='User-annotated source crop; 5200-mm dimension and PS opening.'
+/sources/4 id='label_crop' | filename='baaf20df-49f8-4c4d-86f2-c4eb60f712c1.png' | sha256='6f4d1d50a571e8b2b5186d2be5690aeaf7499298bcf67846b61ca666ca9a3b62' | note='Separate crop of 980x4.000 kozijn label.'
+/sources/5 id='hardeman_catalog' | url='https://systeembouw.hardeman.nl/wp-content/uploads/2024/04/HardemanBP_Profielplaten_0424.pdf' | pdf_page_1based=4 | printed_page=2 | role='Manufacturer profile comparison; not proof of installed manufacturer.'
+/sources/6 id='hardeman_product' | url='https://bouwproducten.hardeman.nl/profielplaten/damwandplaten/damwand-dakprofielplaat-32-1000d-op-lengte-gemaakt/' | role='Current manufacturer specification comparison.'
+/sources/7 id='falk_product' | url='https://www.falk.com/nl-nl/profielen/trapeziumprofielen/falk-1000-32-tr-dak' | role='Second manufacturer confirming profile family 1000/32 and 166.7-mm crown pitch.'
+/calibrations/plan/other_dimension_controls/0 id='dim_6060' | label_mm=6060.0 | scaled_mm=6058.086885289244 | residual_mm=-1.9131147107564175
+/calibrations/plan/other_dimension_controls/1 id='dim_2800' | label_mm=2800.0 | scaled_mm=2797.3593398601447 | residual_mm=-2.6406601398552993
+/calibrations/plan/other_dimension_controls/2 id='dim_5200' | label_mm=5200.0 | scaled_mm=5200.0 | residual_mm=0.0
+/components/0 id='building' | name='Building' | parent_id=None | type='evidence_root'
+/components/1 id='envelope' | name='Envelope' | parent_id='building' | type='group'
+/components/2 id='roof' | name='Roof' | parent_id='envelope' | type='group'
+/components/3 id='roof_cladding' | name='Roof_Cladding' | parent_id='roof' | type='group'
+/components/4 id='steeldeck' | name='SteelDeck' | parent_id='roof_cladding' | type='profile_reference' | note='Nominal profile is source-based; thickness, exact corner radii and as-built identity are not inferred.'
+/components/4/measurements/0 id='roof_crown_pitch' | value=166.66981398177546 | unit='mm' | method='median of same-edge consecutive crown centres' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False
+/components/4/measurements/1 id='roof_profile_height' | value=31.996209733376126 | unit='mm' | method='two corresponding crest-to-trough level differences' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False
+/components/4/measurements/2 id='roof_crest_flat' | value=29.99927400168289 | unit='mm' | method='width of horizontal crown segment' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False
+/components/4/measurements/3 id='roof_trough_flat' | value=86.00395054166219 | unit='mm' | method='width of horizontal valley segment' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False
+/components/4/measurements/4 id='roof_sheet_repeat' | value=1000.0016503568302 | unit='mm' | method='translation between adjacent repeated profile instances' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False
+/components/5 id='ceiling' | name='Ceiling' | parent_id='roof' | type='group'
+/components/6 id='sandwich_ceiling' | name='Sandwich_Ceiling' | parent_id='ceiling' | type='system_reference' | existence='USER_CONFIRMED_AND_PHOTOGRAPHED' | module_width_mm=None | thickness_mm=None | note='Roof sheet working width does not prove ceiling panel module or its joint phase.'
+/components/7 id='facades' | name='Facades' | parent_id='envelope' | type='group'
+/components/8 id='facade_a' | name='Facade_A' | parent_id='facades' | type='group'
+/components/9 id='opening_evidence' | name='Opening_Evidence' | parent_id='facade_a' | type='group'
+/components/10 id='plan_ps_opening' | name='Plan_PS_Opening' | parent_id='opening_evidence' | type='source_opening' | source_label='PS' | nominal_width_candidate_mm=1075 | nominal_width_status='CANDIDATE_NOT_DIRECT_LABEL_AT_THIS_LOCATION' | photo_correspondence='UNRESOLVED'
+/components/10/geometry_measurement id='plan_ps_opening_width' | value=1072.6072427209158 | unit='mm' | method='distance between interruption edges of wall band' | source_id='plan_20260522' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False | note='This is the opening indicated by the blue arrow; its measured width is not 980 mm.'
+/components/11 id='plan_980_opening' | name='Plan_Kozijn_980x4000' | parent_id='opening_evidence' | type='source_opening' | source_label='Kunstsof kozijn Afm. 980x4.000' | labelled_width_mm=980 | labelled_height_mm=4000 | dimension_semantics='KOZIJN_LABEL_NOT_IDENTIFIED_AS_DAGMAAT' | daylight_width_mm=None | daylight_height_mm=None | photo_correspondence='UNRESOLVED'
+/components/11/geometry_measurement id='plan_980_labelled_opening_width' | value=978.2178053614715 | unit='mm' | method='distance between interruption edges of wall band' | source_id='plan_20260522' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False | note='Source label states 980x4.000. This does not specify clear glazing/daylight dimensions.'
+/components/12 id='c4a_high_window' | name='C4a_High_Window_Near_Axis21' | parent_id='opening_evidence' | type='source_window' | correspondence_to_plan_opening='UNRESOLVED' | nominal_width_candidate_mm=1100 | note='This measured drawn frame is about 1100 mm wide. Do not overwrite it with 980 mm or inherit an old-model dimension.'
+/components/12/measurements/0 id='c4a_high_window_frame_width' | value=1099.99923036244 | unit='mm' | method='outer black vertical frame boundaries in A elevation, first station from axis 21' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False | note='Not automatically associated with the 980-mm plan type or with the photographed station.'
+/components/12/measurements/1 id='c4a_high_window_visible_black_height' | value=1489.4210857681717 | unit='mm' | method='extent of the visible black outer side members' | source_id='c4a' | status='MEASURED_SOURCE_GEOMETRY' | as_built_verified=False | note='About 1490 mm; not a source height label and not automatically a complete assembly height.'
+
+### sources/pdf/20260522 ter Aar Indeling totaal (002).pdf PAGE1
+1
+2
+3
+4
+5
+6
+7
+8
+23O x 196  
+22A x 220  
+1
+2
+3
+4
+5
+6
+7
+8
+23O x 196
+  
+22A x 220
+  
+2.135 x2.400 
+Wandopening
+Afm.
+4.160 x5.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+4.160 x5.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+3.100 x4.200 
+Stalen ge´soleerde overheaddeur
+Afm.
+4.160 x5.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+1.075 x2.400 
+Kunststof loopdeur
+Afm.
+1.075 x2.400 
+Kunststof loopdeur
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+3.100 x2.400 
+Kunststof pui
+Afm.
+Kunststof entreepui
+Afm. 3.120x2.400
+Kunststof entreepui
+Afm. 3.120x2.400
+3.100 x2.400 
+Kunststof pui
+Afm.
+4.000 x5.000 
+Brandwerend roldoek
+Afm.
+4.000 x5.000 
+Snelroldeur
+Afm.
+1.990 x2.535 
+Trafodeur
+Afm.
+3.100 x3.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+S
+6
+S
+6
+S
+6
+S
+6
+30m
+S
+6
+30m
+S
+6
+30m
+S
+6
+30m
+S
+6
+S
+6
+S
+6
+S
+6
+S
+6
+S
+6
+1734100
+2730
+5400
+2780
+160
+160
+160
+Minimaal 2500mm
+60
+60
+60
+PS
+elektr. cilinder
+PS
+elektr. cilinder
+PS
+PS
+PS
+PS
+PS
+60
+60
+60
+60
+60
+60
+60
+60
+luchtleiding
+luchtleiding
+waterleiding
+dames
+heren
+kantine
+heren
+1
+2
+3
+4
+5
+6
+7
+8
+23O x 196  
+22A x 220  
+Æ
+vliegende
+dames
+0.1
+0.2
+0.6
+0.3
+0.4
+0.5
+0.11
+0.7
+0.13
+4.000 x5.000 
+Brandwerend roldoek
+Afm.
+4.000 x5.000 
+Snelroldeur
+Afm.
+vw
+mgn
+WM +
+ DG
+schoonmaakkast
+koffie
+kk
+Quality control sample hok
+0.9
+0.10
+0.8
+3.100 x3.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+luchtcompressor 63Amp
+warmtepomp WORKX 32Amp
+nooddouche
+wastroch productie
+3460
+Breektank
+&
+Vat
+1
+3
+7
+6060
+2800
+5200
+B
+4400
+4400
+4400
+A
+1750
+1870
+1870
+1860
+1740
+1670
+700
+1100
+1218,7
+500
+1000
+63Amp
+63Amp
+2x CAT5 data kabels
+besturingskast
+Coating PRODuctie
+Uitbreiding schakelkast
+magnetron
+side shifter
+schakelkast productieband
+32 Ampere
+Storten
+R090U
+Unifilo
+flipatex
+Unifilo
+messen
+afval afvoeren
+2850
+overkapping voor luchtafvoer optioneel
+data modem
+3061
+3.100 x4.200 
+Stalen ge´soleerde overheaddeur
+Afm.
+PS
+
+
+### sources/pdf/20260730_maatvoering.pdf PAGE1
+1
+2
+3
+4
+5
+6
+7
+8
+23O x 196  
+22A x 220  
+4.160 x5.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+1.075 x2.400 
+Kunststof loopdeur
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+980 x4.000 
+Kunstsof kozijn
+Afm.
+3.100 x2.400 
+Kunststof pui
+Afm.
+3.100 x2.400 
+Kunststof pui
+Afm.
+4.000 x5.000 
+Brandwerend roldoek
+Afm.
+4.000 x5.000 
+Snelroldeur
+Afm.
+1.990 x2.535 
+Trafodeur
+Afm.
+S
+6
+30m
+S
+6
+30m
+S
+6
+30m
+S
+6
+30m
+S
+6
+S
+6
+160
+60
+60
+PS
+elektr. cilinder
+PS
+PS
+PS
+60
+60
+60
+luchtleiding
+luchtleiding
+waterleiding
+heren
+1
+2
+3
+4
+5
+6
+7
+8
+23O x 196  
+22A x 220  
+Æ
+dames
+0.11
+0.13
+4.000 x5.000 
+Brandwerend roldoek
+Afm.
+4.000 x5.000 
+Snelroldeur
+Afm.
+WM +
+ DG
+0.9
+0.10
+3.100 x3.000 
+Stalen ge´soleerde overheaddeur
+Afm.
+luchtcompressor 63Amp
+nooddouche
+wastroch productie
+3460
+Coating PRODuctie
+data modem
+3.100 x4.200 
+Stalen ge´soleerde overheaddeur
+Afm.
+PS
+Breektank
+&
+Vat
+1
+3
+7
+6060
+2800
+5200
+B
+4400
+4400
+4400
+A
+1750
+1870
+1870
+1860
+1740
+1670
+700
+1100
+1218,7
+500
+1000
+3520
+2400
+Storten
+R090U
+Unifilo
+flipatex
+Unifilo
+messen
+63 Amp
+vooraadhok 2
+0.12
+8.9 m2
+kantoor
+31.5 m2
+wasruimte
+voorbereid
+WC productie
+6.1 m2
+ventilatie naar buiten
+18372
+1200
+6400
+1500
+3270
+2457
+2061
+2050
+2830
+884
+6400
+1500
+10530
+Heat pump
+765
+2300
+2300
+3996
+6224
+3500
+1007
+750
+luchtbehandeling
+

@@ -1,0 +1,117 @@
+# -*- coding: utf-8 -*-
+"""Create a fresh GUI review document for the DN900 roof-penetration zone."""
+from pathlib import Path
+from datetime import datetime
+import importlib.util
+import json
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+
+ROOT_OVERRIDE = ''
+ZONE_ID = 'Planned_Roof_Penetration_DN900_01'
+ROOF_CONTEXT_IDS = (
+    'SteelDeck_Envelope_A_to_Ridge1',
+    'Sandwich_Ceiling_A_to_Ridge1',
+)
+WVB_IDS = (
+    'A11_01_WVB400',
+    'A11_01_WVB401_ASC',
+    'A11_01_WVB401_DESC',
+    'A11_01_WVB402',
+    'A11_01_WVB399',
+    'A11_01_WVB403',
+)
+
+
+def _load_module(root):
+    path = root / 'development' / 'allshield_roof_penetration_zones.py'
+    spec = importlib.util.spec_from_file_location('allshield_roof_penetration_zones_gui_review', str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _style_context(obj, colour, transparency):
+    view = getattr(obj, 'ViewObject', None)
+    if view is None:
+        raise AssertionError('Missing view provider for ' + obj.Name)
+    for key, value in (('ShapeColor', colour), ('LineColor', colour), ('Transparency', transparency)):
+        if key in view.PropertiesList:
+            setattr(view, key, value)
+    if 'Flat Lines' in view.listDisplayModes():
+        view.DisplayMode = 'Flat Lines'
+    view.Visibility = True
+
+
+def main():
+    if not getattr(App, 'GuiUp', False):
+        raise RuntimeError('Run this macro with the full FreeCAD GUI, not FreeCADCmd.')
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    if not (root / 'development' / 'allshield_roof_penetration_zones.py').is_file():
+        raise FileNotFoundError('Set ROOT_OVERRIDE to the Allshield workspace root.')
+    out = root / 'outputs' / ('gui_roof_penetration_zone_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    module = _load_module(root)
+    catalog = module._load_catalog()
+    doc = module.build_roof_penetration_zones(out)
+    visible_ids = (ZONE_ID,) + ROOF_CONTEXT_IDS + WVB_IDS
+    for object_id in visible_ids:
+        if doc.getObject(object_id) is None:
+            raise AssertionError('Missing review object ' + object_id)
+    library = doc.getObject('Component_Library')
+    if library is None:
+        raise AssertionError('Missing Component_Library.')
+    library.ViewObject.Visibility = False
+    for prototype in library.Group:
+        prototype.ViewObject.Visibility = False
+    for obj in doc.Objects:
+        view = getattr(obj, 'ViewObject', None)
+        if view is not None:
+            view.Visibility = False
+    _style_context(doc.getObject(ROOF_CONTEXT_IDS[0]), (0.72, 0.72, 0.72), 75)
+    _style_context(doc.getObject(ROOF_CONTEXT_IDS[1]), (0.84, 0.84, 0.84), 88)
+    for object_id in WVB_IDS:
+        _style_context(doc.getObject(object_id), (0.82, 0.20, 0.05), 0)
+    marker = doc.getObject(ZONE_ID)
+    _style_context(marker, tuple(float(value) for value in catalog['change_visualisation']['rgb']), catalog['change_visualisation']['transparency_percent'])
+    doc.recompute()
+    active_view = Gui.activeDocument().activeView()
+    active_view.viewTop()
+    active_view.fitAll()
+    Gui.updateGui()
+    context_screenshot = out / 'Roof_Penetration_Zone_GUI_context_top.png'
+    active_view.saveImage(str(context_screenshot), 1800, 1200, 'Current')
+    for object_id in ROOF_CONTEXT_IDS + WVB_IDS:
+        doc.getObject(object_id).ViewObject.Visibility = False
+    active_view.viewTop()
+    active_view.fitAll()
+    Gui.updateGui()
+    detail_screenshot = out / 'Roof_Penetration_Zone_GUI_detail_top.png'
+    active_view.saveImage(str(detail_screenshot), 1800, 1200, 'Current')
+    for object_id in ROOF_CONTEXT_IDS + WVB_IDS:
+        doc.getObject(object_id).ViewObject.Visibility = True
+    active_view.viewAxonometric()
+    active_view.fitAll()
+    Gui.updateGui()
+    target = out / 'Roof_Penetration_Zone_GUI_review.FCStd'
+    doc.saveAs(str(target))
+    report = {
+        'status': 'GUI_ROOF_PENETRATION_ZONE_REVIEW_READY',
+        'fcstd': str(target),
+        'context_screenshot': str(context_screenshot),
+        'detail_screenshot': str(detail_screenshot),
+        'visible_context_ids': list(visible_ids),
+        'physical_roof_cutout_created': False,
+        'panel_containment_verified': False,
+        'known_modelled_wvb_clearance_checked': True,
+        'manual_visual_review_required': True,
+        'as_built_verified': False,
+        'fabrication_model': False,
+    }
+    (out / 'gui_roof_penetration_zone_review.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    App.Console.PrintMessage('Roof penetration zone GUI review: ' + str(out) + '\n')
+
+
+main()

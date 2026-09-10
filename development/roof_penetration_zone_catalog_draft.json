@@ -1,0 +1,51 @@
+{
+  "schema": "allshield.roof-penetration-zone-catalog.draft.v1",
+  "revision": "2026-09-09-dn900-planning-zone",
+  "scope": "One non-cutting, user-requested DN900 roof-penetration zone. It is an installation-coordination marker only, not an approved opening, flashing, support or fabrication detail.",
+  "change_visualisation": {
+    "change_set": "2026-09-09_dn900_roof_penetration_zone",
+    "rgb": [1.0, 0.72, 0.0],
+    "transparency_percent": 70,
+    "meaning": "Display-only warning marker for an unresolved planned roof penetration. It is not physical roof material or a construction-status claim."
+  },
+  "source": {
+    "roof_datum": {
+      "file": "sources/pdf/c04a_gevels.pdf",
+      "sheet": "C4a",
+      "page": 1,
+      "baseline_component_id": "SteelDeck_Envelope_A_to_Ridge1",
+      "crest_plane_corners_mm": [
+        [-100.0, -100.0, 9544.610133],
+        [65260.0, -100.0, 9544.610133],
+        [65260.0, 13915.0, 10300.0],
+        [-100.0, 13915.0, 10300.0]
+      ],
+      "status": "DRAWING_BASED_CREST_ENVELOPE"
+    },
+    "planned_location": {
+      "evidence_type": "USER_PROVIDED_APPROXIMATE_COORDINATES",
+      "recorded_utc_date": "2026-09-09",
+      "statement": "DN900 roof penetrations are envisaged at approximately X=10000 mm and Y=8000 mm. Mark the zones.",
+      "coordinate_accuracy_mm": null,
+      "note": "The supplied position is intentionally retained as approximate. No source measurement or field survey tolerance is claimed."
+    }
+  },
+  "zones": [
+    {
+      "id": "Planned_Roof_Penetration_DN900_01",
+      "label": "Planned roof penetration zone | DN900 | approximate X10000 Y8000",
+      "nominal_opening_diameter_mm": 900.0,
+      "requested_centre_xy_mm": [10000.0, 8000.0],
+      "location_status": "USER_PROVIDED_APPROXIMATE",
+      "geometry_status": "COORDINATION_MARKER_ONLY_DO_NOT_CUT_ROOF",
+      "panel_containment_status": "UNVERIFIED_PANEL_JOINT_PHASE_UNKNOWN",
+      "known_bracing_clearance_status": "CHECK_ONLY_AGAINST_CURRENTLY_MODELLED_A11_AXIS01_WVB_BARS",
+      "excluded_detail": "No roof cutout, flashing, penetration pipe, support, curb, panel seam, bracket, fastener or clearance allowance is generated."
+    }
+  ],
+  "explicitly_not_inferred": [
+    "The actual center coordinates, hole diameter, flashing and curb details are not measured or approved by this marker.",
+    "The marker does not establish that the DN900 opening stays within one sandwich panel because the global panel-joint phase is unresolved.",
+    "Clearance is checked only against the six currently modelled A11/as-1 WVB bars; unmodelled bracing and secondary steel remain unresolved."
+  ]
+}
