@@ -1,0 +1,86 @@
+{
+  "schema": "allshield.facade-window-projection-catalog.draft.v1",
+  "revision": "2026-09-11-facade1-c4a-window-bank-01",
+  "scope": "One C4a source-projected Facade_1 window-bank outline and grid. This is not a physical window-frame, glazing, reveal or flashing model.",
+  "change_visualisation": {
+    "change_set": "2026-09-11_facade1_c4a_window_projection",
+    "rgb": [0.15, 0.45, 0.85],
+    "meaning": "Display-only identification of directly projected C4a window-bank linework. It does not describe frame colour, material, construction status or source confidence."
+  },
+  "source": {
+    "file": "sources/pdf/c04a_gevels.pdf",
+    "sheet": "C4a",
+    "page": 1,
+    "view": "Facade 1 elevation",
+    "drawing_status": "VOORLOPIG",
+    "evidence_type": "DIRECT_C4A_VECTOR_PROJECTION",
+    "calibration": {
+      "mm_per_pdf_point": 35.294277268675316,
+      "axis_registration": "Baseline Facade_1 cyan-glazing projections, path indices 597 through 602."
+    },
+    "photo_evidence": {
+      "status": "PHYSICAL_FRAME_LAYERS_VISIBLE_BUT_LOCATION_CORRESPONDENCE_UNRESOLVED",
+      "note": "Photos show exterior surrounds and inner frame layers, but do not uniquely identify this C4a six-light bank or establish metric frame depth."
+    }
+  },
+  "window_banks": [
+    {
+      "id": "Facade1_C4a_WindowBank_01",
+      "label": "Facade 1 C4a window bank 01 | planar source projection",
+      "geometry_status": "PLANAR_SOURCE_PROJECTION_NO_PHYSICAL_DEPTH",
+      "source_path_indices": {
+        "outer_perimeter": [322, 323, 324, 325],
+        "mullions": [327, 329],
+        "transoms": [326, 328, 330],
+        "glazing": [597, 598, 599, 600, 601, 602]
+      },
+      "world_plane_x_mm": 65260.0,
+      "outer_bounds_yz_mm": {
+        "y_min": 33755.0,
+        "y_max": 36845.0,
+        "z_min": 4482.0,
+        "z_max": 6930.0
+      },
+      "directly_measured_projection_dimensions_mm": {
+        "outer_width_y": 3090.0,
+        "outer_height_z": 2448.0,
+        "glazing_light_width_y": 910.0,
+        "upper_glazing_height_z": 1472.0,
+        "lower_glazing_height_z": 735.0,
+        "vertical_mullion_projection_width_y": 94.0,
+        "horizontal_transom_projection_height_z": 94.0
+      },
+      "baseline_glazing_component_ids": [
+        "Facade_1_Glass_Projection_26",
+        "Facade_1_Glass_Projection_27",
+        "Facade_1_Glass_Projection_28",
+        "Facade_1_Glass_Projection_29",
+        "Facade_1_Glass_Projection_30",
+        "Facade_1_Glass_Projection_31"
+      ],
+      "projection_regions_yz_mm": {
+        "outer_frame": [
+          [33755.0, 33841.0, 4482.0, 6930.0],
+          [36759.0, 36845.0, 4482.0, 6930.0],
+          [33841.0, 36759.0, 6869.0, 6930.0],
+          [33841.0, 36759.0, 4482.0, 4568.0]
+        ],
+        "mullions": [
+          [34751.0, 34845.0, 4568.0, 6869.0],
+          [35755.0, 35849.0, 4568.0, 6869.0]
+        ],
+        "transoms": [
+          [33841.0, 34751.0, 5303.0, 5397.0],
+          [34845.0, 35755.0, 5303.0, 5397.0],
+          [35849.0, 36759.0, 5303.0, 5397.0]
+        ]
+      },
+      "excluded_detail": "No physical frame section, depth, glazing thickness, inner reveal, exterior flashing, sill, fixing, opening, thermal break or fabrication detail is generated."
+    }
+  ],
+  "explicitly_not_inferred": [
+    "The projected 86 mm, 61 mm and 94 mm linework extents are not physical frame-profile dimensions or tolerances.",
+    "No photographed window is asserted to correspond to this bank, and no plus-or-minus 20 mm frame-depth result is claimed.",
+    "No source projection is promoted to a solid merely because photographs show a physical window assembly."
+  ]
+}

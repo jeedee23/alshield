@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "wirelabels-main",
+			"path": "../wirelabels-main"
+		}
+	],
+	"settings": {}
+}
