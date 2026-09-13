@@ -1,0 +1,118 @@
+# -*- coding: utf-8 -*-
+"""Create a fresh GUI-rendered review document for four A11/as-20 IPE500 members."""
+from pathlib import Path
+from datetime import datetime
+import importlib.util
+import json
+import traceback
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+
+ROOT_OVERRIDE = ''
+
+
+def _load_axis20(root):
+    path = root / 'development' / 'allshield_axis_20.py'
+    spec = importlib.util.spec_from_file_location('allshield_axis20_gui_review', str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _style_link(link, colour):
+    prototype_view = getattr(link.LinkedObject, 'ViewObject', None)
+    link_view = getattr(link, 'ViewObject', None)
+    if prototype_view is None or link_view is None:
+        raise AssertionError('Missing view provider for ' + link.Name)
+    for key, value in (('ShapeColor', colour), ('LineColor', colour), ('Transparency', 0)):
+        if key in prototype_view.PropertiesList:
+            setattr(prototype_view, key, value)
+    for view in (prototype_view, link_view):
+        if 'Flat Lines' in view.listDisplayModes():
+            view.DisplayMode = 'Flat Lines'
+    prototype_view.Visibility = False
+    link_view.Visibility = True
+    return {
+        'prototype_rgb_after_apply': [float(value) for value in prototype_view.ShapeColor],
+        'visible_link_view_properties': list(link_view.PropertiesList),
+    }
+
+
+def main():
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    out = root / 'outputs' / ('gui_axis20_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    report = {
+        'status': 'RUNNING',
+        'gui_up': bool(getattr(App, 'GuiUp', False)),
+        'as_built_verified': False,
+        'fabrication_model': False,
+    }
+    doc = None
+    try:
+        if not report['gui_up']:
+            raise RuntimeError('Full FreeCAD GUI is unavailable: App.GuiUp is false.')
+        if not (root / 'development' / 'allshield_axis_20.py').is_file():
+            raise FileNotFoundError('Set ROOT_OVERRIDE to the Allshield workspace root.')
+        axis20 = _load_axis20(root)
+        catalog = axis20._load_catalog()
+        doc = axis20.build_axis_20(out)
+        required_ids = ('A11_20_30', 'A11_20_29', 'A11_20_21', 'A11_20_25')
+        colour = tuple(float(value) for value in catalog['change_visualisation']['rgb'])
+        colour_checks = {}
+        for object_id in required_ids:
+            obj = doc.getObject(object_id)
+            if obj is None:
+                raise AssertionError('Missing review member ' + object_id)
+            appearance = _style_link(obj, colour)
+            colour_checks[object_id] = {
+                'requested_rgb': list(colour),
+                'prototype_rgb_after_apply': appearance['prototype_rgb_after_apply'],
+                'visible_link_view_properties': appearance['visible_link_view_properties'],
+                'property_roundtrip_matches': all(
+                    abs(appearance['prototype_rgb_after_apply'][index] - colour[index]) <= 1.0 / 255.0
+                    for index in range(3)
+                ),
+            }
+        library = doc.getObject('Component_Library')
+        if library is None:
+            raise AssertionError('Missing Component_Library.')
+        library.ViewObject.Visibility = False
+        for prototype in library.Group:
+            prototype.ViewObject.Visibility = False
+        doc.recompute()
+        active_view = Gui.activeDocument().activeView()
+        active_view.viewAxonometric()
+        active_view.fitAll()
+        Gui.updateGui()
+        screenshot = out / 'Axis20_GUI_colour_review.png'
+        active_view.saveImage(str(screenshot), 1800, 1200, 'Current')
+        target = out / 'Axis20_GUI_colour_review.FCStd'
+        doc.saveAs(str(target))
+        report.update({
+            'status': 'GUI_COLOUR_REVIEW_READY',
+            'fcstd': str(target),
+            'screenshot': str(screenshot),
+            'change_set': catalog['change_visualisation']['change_set'],
+            'visible_members': list(required_ids),
+            'draw_style': 'Flat Lines',
+            'colour_property_checks': colour_checks,
+            'colour_property_roundtrip_all_match': all(check['property_roundtrip_matches'] for check in colour_checks.values()),
+            'manual_visual_review_required': True,
+        })
+    except Exception:
+        report['status'] = 'FAIL_GUI_COLOUR_REVIEW'
+        report['traceback'] = traceback.format_exc()
+    finally:
+        if doc is not None and doc.Name in App.listDocuments():
+            App.closeDocument(doc.Name)
+        (out / 'gui_axis20_colour_review.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+        if report['gui_up']:
+            from PySide import QtCore
+            QtCore.QTimer.singleShot(0, QtCore.QCoreApplication.instance().quit)
+    return report
+
+
+main()

@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Axis-20 GUI colour review",
+			"type": "shell",
+			"command": "C:\\Program Files\\FreeCAD 1.1\\bin\\FreeCAD.exe",
+			"args": [
+				"--python-path",
+				"D:\\github\\alshield\\allshield_building\\development",
+				"D:\\github\\alshield\\allshield_building\\development\\GUI_Build_Axis20_ColourReview.FCMacro"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		}
+	]
+}

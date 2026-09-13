@@ -1,0 +1,96 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Axis-20 GUI colour review",
+			"type": "shell",
+			"command": "C:\\Program Files\\FreeCAD 1.1\\bin\\FreeCADCmd.exe",
+			"args": [
+				"--console",
+				"D:\\github\\alshield\\allshield_building\\development\\GUI_RuntimeBootstrap_Probe.FCMacro"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"options": {
+				"shell": {
+					"executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						"-NoProfile",
+						"-Command"
+					]
+				}
+			}
+		},
+		{
+			"label": "Axis-20 offscreen GUI probe",
+			"type": "shell",
+			"command": "D:\\github\\alshield\\.venv\\Scripts\\python.exe",
+			"args": [
+				"D:\\github\\alshield\\allshield_building\\tests\\launch_native.py",
+				"--exe",
+				"C:\\Program Files\\FreeCAD 1.1\\bin\\FreeCADCmd.exe",
+				"--script",
+				"D:\\github\\alshield\\allshield_building\\development\\probe_freecad_offscreen_gui.py",
+				"--timeout",
+				"120"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"options": {
+				"shell": {
+					"executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						"-NoProfile",
+						"-Command"
+					]
+				}
+			}
+		},
+		{
+			"label": "FreeCAD GUI bootstrap",
+			"type": "shell",
+			"command": "C:\\Program Files\\FreeCAD 1.1\\bin\\FreeCAD.exe",
+			"args": [
+				"--log-file",
+				"D:\\github\\alshield\\allshield_building\\outputs\\freecad_gui_bootstrap_task.log",
+				"D:\\github\\alshield\\allshield_building\\development\\GUI_RuntimeBootstrap_Probe.FCMacro"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"options": {
+				"shell": {
+					"executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						"-NoProfile",
+						"-Command"
+					]
+				}
+			}
+		},
+		{
+			"label": "Axis-20 full GUI colour review",
+			"type": "shell",
+			"command": "C:\\Program Files\\FreeCAD 1.1\\bin\\FreeCAD.exe",
+			"args": [
+				"--log-file",
+				"D:\\github\\alshield\\allshield_building\\outputs\\freecad_axis20_gui_review.log",
+				"D:\\github\\alshield\\allshield_building\\development\\GUI_Build_Axis20_ColourReview.FCMacro"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test",
+			"options": {
+				"shell": {
+					"executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+					"args": [
+						"-NoProfile",
+						"-Command"
+					]
+				}
+			}
+		}
+	]
+}
