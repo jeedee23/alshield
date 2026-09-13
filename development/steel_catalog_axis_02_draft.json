@@ -1,0 +1,124 @@
+{
+  "schema": "allshield.steel-member-catalog.draft.v1",
+  "revision": "2026-09-08-axis02-approved",
+  "scope": "Approved coordination-model inventory for only A11/as-2 members 313, 311, 312 and 301. This is not a fabrication or as-built model.",
+  "change_visualisation": {
+    "change_set": "2026-09-08_axis02_hea_members",
+    "rgb": [0.95, 0.58, 0.15],
+    "meaning": "Display-only identification of this development change set. It does not describe steel paint, coating, material, construction status or source confidence."
+  },
+  "coordinate_system": {
+    "units": "mm",
+    "station_axis": "2",
+    "client_x_mm": 61050.0,
+    "section_span": "C-E",
+    "reference_component_id": null
+  },
+  "source": {
+    "file": "sources/pdf/a11_ovz-b.pdf",
+    "sheet": "A11",
+    "page": 1,
+    "view": "AANZICHT as-2",
+    "drawing_status": "TER CONTROLE",
+    "evidence_type": "LITERAL_SOURCE_LABELS_AND_VISUAL_ASSOCIATION",
+    "source_projection": {
+      "component_id": null,
+      "status": "SOURCE_PROJECTION_NOT_YET_REPRESENTED_IN_BASELINE",
+      "path_indices": [804, 805, 806, 807, 808, 809, 840, 841]
+    }
+  },
+  "approved_members": [
+    {
+      "id": "A11_02_313",
+      "source_mark": "313",
+      "profile_label": "HEA180",
+      "role": "vertical_member_C_side",
+      "location": "C-side vertical member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_02_311",
+      "source_mark": "311",
+      "profile_label": "HEA180",
+      "role": "vertical_member_D_side",
+      "location": "D-side vertical member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_02_312",
+      "source_mark": "312",
+      "profile_label": "HEA180",
+      "role": "vertical_member_E_side",
+      "location": "E-side vertical member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    },
+    {
+      "id": "A11_02_301",
+      "source_mark": "301",
+      "profile_label": "HEA160",
+      "role": "horizontal_member_C_to_E",
+      "location": "C-to-E horizontal member",
+      "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"
+    }
+  ],
+  "nominal_profile_status": {
+    "HEA180": {
+      "source": "NEN-EN 10365:2017",
+      "approval": "Approved by user on 2026-09-08 for A11/as-2 members 313, 311 and 312.",
+      "dimensions_mm": {
+        "height_h": 171.0,
+        "flange_width_b": 180.0,
+        "web_thickness_tw": 6.0,
+        "flange_thickness_tf": 9.5,
+        "root_radius_r": 15.0
+      },
+      "section_orientation": "FLANGE_WIDTH_B_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_width_mm": 180.0,
+      "representation": "Nominal rolled HEA profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    },
+    "HEA160": {
+      "source": "NEN-EN 10365:2017",
+      "approval": "Approved by user on 2026-09-08 for A11/as-2 member 301.",
+      "dimensions_mm": {
+        "height_h": 152.0,
+        "flange_width_b": 160.0,
+        "web_thickness_tw": 6.0,
+        "flange_thickness_tf": 9.0,
+        "root_radius_r": 15.0
+      },
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_height_mm": 152.0,
+      "representation": "Nominal rolled HEA profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    }
+  },
+  "centreline_definitions_mm": {
+    "method": "Derived from the midpoints of visibly associated A11/as-2 blue outer-member traces, calibrated independently against the C-D-E 4850/4850/9700 dimension chain and +0/+4500 levels. The drawing traces determine member axis length; text location is not used as geometry.",
+    "evidence_status": "VECTOR_MEASUREMENT",
+    "section_orientation": "A11/as-2 is a YZ elevation at the exact local axis-2 station X=61050 mm. The three vertical HEA180 source contour pairs show nominal flange width b=180 mm in the elevation plane, so section height h=171 mm is placed out of plane along X. The horizontal HEA160 source contour shows section height h=152 mm in the elevation plane and flange width b=160 mm out of plane along X.",
+    "A11_02_313": {
+      "start": [61050.0, 18260.0, -178.4],
+      "end": [61050.0, 18260.0, 3981.6],
+      "derivation": "Midpoints of vertical HEA180 contour paths 808/809 at PDF X=140.4137/145.5137 and PDF Y=759.4939 to 877.3600. Literal label 313 HEA180 is visually adjacent in AANZICHT as-2."
+    },
+    "A11_02_311": {
+      "start": [61050.0, 22980.0, -178.4],
+      "end": [61050.0, 22980.0, 4140.6],
+      "derivation": "Midpoints of vertical HEA180 contour paths 806/807 at PDF X=274.1462/279.2463 and PDF Y=754.9890 to 877.3600. Literal label 311 HEA180 is visually adjacent in AANZICHT as-2."
+    },
+    "A11_02_312": {
+      "start": [61050.0, 27740.0, -178.4],
+      "end": [61050.0, 27740.0, 3981.6],
+      "derivation": "Midpoints of vertical HEA180 contour paths 804/805 at PDF X=409.0125/414.1124 and PDF Y=759.4939 to 877.3600. Literal label 312 HEA180 is visually adjacent in AANZICHT as-2."
+    },
+    "A11_02_301": {
+      "start": [61050.0, 18367.0, 4076.6],
+      "end": [61050.0, 27633.0, 4076.6],
+      "derivation": "Midline of horizontal HEA160 contour paths 840/841 from PDF X=145.9952 to 408.5306 and PDF Y=754.6489/758.9556. Literal label 301 HEA160 is visually adjacent in AANZICHT as-2."
+    }
+  },
+  "explicitly_not_inferred": [
+    "No A11/as-2' member is included because its longitudinal station remains unresolved.",
+    "No WVB60x5 brace, connection, base plate, stiffener, secondary steel, mirrored member or unlabelled source contour is included.",
+    "No fabrication definition or as-built claim is made."
+  ]
+}

@@ -1,0 +1,335 @@
+"""Build a standalone bend-to-two-AirTS duct reference assembly.
+
+The Airkan catalogue image supplied for page 155 shows a rectangular
+one-inlet/one-outlet offset. It does not document a 1-to-2 broekstuk.
+This macro therefore labels the splitter as custom and models two separate
+catalogue-style offsets after it. All fabrication-critical dimensions remain
+explicit parameters below.
+"""
+
+import glob
+import os
+
+import FreeCAD as App
+import Part
+
+try:
+    import Import
+except ImportError as error:
+    raise RuntimeError("The FreeCAD Import workbench is required.") from error
+
+
+# Nominal duct clear dimensions and assembly layout, in mm.
+DUCT_WIDTH = 1000.0
+DUCT_HEIGHT = 1000.0
+WALL_THICKNESS = 3.0
+TOTAL_LENGTH = 1750.0
+PLENUM_LENGTH = 650.0
+AIRTS_CENTER_DISTANCE = 1100.0
+
+# The two branch ducts leave the custom plenum side by side. The subsequent
+# Airkan-style offsets create the remaining separation to the AirTS units.
+PLENUM_BRANCH_CENTER_DISTANCE = DUCT_WIDTH + (2.0 * WALL_THICKNESS)
+
+# This frame size follows the outer bounds of the supplied AirTS STEP model,
+# not an unverified catalogue flange table. Set to 0.0 to omit the frames.
+REFERENCE_FLANGE_OUTSIDE = 1100.0
+REFERENCE_FLANGE_DEPTH = 30.0
+
+# The reference STEP placements use these known port assumptions. Their source
+# geometry is imported only as a visual/reference assembly and is not changed.
+IMPORT_REFERENCE_STEPS = True
+SHOW_REFERENCE_STEPS = True
+
+
+def rectangular_wire(x_coordinate, center_y, center_z, width, height):
+    half_width = width / 2.0
+    half_height = height / 2.0
+    points = [
+        App.Vector(x_coordinate, center_y - half_width, center_z - half_height),
+        App.Vector(x_coordinate, center_y + half_width, center_z - half_height),
+        App.Vector(x_coordinate, center_y + half_width, center_z + half_height),
+        App.Vector(x_coordinate, center_y - half_width, center_z + half_height),
+        App.Vector(x_coordinate, center_y - half_width, center_z - half_height),
+    ]
+    return Part.makePolygon(points)
+
+
+def hollow_transition(
+    start_x,
+    end_x,
+    start_center_y,
+    end_center_y,
+    start_outer_width,
+    end_outer_width,
+    start_inner_width,
+    end_inner_width,
+    height,
+):
+    outer_start = rectangular_wire(
+        start_x, start_center_y, 0.0, start_outer_width, height + (2.0 * WALL_THICKNESS)
+    )
+    outer_end = rectangular_wire(
+        end_x, end_center_y, 0.0, end_outer_width, height + (2.0 * WALL_THICKNESS)
+    )
+    outer_shape = Part.makeLoft([outer_start, outer_end], True, False)
+
+    extension = 0.1
+    span = end_x - start_x
+    center_gradient = (end_center_y - start_center_y) / span
+    inner_start = rectangular_wire(
+        start_x - extension,
+        start_center_y - (center_gradient * extension),
+        0.0,
+        start_inner_width,
+        height,
+    )
+    inner_end = rectangular_wire(
+        end_x + extension,
+        end_center_y + (center_gradient * extension),
+        0.0,
+        end_inner_width,
+        height,
+    )
+    inner_shape = Part.makeLoft([inner_start, inner_end], True, False)
+    return outer_shape.cut(inner_shape)
+
+
+def custom_distribution_plenum():
+    branch_outer_width = DUCT_WIDTH + (2.0 * WALL_THICKNESS)
+    plenum_outer_width = (2.0 * branch_outer_width)
+    plenum_inner_width = plenum_outer_width - (2.0 * WALL_THICKNESS)
+    return hollow_transition(
+        0.0,
+        PLENUM_LENGTH,
+        0.0,
+        0.0,
+        branch_outer_width,
+        plenum_outer_width,
+        DUCT_WIDTH,
+        plenum_inner_width,
+        DUCT_HEIGHT,
+    )
+
+
+def airkan_style_offset(start_center_y, end_center_y):
+    outer_width = DUCT_WIDTH + (2.0 * WALL_THICKNESS)
+    return hollow_transition(
+        PLENUM_LENGTH,
+        TOTAL_LENGTH,
+        start_center_y,
+        end_center_y,
+        outer_width,
+        outer_width,
+        DUCT_WIDTH,
+        DUCT_WIDTH,
+        DUCT_HEIGHT,
+    )
+
+
+def flange_frame(x_start, center_y):
+    if REFERENCE_FLANGE_OUTSIDE <= 0.0 or REFERENCE_FLANGE_DEPTH <= 0.0:
+        return Part.Shape()
+
+    outside = REFERENCE_FLANGE_OUTSIDE
+    outer = Part.makeBox(
+        REFERENCE_FLANGE_DEPTH,
+        outside,
+        outside,
+        App.Vector(x_start, center_y - (outside / 2.0), -outside / 2.0),
+    )
+    opening = Part.makeBox(
+        REFERENCE_FLANGE_DEPTH + 0.2,
+        DUCT_WIDTH,
+        DUCT_HEIGHT,
+        App.Vector(x_start - 0.1, center_y - (DUCT_WIDTH / 2.0), -DUCT_HEIGHT / 2.0),
+    )
+    return outer.cut(opening)
+
+
+def add_feature(document, group, name, label, shape, color):
+    if shape.isNull() or not shape.isValid() or shape.Volume <= 0.0:
+        raise RuntimeError("Invalid shape generated for {0}.".format(label))
+    feature = document.addObject("Part::Feature", name)
+    feature.Label = label
+    feature.Shape = shape
+    feature.addProperty("App::PropertyString", "ComponentRole", "Traceability")
+    feature.ComponentRole = label
+    if feature.ViewObject is not None:
+        feature.ViewObject.ShapeColor = color
+    group.addObject(feature)
+    return feature
+
+
+def add_parameters(document, group):
+    parameters = document.addObject("App::FeaturePython", "Distribution_Parameters")
+    parameters.Label = "Distribution parameters (mm)"
+    values = {
+        "DuctWidth": DUCT_WIDTH,
+        "DuctHeight": DUCT_HEIGHT,
+        "WallThickness": WALL_THICKNESS,
+        "TotalLength": TOTAL_LENGTH,
+        "PlenumLength": PLENUM_LENGTH,
+        "AirTSCenterDistance": AIRTS_CENTER_DISTANCE,
+        "PlenumBranchCenterDistance": PLENUM_BRANCH_CENTER_DISTANCE,
+        "ReferenceFlangeOutside": REFERENCE_FLANGE_OUTSIDE,
+        "ReferenceFlangeDepth": REFERENCE_FLANGE_DEPTH,
+    }
+    for property_name, value in values.items():
+        parameters.addProperty("App::PropertyLength", property_name, "Dimensions")
+        setattr(parameters, property_name, value)
+    parameters.addProperty("App::PropertyString", "SplitterStatus", "Traceability")
+    parameters.SplitterStatus = "Custom 1-to-2 plenum; no matching Airkan broekstuk was verified."
+    parameters.addProperty("App::PropertyString", "OffsetStatus", "Traceability")
+    parameters.OffsetStatus = "Two parametric 1-to-1 rectangular offsets based on the supplied page 155 diagram."
+    parameters.addProperty("App::PropertyString", "ReferenceStepStatus", "Traceability")
+    parameters.ReferenceStepStatus = "STEP positions are visual assumptions and require site/layout confirmation."
+    group.addObject(parameters)
+
+
+def imported_roots(document, object_names):
+    imported_objects = [document.getObject(name) for name in object_names]
+    imported_objects = [item for item in imported_objects if item is not None]
+    object_name_set = {item.Name for item in imported_objects}
+    return [
+        item
+        for item in imported_objects
+        if not any(parent.Name in object_name_set for parent in item.InList)
+    ]
+
+
+def insert_step(document, parent_group, path, label, placement):
+    before_names = {item.Name for item in document.Objects}
+    Import.insert(path, document.Name)
+    document.recompute()
+    added_names = {item.Name for item in document.Objects} - before_names
+    roots = imported_roots(document, added_names)
+    if not roots:
+        raise RuntimeError("No objects were imported from {0}.".format(os.path.basename(path)))
+
+    for root in roots:
+        if hasattr(root, "Placement"):
+            root.Placement = placement.multiply(root.Placement)
+        parent_group.addObject(root)
+        root.Label = label if len(roots) == 1 else "{0}: {1}".format(label, root.Label)
+        if root.ViewObject is not None:
+            root.ViewObject.Visibility = SHOW_REFERENCE_STEPS
+    return roots
+
+
+def placement_for_bend(shape):
+    bounds = shape.BoundBox
+    source_port_center = App.Vector(bounds.XMin, (bounds.YMin + bounds.YMax) / 2.0, (bounds.ZMin + bounds.ZMax) / 2.0)
+    rotation = App.Rotation(App.Vector(0.0, 0.0, 1.0), 180.0)
+    target_port_center = App.Vector(0.0, 0.0, 0.0)
+    return App.Placement(target_port_center - rotation.multVec(source_port_center), rotation)
+
+
+def placement_for_airts(shape, center_y):
+    bounds = shape.BoundBox
+    source_port_center = App.Vector(
+        (bounds.XMin + bounds.XMax) / 2.0,
+        (bounds.YMin + bounds.YMax) / 2.0,
+        bounds.ZMin,
+    )
+    rotation = App.Rotation(App.Vector(0.0, 1.0, 0.0), 90.0)
+    target_port_center = App.Vector(TOTAL_LENGTH, center_y, 0.0)
+    return App.Placement(target_port_center - rotation.multVec(source_port_center), rotation)
+
+
+def first_shape(roots):
+    for root in roots:
+        if hasattr(root, "Shape") and not root.Shape.isNull():
+            return root.Shape
+    raise RuntimeError("The imported STEP reference has no top-level shape.")
+
+
+def find_bend_step(root_directory):
+    matches = glob.glob(os.path.join(root_directory, "bend*.step"))
+    if len(matches) != 1:
+        raise RuntimeError("Expected one bend*.step next to the macro, found {0}.".format(len(matches)))
+    return matches[0]
+
+
+def create_document():
+    base_name = "AirTS_Distribution_Reference"
+    document_name = base_name
+    suffix = 2
+    while document_name in App.listDocuments():
+        document_name = "{0}_{1}".format(base_name, suffix)
+        suffix += 1
+    return App.newDocument(document_name)
+
+
+def build():
+    if TOTAL_LENGTH <= PLENUM_LENGTH:
+        raise ValueError("TOTAL_LENGTH must exceed PLENUM_LENGTH.")
+    if AIRTS_CENTER_DISTANCE < PLENUM_BRANCH_CENTER_DISTANCE:
+        raise ValueError("AIRTS_CENTER_DISTANCE must be at least the plenum branch centre distance.")
+
+    document = create_document()
+    assembly = document.addObject("App::DocumentObjectGroup", "AirTS_Distribution_Assembly")
+    assembly.Label = "Bend to 2x AirTS reference assembly"
+    duct_group = document.addObject("App::DocumentObjectGroup", "Ductwork")
+    duct_group.Label = "Custom plenum and Airkan-style offsets"
+    reference_group = document.addObject("App::DocumentObjectGroup", "Reference_STEPS")
+    reference_group.Label = "Imported STEP references (visual placement)"
+    assembly.addObject(duct_group)
+    assembly.addObject(reference_group)
+    add_parameters(document, assembly)
+
+    branch_start_offset = PLENUM_BRANCH_CENTER_DISTANCE / 2.0
+    branch_end_offset = AIRTS_CENTER_DISTANCE / 2.0
+    plenum = custom_distribution_plenum()
+    left_offset = airkan_style_offset(-branch_start_offset, -branch_end_offset)
+    right_offset = airkan_style_offset(branch_start_offset, branch_end_offset)
+
+    add_feature(document, duct_group, "Custom_Distribution_Plenum", "Custom 1-to-2 distribution plenum", plenum, (0.76, 0.76, 0.78))
+    add_feature(document, duct_group, "Airkan_Offset_Left", "Airkan-style offset, left branch", left_offset, (0.69, 0.72, 0.76))
+    add_feature(document, duct_group, "Airkan_Offset_Right", "Airkan-style offset, right branch", right_offset, (0.69, 0.72, 0.76))
+
+    for name, label, x_start, center_y in [
+        ("Inlet_Reference_Flange", "Reference inlet flange frame", 0.0, 0.0),
+        ("Left_Outlet_Reference_Flange", "Reference left outlet flange frame", TOTAL_LENGTH - REFERENCE_FLANGE_DEPTH, -branch_end_offset),
+        ("Right_Outlet_Reference_Flange", "Reference right outlet flange frame", TOTAL_LENGTH - REFERENCE_FLANGE_DEPTH, branch_end_offset),
+    ]:
+        frame = flange_frame(x_start, center_y)
+        if not frame.isNull():
+            add_feature(document, duct_group, name, label, frame, (0.45, 0.48, 0.52))
+
+    if IMPORT_REFERENCE_STEPS:
+        root_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        bend_path = find_bend_step(root_directory)
+        airts_path = os.path.join(root_directory, "AirTS_KQ_II.step")
+        if not os.path.isfile(airts_path):
+            raise RuntimeError("AirTS_KQ_II.step was not found next to the bend STEP.")
+
+        bend_roots = insert_step(document, reference_group, bend_path, "Bend 1000x1000 90 deg", App.Placement())
+        bend_placement = placement_for_bend(first_shape(bend_roots))
+        for root in bend_roots:
+            root.Placement = bend_placement.multiply(root.Placement)
+
+        left_airts_roots = insert_step(document, reference_group, airts_path, "AirTS left", App.Placement())
+        left_airts_placement = placement_for_airts(first_shape(left_airts_roots), -branch_end_offset)
+        for root in left_airts_roots:
+            root.Placement = left_airts_placement.multiply(root.Placement)
+
+        right_airts_roots = insert_step(document, reference_group, airts_path, "AirTS right", App.Placement())
+        right_airts_placement = placement_for_airts(first_shape(right_airts_roots), branch_end_offset)
+        for root in right_airts_roots:
+            root.Placement = right_airts_placement.multiply(root.Placement)
+
+    document.recompute()
+    try:
+        import FreeCADGui as Gui
+
+        active_view = Gui.activeDocument().activeView()
+        active_view.viewAxonometric()
+        active_view.fitAll()
+    except (ImportError, AttributeError):
+        pass
+    return document
+
+
+document = build()
+print("Created {0}; the custom splitter and two offset ducts are ready for review.".format(document.Label))

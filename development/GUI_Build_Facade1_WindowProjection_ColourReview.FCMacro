@@ -1,0 +1,102 @@
+# -*- coding: utf-8 -*-
+"""Create a fresh GUI review document for the C4a Facade_1 window-bank projection."""
+from pathlib import Path
+from datetime import datetime
+import importlib.util
+import json
+
+import FreeCAD as App
+import FreeCADGui as Gui
+
+
+ROOT_OVERRIDE = ''
+BANK_ID = 'Facade1_C4a_WindowBank_01'
+PROJECTION_IDS = (
+    BANK_ID + '_OuterFrameProjection',
+    BANK_ID + '_GridProjection',
+)
+GLAZING_IDS = (
+    'Facade_1_Glass_Projection_26',
+    'Facade_1_Glass_Projection_27',
+    'Facade_1_Glass_Projection_28',
+    'Facade_1_Glass_Projection_29',
+    'Facade_1_Glass_Projection_30',
+    'Facade_1_Glass_Projection_31',
+)
+
+
+def _load_module(root):
+    path = root / 'development' / 'allshield_facade1_window_projection.py'
+    spec = importlib.util.spec_from_file_location('allshield_facade1_window_projection_gui_review', str(path))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _style(obj, colour, transparency):
+    view = getattr(obj, 'ViewObject', None)
+    if view is None:
+        raise AssertionError('Missing view provider for ' + obj.Name)
+    for key, value in (('ShapeColor', colour), ('LineColor', colour), ('LineWidth', 2.0), ('Transparency', transparency)):
+        if key in view.PropertiesList:
+            setattr(view, key, value)
+    if 'Flat Lines' in view.listDisplayModes():
+        view.DisplayMode = 'Flat Lines'
+    view.Visibility = True
+
+
+def main():
+    if not getattr(App, 'GuiUp', False):
+        raise RuntimeError('Run this macro with the full FreeCAD GUI, not FreeCADCmd.')
+    root = Path(ROOT_OVERRIDE) if ROOT_OVERRIDE else Path(__file__).resolve().parents[1]
+    if not (root / 'development' / 'allshield_facade1_window_projection.py').is_file():
+        raise FileNotFoundError('Set ROOT_OVERRIDE to the Allshield workspace root.')
+    out = root / 'outputs' / ('gui_facade1_window_projection_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+    out.mkdir(parents=True, exist_ok=False)
+    module = _load_module(root)
+    catalog = module._load_catalog()
+    doc = module.build_facade1_window_projection(out)
+    for object_id in PROJECTION_IDS + GLAZING_IDS:
+        if doc.getObject(object_id) is None:
+            raise AssertionError('Missing review object ' + object_id)
+    library = doc.getObject('Component_Library')
+    if library is None:
+        raise AssertionError('Missing Component_Library.')
+    library.ViewObject.Visibility = False
+    for prototype in library.Group:
+        prototype.ViewObject.Visibility = False
+    for obj in doc.Objects:
+        view = getattr(obj, 'ViewObject', None)
+        if view is not None:
+            view.Visibility = False
+    colour = tuple(float(value) for value in catalog['change_visualisation']['rgb'])
+    for object_id in PROJECTION_IDS:
+        _style(doc.getObject(object_id), colour, 0)
+    for object_id in GLAZING_IDS:
+        _style(doc.getObject(object_id), (0.12, 0.93, 0.91), 45)
+    doc.recompute()
+    active_view = Gui.activeDocument().activeView()
+    active_view.viewRight()
+    active_view.fitAll()
+    Gui.updateGui()
+    screenshot = out / 'Facade1_Window_Projection_GUI_right.png'
+    active_view.saveImage(str(screenshot), 1800, 1200, 'Current')
+    target = out / 'Facade1_Window_Projection_GUI_review.FCStd'
+    doc.saveAs(str(target))
+    report = {
+        'status': 'GUI_FACADE1_WINDOW_PROJECTION_REVIEW_READY',
+        'fcstd': str(target),
+        'screenshot': str(screenshot),
+        'visible_projection_ids': list(PROJECTION_IDS),
+        'visible_glazing_projection_ids': list(GLAZING_IDS),
+        'physical_window_frame_created': False,
+        'inner_or_street_side_frame_depth_verified': False,
+        'manual_visual_review_required': True,
+        'as_built_verified': False,
+        'fabrication_model': False,
+    }
+    (out / 'gui_facade1_window_projection_review.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    App.Console.PrintMessage('Facade_1 window projection GUI review: ' + str(out) + '\n')
+
+
+main()

@@ -1,0 +1,77 @@
+{
+  "schema": "allshield.steel-member-catalog.draft.v1",
+  "revision": "2026-09-08-axis05-primary-members-approved",
+  "scope": "Approved coordination-model inventory for only A11/as-5 members 358, 353, 316, 319, 347 and 348. This is not a fabrication or as-built model.",
+  "change_visualisation": {
+    "change_set": "2026-09-08_axis05_primary_members",
+    "rgb": [0.9, 0.35, 0.12],
+    "meaning": "Display-only identification of this development change set. It does not describe steel paint, coating, material, construction status or source confidence."
+  },
+  "coordinate_system": {
+    "units": "mm",
+    "station_axis": "5",
+    "client_x_mm": 53750.0,
+    "section_span": "A-E",
+    "reference_component_id": "Section_A11_Axis_5"
+  },
+  "source": {
+    "file": "sources/pdf/a11_ovz-b.pdf",
+    "sheet": "A11",
+    "page": 1,
+    "view": "AANZICHT as-5",
+    "drawing_status": "TER CONTROLE",
+    "evidence_type": "LITERAL_SOURCE_LABELS_AND_VISUAL_ASSOCIATION",
+    "source_projection": {
+      "component_id": "Section_A11_Axis_5",
+      "status": "SOURCE_PROJECTION_NOT_SOLID",
+      "registered_path_indices": [1826, 1827, 1829, 1830, 1833, 1834, 1841, 1842, 1919, 1921, 1929, 1936, 1937, 1938, 1957, 1958, 1971, 1972, 1977, 1982, 2018],
+      "direct_pdf_rafter_path_indices": [1843, 1844, 1845, 1846],
+      "transform": {"source_x0_pt": 139.28027, "source_z0_pt": 1918.103, "scale_mm_per_pt": 35.294279, "axis_registration_max_residual_mm": 0.001632}
+    }
+  },
+  "approved_members": [
+    {"id": "A11_05_358", "source_mark": "358", "profile_label": "IPE500-S355JR", "role": "upper_column_A", "location": "A-side IPE500 upper column segment", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"},
+    {"id": "A11_05_353", "source_mark": "353", "profile_label": "IPE500-S355JR", "role": "outer_column_E", "location": "E-side outer column", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"},
+    {"id": "A11_05_316", "source_mark": "316", "profile_label": "HEA200", "role": "vertical_member_B_side", "location": "B-side vertical member", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"},
+    {"id": "A11_05_319", "source_mark": "319", "profile_label": "HEA200", "role": "vertical_member_C_side", "location": "C-side vertical member", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"},
+    {"id": "A11_05_347", "source_mark": "347", "profile_label": "IPE450-S355JR", "role": "roof_rafter_A_to_ridge", "location": "A-side sloped roof member", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"},
+    {"id": "A11_05_348", "source_mark": "348", "profile_label": "IPE450-S355JR", "role": "roof_rafter_ridge_to_E", "location": "E-side sloped roof member", "geometry_status": "APPROVED_FOR_NOMINAL_COORDINATION_SOLID"}
+  ],
+  "nominal_profile_status": {
+    "IPE500": {
+      "source": "NEN-EN 10365:2017",
+      "dimensions_mm": {"height_h": 500.0, "flange_width_b": 200.0, "web_thickness_tw": 10.2, "flange_thickness_tf": 16.0, "root_radius_r": 21.0},
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "representation": "Nominal rolled IPE profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    },
+    "HEA200": {
+      "source": "NEN-EN 10365:2017",
+      "dimensions_mm": {"height_h": 190.0, "flange_width_b": 200.0, "web_thickness_tw": 6.5, "flange_thickness_tf": 10.0, "root_radius_r": 18.0},
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "source_projected_in_plane_height_mm": 190.0,
+      "representation": "Nominal rolled HEA profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    },
+    "IPE450": {
+      "source": "NEN-EN 10365:2017",
+      "dimensions_mm": {"height_h": 450.0, "flange_width_b": 190.0, "web_thickness_tw": 9.4, "flange_thickness_tf": 14.6, "root_radius_r": 21.0},
+      "section_orientation": "SECTION_HEIGHT_H_IN_A11_ELEVATION_PLANE",
+      "representation": "Nominal rolled IPE profile with idealised profile geometry for coordination; rolling tolerances, camber and connection-specific modifications are excluded."
+    }
+  },
+  "centreline_definitions_mm": {
+    "method": "Derived from the calibrated A11/as-5 local source projection: member centreline endpoints are midpoints of paired long outer-outline edges. The rafter outline paths are read directly from the A11 PDF with the Section_A11_Axis_5 calibration. The drawing traces determine member axes; text location is not used as geometry.",
+    "evidence_status": "VECTOR_MEASUREMENT",
+    "section_orientation": "A11/as-5 is a YZ elevation at the exact axis-5 station X=53750 mm. IPE500, HEA200 and IPE450 profile section height h is in the elevation plane; flange width b is out of plane along X. The 38.495 mm source-projected gap between IPE450 rafter ridge endpoints is preserved.",
+    "A11_05_358": {"start": [53750.0, 250.0005465, 3615.00006], "end": [53750.0, 250.0005465, 9166.3675075], "derivation": "Midpoints of A-side IPE500 outer outline edges in registered paths 1841/1842. Only the visibly labelled upper source segment is included; no lower continuation is inferred. Literal label 358 IPE500-S355JR is visually adjacent in AANZICHT as-5."},
+    "A11_05_353": {"start": [53750.0, 27580.0008265, -162.004808], "end": [53750.0, 27580.0008265, 9166.365353], "derivation": "Midpoints of E-side outer IPE500 contour edges in registered paths 1826/1827. Literal label 353 IPE500-S355JR is visually adjacent in AANZICHT as-5."},
+    "A11_05_316": {"start": [53750.0, 13154.999113, -178.006145], "end": [53750.0, 13154.999113, 9406.646065], "derivation": "Midpoints of B-side HEA200 outer contour edges in registered paths 1833/1834. Literal label 316 HEA200 is visually adjacent in AANZICHT as-5."},
+    "A11_05_319": {"start": [53750.0, 18225.001623, -178.006145], "end": [53750.0, 18225.001623, 9216.581719], "derivation": "Midpoints of C-side HEA200 outer contour edges in registered paths 1829/1830. Literal label 319 HEA200 is visually adjacent in AANZICHT as-5."},
+    "A11_05_347": {"start": [53750.0, 519.336962, 8974.788794], "end": [53750.0, 13895.754526, 9690.954186], "derivation": "Midpoints of the paired long A-side IPE450 roof outline edges in direct A11 PDF paths 1843/1844. Literal label 347 IPE450-S355JR is visually adjacent in AANZICHT as-5."},
+    "A11_05_348": {"start": [53750.0, 13934.249997, 9690.954186], "end": [53750.0, 27310.667561, 8974.788794], "derivation": "Midpoints of the paired long E-side IPE450 roof outline edges in direct A11 PDF paths 1845/1846. Literal label 348 IPE450-S355JR is visually adjacent in AANZICHT as-5."}
+  },
+  "explicitly_not_inferred": [
+    "No K200*100*4 member 374, connection, base plate, stiffener, secondary steel, mirrored member or unlabelled source contour is included.",
+    "The labelled IPE500 member 358 is limited to its source-projected upper segment; no continuation below Z=3615.000060 mm is inferred.",
+    "No fabrication definition or as-built claim is made."
+  ]
+}
