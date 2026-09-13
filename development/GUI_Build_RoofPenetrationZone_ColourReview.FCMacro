@@ -7,6 +7,7 @@ import json
 
 import FreeCAD as App
 import FreeCADGui as Gui
+import Part
 
 
 ROOT_OVERRIDE = ''
@@ -45,6 +46,16 @@ def _style_context(obj, colour, transparency):
     view.Visibility = True
 
 
+def _review_shape(doc, object_id, label, shape, colour, transparency=0, line_width=2.0):
+    review = doc.addObject('Part::Feature', object_id)
+    review.Label = label
+    review.Shape = shape
+    _style_context(review, colour, transparency)
+    if 'LineWidth' in review.ViewObject.PropertiesList:
+        review.ViewObject.LineWidth = line_width
+    return review
+
+
 def main():
     if not getattr(App, 'GuiUp', False):
         raise RuntimeError('Run this macro with the full FreeCAD GUI, not FreeCADCmd.')
@@ -70,12 +81,31 @@ def main():
         view = getattr(obj, 'ViewObject', None)
         if view is not None:
             view.Visibility = False
-    _style_context(doc.getObject(ROOF_CONTEXT_IDS[0]), (0.72, 0.72, 0.72), 75)
-    _style_context(doc.getObject(ROOF_CONTEXT_IDS[1]), (0.84, 0.84, 0.84), 88)
-    for object_id in WVB_IDS:
-        _style_context(doc.getObject(object_id), (0.82, 0.20, 0.05), 0)
+    review_group = doc.addObject('App::DocumentObjectGroup', 'Review_Display_Context')
+    review_group.Label = 'Review display context only | roof crest envelope and effective WVB geometry'
+    roof_context = _review_shape(
+        doc,
+        'Review_Roof_Crest_Envelope_A_to_Ridge1',
+        'Review context | C4a roof crest envelope A to ridge 1',
+        Part.getShape(doc.getObject(ROOF_CONTEXT_IDS[0])).copy(),
+        (0.60, 0.66, 0.70),
+        transparency=85,
+        line_width=3.0,
+    )
+    wvb_context = _review_shape(
+        doc,
+        'Review_Axis01_WVB_Effective_Geometry',
+        'Review context | effective A11 axis-1 WVB geometry',
+        Part.makeCompound([Part.getShape(doc.getObject(object_id)).copy() for object_id in WVB_IDS]),
+        (0.82, 0.20, 0.05),
+        line_width=3.0,
+    )
+    review_group.addObject(roof_context)
+    review_group.addObject(wvb_context)
     marker = doc.getObject(ZONE_ID)
-    _style_context(marker, tuple(float(value) for value in catalog['change_visualisation']['rgb']), catalog['change_visualisation']['transparency_percent'])
+    _style_context(marker, tuple(float(value) for value in catalog['change_visualisation']['rgb']), 0)
+    if 'LineWidth' in marker.ViewObject.PropertiesList:
+        marker.ViewObject.LineWidth = 4.0
     doc.recompute()
     active_view = Gui.activeDocument().activeView()
     active_view.viewTop()
@@ -83,15 +113,13 @@ def main():
     Gui.updateGui()
     context_screenshot = out / 'Roof_Penetration_Zone_GUI_context_top.png'
     active_view.saveImage(str(context_screenshot), 1800, 1200, 'Current')
-    for object_id in ROOF_CONTEXT_IDS + WVB_IDS:
-        doc.getObject(object_id).ViewObject.Visibility = False
+    review_group.ViewObject.Visibility = False
     active_view.viewTop()
     active_view.fitAll()
     Gui.updateGui()
     detail_screenshot = out / 'Roof_Penetration_Zone_GUI_detail_top.png'
     active_view.saveImage(str(detail_screenshot), 1800, 1200, 'Current')
-    for object_id in ROOF_CONTEXT_IDS + WVB_IDS:
-        doc.getObject(object_id).ViewObject.Visibility = True
+    review_group.ViewObject.Visibility = True
     active_view.viewAxonometric()
     active_view.fitAll()
     Gui.updateGui()
@@ -103,6 +131,7 @@ def main():
         'context_screenshot': str(context_screenshot),
         'detail_screenshot': str(detail_screenshot),
         'visible_context_ids': list(visible_ids),
+        'review_context_geometry': [roof_context.Name, wvb_context.Name],
         'physical_roof_cutout_created': False,
         'panel_containment_verified': False,
         'known_modelled_wvb_clearance_checked': True,

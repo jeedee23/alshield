@@ -1,6 +1,6 @@
 {
   "schema": "allshield.roof-penetration-zone-catalog.draft.v1",
-  "revision": "2026-09-09-dn900-planning-zone",
+  "revision": "2026-09-12-dn900-sliding-system-strategy",
   "scope": "One non-cutting, user-requested DN900 roof-penetration zone. It is an installation-coordination marker only, not an approved opening, flashing, support or fabrication detail.",
   "change_visualisation": {
     "change_set": "2026-09-09_dn900_roof_penetration_zone",
@@ -28,6 +28,13 @@
       "statement": "DN900 roof penetrations are envisaged at approximately X=10000 mm and Y=8000 mm. Mark the zones.",
       "coordinate_accuracy_mm": null,
       "note": "The supplied position is intentionally retained as approximate. No source measurement or field survey tolerance is claimed."
+    },
+    "installation_strategy": {
+      "evidence_type": "USER_CONFIRMED_INSTALLER_AGREEMENT",
+      "recorded_utc_date": "2026-09-12",
+      "statement": "The installer will place a sliding system when the penetration is not exactly at the centre of a sandwich panel.",
+      "status": "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED",
+      "note": "This resolves the installation approach for an off-centre penetration; it does not measure the actual panel-joint phase or approve a physical roof opening."
     }
   },
   "zones": [
@@ -38,14 +45,15 @@
       "requested_centre_xy_mm": [10000.0, 8000.0],
       "location_status": "USER_PROVIDED_APPROXIMATE",
       "geometry_status": "COORDINATION_MARKER_ONLY_DO_NOT_CUT_ROOF",
-      "panel_containment_status": "UNVERIFIED_PANEL_JOINT_PHASE_UNKNOWN",
+      "panel_containment_status": "PANEL_CENTRE_UNVERIFIED_SLIDING_SYSTEM_AGREED",
+      "installation_strategy_status": "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED",
       "known_bracing_clearance_status": "CHECK_ONLY_AGAINST_CURRENTLY_MODELLED_A11_AXIS01_WVB_BARS",
       "excluded_detail": "No roof cutout, flashing, penetration pipe, support, curb, panel seam, bracket, fastener or clearance allowance is generated."
     }
   ],
   "explicitly_not_inferred": [
     "The actual center coordinates, hole diameter, flashing and curb details are not measured or approved by this marker.",
-    "The marker does not establish that the DN900 opening stays within one sandwich panel because the global panel-joint phase is unresolved.",
+    "The marker does not establish that the DN900 opening stays within one sandwich panel because the global panel-joint phase is unresolved; the agreed sliding-system strategy applies when the actual panel centre is not confirmed.",
     "Clearance is checked only against the six currently modelled A11/as-1 WVB bars; unmodelled bracing and secondary steel remain unresolved."
   ]
 }

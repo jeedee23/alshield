@@ -31,6 +31,13 @@ def main():
     ]
     assert catalog["source"]["planned_location"]["evidence_type"] == "USER_PROVIDED_APPROXIMATE_COORDINATES"
     assert catalog["source"]["planned_location"]["coordinate_accuracy_mm"] is None
+    assert catalog["source"]["installation_strategy"] == {
+        "evidence_type": "USER_CONFIRMED_INSTALLER_AGREEMENT",
+        "recorded_utc_date": "2026-09-12",
+        "statement": "The installer will place a sliding system when the penetration is not exactly at the centre of a sandwich panel.",
+        "status": "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED",
+        "note": "This resolves the installation approach for an off-centre penetration; it does not measure the actual panel-joint phase or approve a physical roof opening.",
+    }
     assert len(catalog["zones"]) == 1
     zone = catalog["zones"][0]
     assert zone["id"] == "Planned_Roof_Penetration_DN900_01"
@@ -38,7 +45,8 @@ def main():
     assert zone["requested_centre_xy_mm"] == [10000.0, 8000.0]
     assert zone["location_status"] == "USER_PROVIDED_APPROXIMATE"
     assert zone["geometry_status"] == "COORDINATION_MARKER_ONLY_DO_NOT_CUT_ROOF"
-    assert zone["panel_containment_status"] == "UNVERIFIED_PANEL_JOINT_PHASE_UNKNOWN"
+    assert zone["panel_containment_status"] == "PANEL_CENTRE_UNVERIFIED_SLIDING_SYSTEM_AGREED"
+    assert zone["installation_strategy_status"] == "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED"
     assert zone["known_bracing_clearance_status"] == "CHECK_ONLY_AGAINST_CURRENTLY_MODELLED_A11_AXIS01_WVB_BARS"
     assert hashlib.sha256(BASE_DATA.read_bytes()).hexdigest() == "3805f4a178ccbb8b2103850b47c28014763526177b6cda42ba2926d766b58745"
     assert hashlib.sha256(BASE_GENERATOR.read_bytes()).hexdigest() == "ce76b7b36c347cf5022b06441bf05e85682fca7f409082d9093cf07541eb7c1e"
@@ -48,6 +56,7 @@ def main():
         "nominal_opening_diameter_mm": zone["nominal_opening_diameter_mm"],
         "physical_roof_cutout_created": False,
         "panel_containment_verified": False,
+        "sliding_system_required_if_panel_centre_not_confirmed": True,
         "baseline_json_unchanged": True,
         "baseline_generator_unchanged": True,
     }, indent=2))

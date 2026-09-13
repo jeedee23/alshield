@@ -36,6 +36,13 @@ def _load_catalog():
         raise ValueError("Catalog must retain the user-provided approximate location.")
     if zone.get("geometry_status") != "COORDINATION_MARKER_ONLY_DO_NOT_CUT_ROOF":
         raise ValueError("Roof zone must not generate a physical cutout.")
+    strategy = catalog.get("source", {}).get("installation_strategy", {})
+    if strategy.get("status") != "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED":
+        raise ValueError("Roof-zone installation strategy must retain the agreed sliding-system condition.")
+    if zone.get("panel_containment_status") != "PANEL_CENTRE_UNVERIFIED_SLIDING_SYSTEM_AGREED":
+        raise ValueError("Roof zone must retain unresolved panel centre with the agreed sliding-system strategy.")
+    if zone.get("installation_strategy_status") != strategy["status"]:
+        raise ValueError("Roof-zone installation strategy does not match the recorded agreement.")
     roof = catalog.get("source", {}).get("roof_datum", {})
     corners = roof.get("crest_plane_corners_mm", [])
     if roof.get("baseline_component_id") != "SteelDeck_Envelope_A_to_Ridge1" or len(corners) != 4:
@@ -126,8 +133,10 @@ def audit_roof_penetration_zones(doc, catalog, axis01_wvb):
         failures.append("Incorrect roof-zone evidence status.")
     if zone.GeometryStatus != "COORDINATION_MARKER_ONLY_DO_NOT_CUT_ROOF":
         failures.append("Roof zone incorrectly represents a physical cutout.")
-    if zone.PanelContainmentStatus != "UNVERIFIED_PANEL_JOINT_PHASE_UNKNOWN":
-        failures.append("Roof zone must retain unresolved sandwich-panel containment.")
+    if zone.PanelContainmentStatus != "PANEL_CENTRE_UNVERIFIED_SLIDING_SYSTEM_AGREED":
+        failures.append("Roof zone must retain the unresolved panel centre and agreed sliding-system strategy.")
+    if zone.InstallationStrategyStatus != "SLIDING_SYSTEM_REQUIRED_IF_PANEL_CENTRE_IS_NOT_CONFIRMED":
+        failures.append("Roof-zone installation strategy is incorrect.")
     if zone.KnownBracingClearanceStatus != "CHECK_ONLY_AGAINST_CURRENTLY_MODELLED_A11_AXIS01_WVB_BARS":
         failures.append("Roof-zone bracing-clearance scope is incorrect.")
     shape = Part.getShape(zone)
@@ -164,6 +173,7 @@ def audit_roof_penetration_zones(doc, catalog, axis01_wvb):
         "nominal_opening_diameter_mm": zone_definition["nominal_opening_diameter_mm"],
         "physical_roof_cutout_created": False,
         "panel_containment_verified": False,
+        "sliding_system_required_if_panel_centre_not_confirmed": True,
         "known_modelled_wvb_clearance_checked": True,
         "as_built_verified": False,
         "fabrication_model": False,
@@ -221,6 +231,7 @@ def build_roof_penetration_zones(output_dir, detail_mode="WORK"):
         axis08._add_property(zone, "App::PropertyVector", "RoofPlaneNormal", normal, "Geometry")
         axis08._add_property(zone, "App::PropertyString", "GeometryStatus", zone_definition["geometry_status"], "Geometry")
         axis08._add_property(zone, "App::PropertyString", "PanelContainmentStatus", zone_definition["panel_containment_status"], "Geometry")
+        axis08._add_property(zone, "App::PropertyString", "InstallationStrategyStatus", zone_definition["installation_strategy_status"], "Geometry")
         axis08._add_property(zone, "App::PropertyString", "KnownBracingClearanceStatus", zone_definition["known_bracing_clearance_status"], "Geometry")
         axis08._add_property(zone, "App::PropertyString", "ExcludedDetail", zone_definition["excluded_detail"], "Geometry")
         axis08._add_property(zone, "App::PropertyString", "ChangeSet", catalog["change_visualisation"]["change_set"], "Display")
