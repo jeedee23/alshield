@@ -1,0 +1,278 @@
+{
+  "schema": "allshield.ahu.fusion-component-exceptions.v1",
+  "exceptions": [
+    {
+      "component_name": "PMA804C_AXIAL_FAN_with duct900 and sliders",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "MEAM-supplied purchased fan assembly; its multiple internal components are intentional and are not TM Technics fabrication parts."
+    },
+    {
+      "component_name": "Origin machine",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "PMA804C_AXIAL_FAN",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "Tip_Seals_15",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_13",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_14",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_01",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_02",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_03",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_04",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_05",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_06",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_08",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_07",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_09",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_10",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_11",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Tip_Seals_12",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "Outlet bend800x270 R=150 recht naar fan =163 recht omhoog = 50 (1)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "Outlet bend800x270 R=150 recht naar fan =163 recht omhoog = 50",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "Outlet bend800x270 R=150 recht naar fan =163 recht omhoog = 50 (2)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "2026_09_11_@_12-46-19_AHU_bend on outlets (3)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_1."
+    },
+    {
+      "component_name": "Louvre_Damper_1540x440_ShortSpan",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_109."
+    },
+    {
+      "component_name": "rollfilter met verbindingen koopdeel",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_13."
+    },
+    {
+      "component_name": "06 Actuator placeholder - visual only, replace by selected STEP(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "01 Aluminium frame - OUTSIDE 1000 x 1000 / depth 120 / face 30(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_4."
+    },
+    {
+      "component_name": "05 Opposed-blade vertical linkage rods - simplified(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "02 10 x 98 mm opposed blades - aluminium - 45 deg display state(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_10."
+    },
+    {
+      "component_name": "05 Dirty-roll housing - upstream face assumed open",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_5."
+    },
+    {
+      "component_name": "04 Opposed-blade linkage levers - simplified(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_10."
+    },
+    {
+      "component_name": "register klep 1000x1000 (1)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_6."
+    },
+    {
+      "component_name": "03 12 x 12 mm blade shafts / drive representation(Mirror)",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_10."
+    },
+    {
+      "component_name": "03 FRA side frame / skins - coordination",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "04 Clean-roll housing - upstream face assumed open",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_5."
+    },
+    {
+      "component_name": "08 Media support grille",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_22."
+    },
+    {
+      "component_name": "06 Media guides",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_2."
+    },
+    {
+      "component_name": "09 Clean / dirty media rolls - visual coordination",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_4."
+    },
+    {
+      "component_name": "10 Gearmotor - FRA.0202 position, coordination envelope",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_3."
+    },
+    {
+      "component_name": "register klep 1000x1000",
+      "classification": "PURCHASED_PART_ASSEMBLY",
+      "tm_bom_scope": "MEAM_SUPPLY_EXCLUDED_FROM_TM_FABRICATION",
+      "validation_status": "PURCHASED_PART_EXCEPTION",
+      "reason": "Selected interactively as a purchased part during Fusion TSV export after validation: BODY_COUNT_0; DIRECT_SUBCOMPONENTS_6."
+    }
+  ]
+}

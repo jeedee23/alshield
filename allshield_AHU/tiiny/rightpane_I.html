@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
+	<script src="fragment-resize.js" defer></script>
+</head>
+<body class="fragment-document"><div class="component-header" role="heading" aria-level="2"><span>Component I — Discharge Plenum</span><small>AHU assembly</small></div>
+<article class="subassembly-card fhd-panel">
+	<header class="subassembly-header">
+		<div>
+			<p class="eyebrow">AHU I — Subassembly I</p>
+			<h2>Machine-uitlaten naar verbindingsassembly J</h2>
+		</div>
+		<div class="subassembly-links">
+			<a href="steps/AHU_I_machine_outlets_to_J.step" target="_blank" rel="noopener">STEP</a>
+			<a href="assets/AHU_I_machine_outlets_to_J.png" target="_blank" rel="noopener">Afbeelding</a>
+		</div>
+	</header>
+
+	<p class="source-line">Bronnen: actuele Fusion-export en STEP <code>2026_09_13_@_12-06-34_AHU_outlets to recuperator</code>; TM pre-offer S04874. Alle namen hieronder zijn de exacte Fusion-componentnamen.</p>
+
+	<figure class="drawing">
+		<img src="assets/AHU_I_machine_outlets_to_J.png" alt="Machine-uitlaten naar verbindingsassembly J met callouts voor items 10 tot en met 110.">
+		<figcaption>De rode callouts bepalen de gegroepeerde BOM-regels; blauwe pijlen markeren de bijbehorende kolomducten.</figcaption>
+	</figure>
+
+	<div class="table-scroll">
+		<table class="bom-table">
+			<colgroup>
+				<col class="col-callout">
+				<col class="col-quantity">
+				<col class="col-component-name">
+				<col class="col-properties">
+				<col class="col-scope">
+				<col class="col-stepcheck">
+				<col class="col-price">
+			</colgroup>
+			<thead>
+				<tr>
+					<th>Callout</th>
+					<th>Aantal</th>
+					<th>Exacte Fusion-componentnaam</th>
+					<th>Geverifieerde Fusion-eigenschappen</th>
+					<th>TM-scope</th>
+					<th>STEP-check</th>
+					<th>Prijsindicatie excl. btw</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="callout">10-13</td><td class="quantity">4</td>
+					<td class="component-name">Bocht R 800 x 870 90° 166 opstand boord 30/3</td>
+					<td>Vier identieke componenten; 90°, opstand 166 mm, boord 30/3.</td>
+					<td>MEAM-koopdeel; geen TM-fabricagepost.</td><td class="stepcheck">Koopdeelassembly; kindgeometrie uitgesloten</td><td class="price">-</td>
+				</tr>
+				<tr>
+					<td>20-23</td><td class="quantity">4</td><td>Outlet BOTTOM duct ID 800 x 270 kader 30 L 1941.0 mm</td>
+					<td>ID 800 x 270 mm; kader 30; L 1941.0 mm; ruw Fusion-oppervlak 7.795 m²/st.; massa 62.11 kg/st.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 1.053,86*</td>
+				</tr>
+				<tr>
+					<td>30-33</td><td class="quantity">4</td><td>Outlet TOP duct ID 800 x 270 kader 30 L 1753.0 mm</td>
+					<td>ID 800 x 270 mm; kader 30; L 1753.0 mm; ruw Fusion-oppervlak 8.647 m²/st.; massa 68.88 kg/st.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 1.169,14*</td>
+				</tr>
+				<tr>
+					<td>40-60</td><td class="quantity">1</td><td>AHU_outlets to recuperator_Main outlet part 3 R900 L 3402.0 mm deksel + aftakking lees step</td>
+					<td>R900; L 3402.0 mm; deksel + aftakking; ruw Fusion-oppervlak 21.526 m²; massa 169.40 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 408,24**</td>
+				</tr>
+				<tr>
+					<td>40-60</td><td class="quantity">1</td><td>AHU_outlets to recuperator_Main outlet part 3 R900 L 3359.0 mm deksel + aftakking lees step</td>
+					<td>R900; L 3359.0 mm; deksel + aftakking; ruw Fusion-oppervlak 20.015 m²; massa 157.50 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 403,08**</td>
+				</tr>
+				<tr>
+					<td>40-60</td><td class="quantity">1</td><td>AHU_outlets to recuperator_Main outlet part 3 R900 L 3450.0 mm deksel + aftakking lees step</td>
+					<td>R900; L 3450.0 mm; deksel + aftakking; ruw Fusion-oppervlak 20.531 m²; massa 161.54 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 414,00**</td>
+				</tr>
+				<tr>
+					<td>70</td><td class="quantity">1</td><td>transitie 1540x440 kader30 naar rond ID 900 ASYMMETRISCH L 1600 +recht 50</td>
+					<td>1540 x 440 mm naar ID900; asymmetrisch; kader 30; L 1600 mm; extra recht 50 mm; ruw Fusion-oppervlak 10.314 m²; massa 82.38 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 348,62*</td>
+				</tr>
+				<tr>
+					<td>80</td><td class="quantity">1</td><td>rect duct 1540x440 L 3365.1 mm kaders 30 GAT 1447.0 mmx344.0 mm</td>
+					<td>1540 x 440 mm; L 3365.1 mm; kaders 30; gat 1447.0 x 344.0 mm; ruw Fusion-oppervlak 28.258 m²; massa 224.01 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 955,12*</td>
+				</tr>
+				<tr>
+					<td>90</td><td class="quantity">1</td><td>speciale korte bocht 1447.0 mmx344.0 mm R =1D recht 80 + kader 30 dichting</td>
+					<td>1447.0 x 344.0 mm; R=1D; recht 80 mm; kader 30; dichting; ruw Fusion-oppervlak 2.626 m²; massa 21.37 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 88,75*</td>
+				</tr>
+				<tr>
+					<td>100</td><td class="quantity">1</td><td>Reductie1600x500 to 340 x1443  L1000 kaders 30</td>
+					<td>1600 x 500 mm naar 340 x 1443 mm; L 1000 mm; kaders 30; ruw Fusion-oppervlak 6.523 m²; massa 54.93 kg.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">€ 220,48*</td>
+				</tr>
+				<tr>
+					<td>Geen aparte callout</td><td class="quantity">3</td><td>AIR_INLET_slider 900</td>
+					<td>900 mm; L 200 mm; ruw Fusion-oppervlak 1.178 m²/st.; massa 9.35 kg/st.</td>
+					<td>TM-fabricagekandidaat.</td><td class="stepcheck">Native STEP gekoppeld; Fusion PASS</td><td class="price">Prijsaanvraag</td>
+				</tr>
+				<tr>
+					<td>110</td><td class="quantity">1</td><td>Louvre_Damper_1540x440_ShortSpan</td>
+					<td>Koopdeelassembly met 109 directe subcomponenten; geen eigen Fusion-body.</td>
+					<td>MEAM-koopdeel; geen TM-fabricagepost.</td><td class="stepcheck">Koopdeelassembly; geen directe STEP-solid</td><td class="price">-</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<p class="source-line">* Rekenindicatie: ruw Fusion-oppervlak x € 33,80/m², het tarief uit TM pre-offer S04874 voor rechthoekige uitlaatkanalen en -bochten. Dit is geen Lukanorm-prijsoppervlak en geen offerte. ** Alleen de DN900-basisbuis: lengte x € 120,00/m uit hetzelfde pre-offer; deksel en aftakking zijn niet geprijsd.</p>
+</article>
+</body>
+</html>

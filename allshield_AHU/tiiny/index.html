@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AllShield AHU | TM Technics BOM</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function resizeFragment(frame, reportedHeight) {
+      let height = reportedHeight;
+      if (!Number.isFinite(height)) {
+        try {
+          const documentRoot = frame.contentDocument;
+          height = Math.max(
+            documentRoot.body.scrollHeight,
+            documentRoot.body.offsetHeight
+          );
+        } catch (error) {
+          return;
+        }
+      }
+      frame.style.height = Math.max(88, Math.ceil(height)) + "px";
+    }
+
+    window.addEventListener("message", (event) => {
+      const message = event.data;
+      if (!message || message.type !== "tiiny-fragment-height") {
+        return;
+      }
+      const frame = document.querySelector('[data-fragment="' + message.fragment + '"]');
+      if (frame) {
+        resizeFragment(frame, message.height);
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".right-fragment").forEach((frame) => {
+        frame.addEventListener("load", () => resizeFragment(frame));
+      });
+    });
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <p>AllShield AHU</p>
+    <h1>TM Technics materiaalstaat</h1>
+  </header>
+
+  <div class="site-layout">
+    <aside class="left-pane" aria-label="Subassemblies">
+      <iframe class="left-navigation" src="leftpane.html" title="Navigatie subassemblies"></iframe>
+    </aside>
+
+    <main class="right-pane" aria-label="Subassembly materiaalstaten">
+      <div id="subassembly-A" class="fragment-slot"><iframe class="right-fragment" src="rightpane_A.html" data-fragment="rightpane_A.html" title="AHU A — Inlet Window to Filter Plenum"></iframe></div>
+      <div id="subassembly-B" class="fragment-slot"><iframe class="right-fragment" src="rightpane_B.html" data-fragment="rightpane_B.html" title="AHU B — Subassembly B"></iframe></div>
+      <div id="subassembly-C" class="fragment-slot"><iframe class="right-fragment" src="rightpane_C.html" data-fragment="rightpane_C.html" title="AHU C — Subassembly C"></iframe></div>
+      <div id="subassembly-D" class="fragment-slot"><iframe class="right-fragment" src="rightpane_D.html" data-fragment="rightpane_D.html" title="AHU D — Subassembly D"></iframe></div>
+      <div id="subassembly-E" class="fragment-slot"><iframe class="right-fragment" src="rightpane_E.html" data-fragment="rightpane_E.html" title="AHU E — Subassembly E"></iframe></div>
+      <div id="subassembly-F" class="fragment-slot"><iframe class="right-fragment" src="rightpane_F.html" data-fragment="rightpane_F.html" title="AHU F — Subassembly F"></iframe></div>
+      <div id="subassembly-G" class="fragment-slot"><iframe class="right-fragment" src="rightpane_G.html" data-fragment="rightpane_G.html" title="AHU G — Subassembly G"></iframe></div>
+      <div id="subassembly-H" class="fragment-slot"><iframe class="right-fragment" src="rightpane_H.html" data-fragment="rightpane_H.html" title="AHU H — Subassembly H"></iframe></div>
+      <div id="subassembly-I" class="fragment-slot"><iframe class="right-fragment" src="rightpane_I.html" data-fragment="rightpane_I.html" title="AHU I — Subassembly I"></iframe></div>
+      <div id="subassembly-J" class="fragment-slot"><iframe class="right-fragment" src="rightpane_J.html" data-fragment="rightpane_J.html" title="AHU J — Subassembly J"></iframe></div>
+      <div id="subassembly-K" class="fragment-slot"><iframe class="right-fragment" src="rightpane_K.html" data-fragment="rightpane_K.html" title="AHU K — Subassembly K"></iframe></div>
+      <div id="subassembly-L" class="fragment-slot"><iframe class="right-fragment" src="rightpane_L.html" data-fragment="rightpane_L.html" title="AHU L — Subassembly L"></iframe></div>
+      <div id="subassembly-M" class="fragment-slot"><iframe class="right-fragment" src="rightpane_M.html" data-fragment="rightpane_M.html" title="AHU M — Subassembly M"></iframe></div>
+    </main>
+  </div>
+
+</body>
+</html>

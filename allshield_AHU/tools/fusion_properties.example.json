@@ -1,0 +1,14 @@
+{
+  "schema": "allshield.ahu.fusion-properties.v1",
+  "components": [
+    {
+      "step_object": "Exact STEP Label",
+      "fusion_name": "Exact Fusion component name",
+      "bbox_mm": [900.0, 900.0, 4200.0],
+      "area_mm2": null,
+      "volume_mm3": null,
+      "mass_kg": null,
+      "material": null
+    }
+  ]
+}
