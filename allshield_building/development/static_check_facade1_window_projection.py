@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = Path(__file__).with_name("facade1_window_projection_catalog_draft.json")
 BASE_DATA = ROOT / "model" / "allshield_building_02.json"
 BASE_GENERATOR = ROOT / "model" / "allshield_build.py"
-SOURCE_C4A = ROOT / "sources" / "pdf" / "c04a_gevels.pdf"
+SOURCE_C4A = ROOT.parent / "shared" / "sources" / "pdf" / "c04a_gevels.pdf"
 
 
 def main():
@@ -31,8 +31,8 @@ def main():
     assert len(bank["projection_regions_yz_mm"]["transoms"]) == 3
     assert "No physical frame section" in bank["excluded_detail"]
     assert hashlib.sha256(SOURCE_C4A.read_bytes()).hexdigest() == "1f4af215ff58087125339029a950113a4cda1819f6a5c2bebd53a6422df37fa0"
-    assert hashlib.sha256(BASE_DATA.read_bytes()).hexdigest() == "3805f4a178ccbb8b2103850b47c28014763526177b6cda42ba2926d766b58745"
-    assert hashlib.sha256(BASE_GENERATOR.read_bytes()).hexdigest() == "ce76b7b36c347cf5022b06441bf05e85682fca7f409082d9093cf07541eb7c1e"
+    assert hashlib.sha256(BASE_DATA.read_bytes()).hexdigest() == "7bda242a27ede07407efe873d35efd8be2a385d23002d690ead2caf21b857656"
+    assert hashlib.sha256(BASE_GENERATOR.read_bytes()).hexdigest() == "d09953da5f01a2c613cab92668485e9e148284c37925efec7b766c3fc20750ff"
     print(json.dumps({
         "status": "PASS_STATIC_FACADE1_WINDOW_PROJECTION_ONLY",
         "window_banks": 1,

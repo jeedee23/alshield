@@ -6,5 +6,5 @@ __pycache__/
 *.pyc
 *.FCStd1
 *.FCStd2
-model/*_last_build.json
+**/model/*_last_build.json
 # The included sources are internal project material. Review before ANY commit/push.

@@ -1,6 +1,6 @@
 # Allshield FreeCAD projectregels
 
-Lees 01_OVERDRACHT_COPILOT.md en 02_TESTPLAN.md voordat je code of geometrie wijzigt.
+Lees eerst `Copilot_rules.md` en bevestig de toegewezen machine- en werkdirectory. Lees voor bouwkundig FreeCAD-werk `allshield_building/01_OVERDRACHT_COPILOT.md` en `allshield_building/02_TESTPLAN.md` voordat je code of geometrie wijzigt.
 
 - Werkomgeving: lokale FreeCAD/FreeCADCmd en deze workspace. Verifieer versies en paden; neem geen installatiepad aan.
 - Eerst baseline 02 native testen, dan corrigeren en uitbreiden. Het bestaande screenshotprobleem is nog niet bewezen opgelost in native FreeCAD.

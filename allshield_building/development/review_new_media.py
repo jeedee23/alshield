@@ -11,6 +11,7 @@ from PIL import Image, ImageDraw, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SHARED = ROOT.parent / "shared"
 IMAGE_PATTERN = "WhatsApp Image 2026-09-02*.jpeg"
 VIDEO_PATTERN = "WhatsApp Video 2026-09-02*.mp4"
 THUMBNAIL_SIZE = (320, 240)
@@ -58,7 +59,7 @@ def _contact_sheet(items: list[tuple[Image.Image, str]], target: Path, title: st
 
 
 def _image_records(output: Path) -> list[dict]:
-    source_paths = sorted((ROOT / "sources" / "images").glob(IMAGE_PATTERN))
+    source_paths = sorted((SHARED / "sources" / "images").glob(IMAGE_PATTERN))
     contact_items: list[tuple[Image.Image, str]] = []
     records = []
     for path in source_paths:
@@ -66,7 +67,7 @@ def _image_records(output: Path) -> list[dict]:
             image = source.copy()
         contact_items.append((image, path.name))
         records.append({
-            "source": str(path.relative_to(ROOT)).replace("\\", "/"),
+            "source": str(path.relative_to(ROOT.parent)).replace("\\", "/"),
             "sha256": _sha256(path),
             "bytes": path.stat().st_size,
             "pixel_size": [image.width, image.height],
@@ -98,7 +99,7 @@ def _video_metadata(capture: cv2.VideoCapture) -> dict:
 
 
 def _video_records(output: Path) -> list[dict]:
-    source_paths = sorted((ROOT / "sources" / "video").glob(VIDEO_PATTERN))
+    source_paths = sorted((SHARED / "sources" / "video").glob(VIDEO_PATTERN))
     samples_root = output / "video_samples"
     samples_root.mkdir()
     records = []
@@ -106,7 +107,7 @@ def _video_records(output: Path) -> list[dict]:
         capture = cv2.VideoCapture(str(path))
         if not capture.isOpened():
             records.append({
-                "source": str(path.relative_to(ROOT)).replace("\\", "/"),
+                "source": str(path.relative_to(ROOT.parent)).replace("\\", "/"),
                 "sha256": _sha256(path),
                 "bytes": path.stat().st_size,
                 "decode_status": "FAILED_TO_OPEN",
@@ -139,7 +140,7 @@ def _video_records(output: Path) -> list[dict]:
             contact_path = sample_dir / "contact_sheet.png"
             _contact_sheet(contact_items, contact_path, path.name)
             records.append({
-                "source": str(path.relative_to(ROOT)).replace("\\", "/"),
+                "source": str(path.relative_to(ROOT.parent)).replace("\\", "/"),
                 "sha256": _sha256(path),
                 "bytes": path.stat().st_size,
                 "decode_status": "PASS",
@@ -166,7 +167,7 @@ def main() -> Path:
     report = {
         "status": "PASS_REVIEW_ARTIFACTS_CREATED",
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "source_patterns": ["sources/images/" + IMAGE_PATTERN, "sources/video/" + VIDEO_PATTERN],
+        "source_patterns": ["shared/sources/images/" + IMAGE_PATTERN, "shared/sources/video/" + VIDEO_PATTERN],
         "images": images,
         "videos": videos,
         "exact_duplicate_groups": _duplicate_groups(images + videos),

@@ -8,6 +8,7 @@ import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+SHARED = ROOT.parent / 'shared'
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
     assert (model / 'allshield_build.py').read_bytes() == (model / 'Allshield_Build.FCMacro').read_bytes(), 'Macro/Python mismatch'
     failures = []
     for src in data['sources']:
-        candidates = [ROOT / 'sources' / 'pdf' / src['filename'], ROOT / 'reference' / src['filename']]
+        candidates = [SHARED / 'sources' / 'pdf' / src['filename'], ROOT / 'reference' / src['filename']]
         p = next((x for x in candidates if x.is_file()), None)
         if p is None:
             failures.append('Source missing: ' + src['filename'])
